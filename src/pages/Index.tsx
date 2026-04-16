@@ -397,34 +397,120 @@ const Index = () => {
         <GradientBlur className="w-[500px] h-[400px] bottom-0 -right-40" />
 
         <div className="relative z-10 mx-auto max-w-7xl">
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-20 items-center">
+          <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-16 items-center">
+            {/* Left — Image Mosaic Grid */}
+            <motion.div
+              initial={{ opacity: 0, x: -40 }}
+              whileInView={{ opacity: 1, x: 0 }}
+              viewport={{ once: true }}
+              transition={{ duration: 0.7 }}
+              className="grid grid-cols-2 gap-3"
+            >
+              {/* Top-left — large */}
+              <motion.div
+                whileHover={{ scale: 1.03 }}
+                className="row-span-1 rounded-2xl overflow-hidden border border-border group relative"
+              >
+                <img src={team1} alt="Team collaboration" className="w-full h-full object-cover aspect-square group-hover:scale-110 transition-transform duration-700" />
+                <div className="absolute inset-0 bg-gradient-to-t from-background/60 via-transparent to-transparent" />
+              </motion.div>
+
+              {/* Top-right */}
+              <motion.div
+                whileHover={{ scale: 1.03 }}
+                className="rounded-2xl overflow-hidden border border-border group relative"
+              >
+                <img src={strategy1} alt="Strategy session" className="w-full h-full object-cover aspect-square group-hover:scale-110 transition-transform duration-700" />
+                <div className="absolute inset-0 bg-gradient-to-t from-background/60 via-transparent to-transparent" />
+              </motion.div>
+
+              {/* Bottom-left */}
+              <motion.div
+                whileHover={{ scale: 1.03 }}
+                className="rounded-2xl overflow-hidden border border-border group relative"
+              >
+                <img src={global1} alt="Global reach" className="w-full h-full object-cover aspect-[4/3] group-hover:scale-110 transition-transform duration-700" />
+                <div className="absolute inset-0 bg-gradient-to-t from-background/60 via-transparent to-transparent" />
+              </motion.div>
+
+              {/* Bottom-right — stat badge */}
+              <motion.div
+                whileHover={{ scale: 1.03 }}
+                className="relative rounded-2xl overflow-hidden border border-primary/30 bg-gradient-to-br from-primary via-primary/90 to-primary/70 flex flex-col items-center justify-center aspect-[4/3] group"
+              >
+                <div className="absolute inset-0 opacity-0 group-hover:opacity-100 transition-opacity duration-500" style={{ background: "radial-gradient(circle, hsl(0 0% 100% / 0.1), transparent 70%)" }} />
+                <motion.div
+                  animate={{ scale: [1, 1.05, 1] }}
+                  transition={{ duration: 3, repeat: Infinity, ease: "easeInOut" }}
+                  className="relative z-10 text-center"
+                >
+                  <div className="text-5xl font-black text-primary-foreground mb-1">50+</div>
+                  <div className="text-xs font-semibold text-primary-foreground/80 uppercase tracking-widest">Clients Served<br />Globally</div>
+                </motion.div>
+              </motion.div>
+            </motion.div>
+
+            {/* Right — Content */}
             <div>
               <SectionAccent />
               <RevealText text="Why Vibeads Digital" as="h2" className="text-3xl md:text-4xl font-bold text-foreground mb-4 justify-start" />
-              <motion.p initial={{ opacity: 0, y: 15 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} transition={{ duration: 0.5, delay: 0.3 }} className="text-muted-foreground mb-10">
+              <motion.p initial={{ opacity: 0, y: 15 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} transition={{ duration: 0.5, delay: 0.3 }} className="text-muted-foreground mb-8">
                 We deliver results that matter, powered by data and driven by performance.
               </motion.p>
 
-              <StaggerContainer className="flex flex-col gap-5" stagger={0.08}>
+              {/* Feature highlights row */}
+              <motion.div
+                initial={{ opacity: 0, y: 15 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true }}
+                transition={{ duration: 0.5, delay: 0.4 }}
+                className="flex gap-6 mb-8"
+              >
+                <div className="flex items-center gap-3">
+                  <div className="h-11 w-11 rounded-xl bg-primary/15 border border-primary/25 flex items-center justify-center">
+                    <TrendingUp className="h-5 w-5 text-primary" />
+                  </div>
+                  <div>
+                    <div className="text-sm font-bold text-foreground">Business Growth</div>
+                  </div>
+                </div>
+                <div className="flex items-center gap-3">
+                  <div className="h-11 w-11 rounded-xl bg-primary/15 border border-primary/25 flex items-center justify-center">
+                    <Target className="h-5 w-5 text-primary" />
+                  </div>
+                  <div>
+                    <div className="text-sm font-bold text-foreground">Marketing Solution</div>
+                  </div>
+                </div>
+              </motion.div>
+
+              {/* Bullet points */}
+              <StaggerContainer className="flex flex-col gap-4 mb-10" stagger={0.08}>
                 {reasons.map((reason) => (
                   <motion.div key={reason} variants={staggerChild} className="flex items-start gap-3 group">
-                    <CheckCircle className="h-5 w-5 text-primary shrink-0 mt-0.5" />
+                    <div className="h-2 w-2 rounded-full bg-primary shrink-0 mt-2" />
                     <span className="text-foreground/90 leading-relaxed">{reason}</span>
                   </motion.div>
                 ))}
               </StaggerContainer>
-            </div>
 
-            <StaggerContainer className="grid grid-cols-2 gap-5" stagger={0.1}>
-              {stats.map((stat) => (
-                <motion.div key={stat.label} variants={staggerChild} whileHover={{ y: -4 }} className="relative bg-card border border-border rounded-2xl p-7 text-center hover:border-primary/20 transition-colors duration-300 overflow-hidden group">
-                  <div className="absolute inset-0 opacity-0 group-hover:opacity-100 transition-opacity duration-500 pointer-events-none" style={{ background: "radial-gradient(circle at 50% 50%, hsl(24 100% 50% / 0.06) 0%, transparent 70%)" }} />
-                  <div className="relative z-10 text-3xl font-bold text-primary mb-1">{stat.value}</div>
-                  <div className="relative z-10 text-sm text-muted-foreground">{stat.label}</div>
-                  <div className="absolute bottom-0 left-0 right-0 h-[2px] bg-gradient-to-r from-transparent via-primary/40 to-transparent scale-x-0 group-hover:scale-x-100 transition-transform duration-500" />
-                </motion.div>
-              ))}
-            </StaggerContainer>
+              {/* CTA Button */}
+              <motion.div
+                initial={{ opacity: 0, y: 15 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true }}
+                transition={{ duration: 0.5, delay: 0.6 }}
+              >
+                <Button
+                  variant="outline"
+                  className="rounded-full px-8 border-primary/40 text-primary hover:bg-primary hover:text-primary-foreground transition-all duration-300 group"
+                  onClick={() => scrollTo("#about")}
+                >
+                  More About Us
+                  <ArrowRight className="ml-2 h-4 w-4 group-hover:translate-x-1 transition-transform" />
+                </Button>
+              </motion.div>
+            </div>
           </div>
         </div>
       </section>
