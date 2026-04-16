@@ -253,59 +253,72 @@ const Index = () => {
             At Vibeads Digital, we combine brand storytelling with performance execution to deliver measurable results.
           </motion.p>
 
-          <div className="flex flex-col sm:flex-row items-center justify-center gap-5 perspective-[1200px]">
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-16">
             {whatWeDoItems.map((item, i) => {
-              const rotations = [-6, -2, 2, 6];
-              const scales = [0.92, 0.97, 0.97, 0.92];
+              const isEven = i % 2 === 0;
               return (
                 <motion.div
                   key={item.title}
-                  initial={{ opacity: 0, y: 40, rotateY: rotations[i] * 2 }}
-                  whileInView={{ opacity: 1, y: 0, rotateY: rotations[i] }}
+                  initial={{ opacity: 0, y: 50 }}
+                  whileInView={{ opacity: 1, y: 0 }}
                   viewport={{ once: true }}
-                  transition={{ duration: 0.6, delay: i * 0.12 }}
-                  whileHover={{
-                    y: -16,
-                    rotateY: 0,
-                    scale: 1.08,
-                    zIndex: 10,
-                    transition: { duration: 0.4, ease: "easeOut" },
-                  }}
-                  style={{ scale: scales[i] }}
-                  className="relative w-full sm:w-[260px] rounded-2xl border border-primary/20 bg-gradient-to-b from-card via-card to-primary/[0.04] p-7 flex flex-col items-center text-center cursor-pointer group backdrop-blur-sm overflow-hidden"
+                  transition={{ duration: 0.7, delay: i * 0.15 }}
+                  className={`flex flex-col ${isEven ? 'md:flex-row' : 'md:flex-row-reverse'} items-center gap-8 group cursor-pointer`}
                 >
-                  {/* Glow overlay on hover */}
-                  <motion.div
-                    className="absolute inset-0 rounded-2xl opacity-0 group-hover:opacity-100 transition-opacity duration-500"
-                    style={{
-                      background: "radial-gradient(circle at 50% 0%, hsl(24 100% 50% / 0.15) 0%, transparent 70%)",
-                    }}
-                  />
-                  {/* Shine sweep */}
-                  <motion.div
-                    className="absolute inset-0 opacity-0 group-hover:opacity-100"
-                    initial={false}
-                    style={{
-                      background: "linear-gradient(105deg, transparent 40%, hsl(24 100% 50% / 0.08) 45%, hsl(24 100% 50% / 0.14) 50%, transparent 55%)",
-                    }}
-                    whileHover={{ x: ["-100%", "100%"] }}
-                    transition={{ duration: 0.8, ease: "easeInOut" }}
-                  />
+                  {/* Mockup Image with Glowing Orb */}
+                  <div className="relative flex-shrink-0 w-full md:w-[280px]">
+                    {/* Glowing orb behind */}
+                    <motion.div
+                      className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[240px] h-[240px] rounded-full blur-[80px] opacity-30 group-hover:opacity-50 transition-opacity duration-700"
+                      style={{ background: "radial-gradient(circle, hsl(24 100% 50% / 0.6), hsl(24 80% 40% / 0.2), transparent)" }}
+                      animate={{ scale: [1, 1.1, 1] }}
+                      transition={{ duration: 4, repeat: Infinity, ease: "easeInOut" }}
+                    />
 
-                  <div className="relative z-10 h-20 w-20 rounded-xl overflow-hidden mb-5 border border-primary/20 group-hover:border-primary/40 group-hover:shadow-[0_0_20px_hsl(24_100%_50%/0.25)] transition-all duration-400">
-                    <img src={item.image} alt={item.title} className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500" />
-                    <div className="absolute inset-0 bg-gradient-to-t from-background/60 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-400" />
+                    {/* Floating device frame */}
+                    <motion.div
+                      className="relative z-10 rounded-2xl overflow-hidden border-2 border-primary/20 shadow-[0_20px_60px_-15px_hsl(24_100%_50%/0.3)] group-hover:shadow-[0_25px_80px_-15px_hsl(24_100%_50%/0.4)] group-hover:border-primary/40 transition-all duration-500"
+                      animate={{ y: [0, -8, 0] }}
+                      transition={{ duration: 5, repeat: Infinity, ease: "easeInOut", delay: i * 0.8 }}
+                      whileHover={{ scale: 1.04, rotate: isEven ? 2 : -2 }}
+                    >
+                      <div className="aspect-[4/3] relative">
+                        <img src={item.image} alt={item.title} className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700" />
+                        {/* Gradient overlay */}
+                        <div className="absolute inset-0 bg-gradient-to-t from-background/80 via-background/20 to-transparent" />
+                        <div className="absolute inset-0 bg-gradient-to-br from-primary/10 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
+                        {/* Shine effect */}
+                        <div className="absolute inset-0 opacity-0 group-hover:opacity-100 transition-opacity duration-500" style={{ background: "linear-gradient(105deg, transparent 40%, hsl(24 100% 80% / 0.1) 45%, hsl(24 100% 80% / 0.15) 50%, transparent 55%)" }} />
+                      </div>
+                    </motion.div>
+
+                    {/* Small floating accent cards */}
+                    <motion.div
+                      className="absolute -bottom-3 -right-3 z-20 bg-card/90 backdrop-blur-md border border-primary/30 rounded-xl px-3 py-2 shadow-lg"
+                      animate={{ y: [0, -5, 0], rotate: [0, 2, 0] }}
+                      transition={{ duration: 3.5, repeat: Infinity, ease: "easeInOut", delay: i * 0.5 + 1 }}
+                    >
+                      <span className="text-[10px] uppercase tracking-widest font-bold text-primary">Live</span>
+                    </motion.div>
                   </div>
-                  <h3 className="relative z-10 text-foreground font-bold text-lg mb-2 group-hover:text-primary transition-colors duration-300">{item.title}</h3>
-                  <p className="relative z-10 text-sm text-muted-foreground leading-relaxed group-hover:text-foreground/70 transition-colors duration-300">{item.desc}</p>
 
-                  {/* Bottom accent bar */}
-                  <motion.div
-                    className="absolute bottom-0 left-1/2 -translate-x-1/2 h-[2px] bg-primary rounded-full"
-                    initial={{ width: 0 }}
-                    whileHover={{ width: "60%" }}
-                    transition={{ duration: 0.4 }}
-                  />
+                  {/* Text Content */}
+                  <div className={`flex-1 ${isEven ? 'text-left' : 'md:text-right'}`}>
+                    <motion.h3
+                      className="text-xl md:text-2xl font-bold text-foreground mb-3 group-hover:text-primary transition-colors duration-300"
+                      whileHover={{ x: isEven ? 4 : -4 }}
+                    >
+                      {item.title}
+                    </motion.h3>
+                    <p className="text-muted-foreground leading-relaxed group-hover:text-foreground/70 transition-colors duration-300">{item.desc}</p>
+                    <motion.div
+                      className={`mt-5 flex items-center gap-2 ${isEven ? '' : 'md:justify-end'}`}
+                      whileHover={{ x: isEven ? 6 : -6 }}
+                    >
+                      <span className="text-sm font-medium text-primary">Learn more</span>
+                      <ArrowRight className="h-4 w-4 text-primary" />
+                    </motion.div>
+                  </div>
                 </motion.div>
               );
             })}
