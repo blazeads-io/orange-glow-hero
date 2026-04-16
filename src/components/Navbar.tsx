@@ -2,47 +2,56 @@ import { motion } from "framer-motion";
 import { Button } from "@/components/ui/button";
 import { useState } from "react";
 import { Menu, X } from "lucide-react";
+import { Link, useLocation } from "react-router-dom";
 
-const navLinks = ["Home", "About", "Portfolio", "Contact", "FAQ"];
+const navLinks = [
+  { label: "Home", path: "/" },
+  { label: "Services", path: "/services" },
+  { label: "About", path: "/about" },
+  { label: "Contact", path: "/contact" },
+];
 
 const Navbar = () => {
   const [mobileOpen, setMobileOpen] = useState(false);
+  const location = useLocation();
 
   return (
     <motion.nav
       initial={{ y: -20, opacity: 0 }}
       animate={{ y: 0, opacity: 1 }}
       transition={{ duration: 0.6 }}
-      className="fixed top-0 left-0 right-0 z-50 px-6 py-4"
+      className="fixed top-0 left-0 right-0 z-50 px-6 py-4 bg-background/80 backdrop-blur-md border-b border-border/50"
     >
       <div className="mx-auto max-w-7xl flex items-center justify-between">
-        {/* Logo */}
-        <div className="flex items-center gap-2">
+        <Link to="/" className="flex items-center gap-2">
           <div className="h-8 w-8 rounded-lg bg-primary flex items-center justify-center">
-            <span className="text-primary-foreground font-bold text-sm">N</span>
+            <span className="text-primary-foreground font-bold text-sm">V</span>
           </div>
-          <span className="text-foreground font-semibold text-lg">Nubien</span>
-        </div>
+          <span className="text-foreground font-semibold text-lg">Vibeads Digital</span>
+        </Link>
 
-        {/* Desktop Links */}
         <div className="hidden md:flex items-center gap-8">
           {navLinks.map((link) => (
-            <a
-              key={link}
-              href={`#${link.toLowerCase()}`}
-              className="text-sm text-muted-foreground hover:text-foreground transition-colors"
+            <Link
+              key={link.label}
+              to={link.path}
+              className={`text-sm transition-colors ${
+                location.pathname === link.path
+                  ? "text-primary font-medium"
+                  : "text-muted-foreground hover:text-foreground"
+              }`}
             >
-              {link}
-            </a>
+              {link.label}
+            </Link>
           ))}
         </div>
 
-        {/* CTA */}
-        <Button variant="hero" size="sm" className="hidden md:inline-flex rounded-full px-5">
-          Get in Touch
-        </Button>
+        <Link to="/contact">
+          <Button variant="hero" size="sm" className="hidden md:inline-flex rounded-full px-5">
+            Get in Touch
+          </Button>
+        </Link>
 
-        {/* Mobile toggle */}
         <button
           className="md:hidden text-foreground"
           onClick={() => setMobileOpen(!mobileOpen)}
@@ -51,7 +60,6 @@ const Navbar = () => {
         </button>
       </div>
 
-      {/* Mobile menu */}
       {mobileOpen && (
         <motion.div
           initial={{ opacity: 0, y: -10 }}
@@ -59,18 +67,24 @@ const Navbar = () => {
           className="md:hidden mt-4 rounded-xl bg-card border border-border p-6 flex flex-col gap-4"
         >
           {navLinks.map((link) => (
-            <a
-              key={link}
-              href={`#${link.toLowerCase()}`}
-              className="text-sm text-muted-foreground hover:text-foreground transition-colors"
+            <Link
+              key={link.label}
+              to={link.path}
+              className={`text-sm transition-colors ${
+                location.pathname === link.path
+                  ? "text-primary font-medium"
+                  : "text-muted-foreground hover:text-foreground"
+              }`}
               onClick={() => setMobileOpen(false)}
             >
-              {link}
-            </a>
+              {link.label}
+            </Link>
           ))}
-          <Button variant="hero" size="sm" className="rounded-full w-full mt-2">
-            Get in Touch
-          </Button>
+          <Link to="/contact" onClick={() => setMobileOpen(false)}>
+            <Button variant="hero" size="sm" className="rounded-full w-full mt-2">
+              Get in Touch
+            </Button>
+          </Link>
         </motion.div>
       )}
     </motion.nav>
