@@ -278,6 +278,42 @@ const Index = () => {
           ))}
         </motion.div>
 
+        {/* ── Floating Marketing Icons ── */}
+        {[
+          { Icon: TrendingUp, top: "12%", left: "8%", size: 48, delay: 0, dur: 6 },
+          { Icon: BarChart3, top: "22%", left: "78%", size: 56, delay: 1, dur: 7 },
+          { Icon: Megaphone, top: "55%", left: "5%", size: 44, delay: 0.5, dur: 8 },
+          { Icon: Target, top: "65%", left: "85%", size: 52, delay: 1.5, dur: 6.5 },
+          { Icon: Users, top: "35%", left: "90%", size: 40, delay: 2, dur: 7.5 },
+          { Icon: TrendingUp, top: "80%", left: "70%", size: 36, delay: 0.8, dur: 9 },
+          { Icon: BarChart3, top: "15%", left: "45%", size: 42, delay: 1.2, dur: 6 },
+          { Icon: Megaphone, top: "75%", left: "25%", size: 50, delay: 2.5, dur: 8 },
+          { Icon: Target, top: "40%", left: "15%", size: 38, delay: 0.3, dur: 7 },
+          { Icon: Users, top: "50%", left: "60%", size: 46, delay: 1.8, dur: 6.5 },
+        ].map((item, i) => (
+          <motion.div
+            key={i}
+            className="absolute pointer-events-none z-[2]"
+            style={{ top: item.top, left: item.left }}
+            initial={{ opacity: 0, scale: 0.5 }}
+            animate={{
+              opacity: [0.15, 0.35, 0.15],
+              y: [0, -20, 0, 15, 0],
+              x: [0, 10, 0, -10, 0],
+              scale: [1, 1.1, 1],
+              rotate: [0, 5, -5, 0],
+            }}
+            transition={{
+              duration: item.dur,
+              repeat: Infinity,
+              ease: "easeInOut",
+              delay: item.delay,
+            }}
+          >
+            <item.Icon className="text-primary" style={{ width: item.size, height: item.size }} />
+          </motion.div>
+        ))}
+
         {/* ── Hero Text Content ── */}
         <motion.div
           className="absolute bottom-8 left-0 right-0 z-10 px-8 md:px-16"
@@ -286,15 +322,6 @@ const Index = () => {
           transition={{ duration: 0.8, delay: 1 }}
         >
           <div className="max-w-3xl">
-            <div className="flex items-center gap-3 mb-4">
-              <div className="flex items-center gap-2">
-                <TrendingUp className="w-4 h-4 text-primary" />
-                <BarChart3 className="w-4 h-4 text-primary" />
-                <Megaphone className="w-4 h-4 text-primary" />
-                <Target className="w-4 h-4 text-primary" />
-                <Users className="w-4 h-4 text-primary" />
-              </div>
-            </div>
             <h2 className="text-lg md:text-2xl font-bold text-foreground leading-snug mb-3">
               Driving Growth Across Apps, OTT & Digital Brands
             </h2>
