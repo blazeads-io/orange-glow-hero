@@ -205,6 +205,7 @@ const Index = () => {
           initial={{ opacity: 0, scale: 0.85 }}
           animate={{ opacity: 1, scale: 1 }}
           transition={{ duration: 1.2, delay: 0.6, ease: [0.16, 1, 0.3, 1] }}
+          style={{ x: globeX, y: globeY }}
         >
           {/* Globe glow */}
           <div className="absolute w-[400px] h-[400px] md:w-[600px] md:h-[600px] bg-primary/20 blur-[150px] rounded-full" />
