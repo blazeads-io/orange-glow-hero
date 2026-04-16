@@ -1,16 +1,5 @@
 import { useEffect, useRef } from "react";
 
-interface FloatingText {
-  x: number;
-  y: number;
-  vx: number;
-  vy: number;
-  opacity: number;
-  fontSize: number;
-  rotation: number;
-  rotSpeed: number;
-}
-
 const ParticleWave = ({ className = "" }: { className?: string }) => {
   const canvasRef = useRef<HTMLCanvasElement>(null);
 
@@ -28,25 +17,7 @@ const ParticleWave = ({ className = "" }: { className?: string }) => {
       canvas.width = canvas.offsetWidth * dpr;
       canvas.height = canvas.offsetHeight * dpr;
       ctx.scale(dpr, dpr);
-      // Reposition floating texts on resize
-      floatingTexts.forEach((t) => {
-        t.x = Math.random() * canvas.offsetWidth;
-        t.y = Math.random() * canvas.offsetHeight;
-      });
     };
-
-    // Create floating brand name instances
-    const textCount = 8;
-    const floatingTexts: FloatingText[] = Array.from({ length: textCount }, () => ({
-      x: Math.random() * (canvas.offsetWidth || 800),
-      y: Math.random() * (canvas.offsetHeight || 600),
-      vx: (Math.random() - 0.5) * 0.4,
-      vy: (Math.random() - 0.5) * 0.3,
-      opacity: Math.random() * 0.1 + 0.18,
-      fontSize: Math.random() * 18 + 18,
-      rotation: (Math.random() - 0.5) * 0.3,
-      rotSpeed: (Math.random() - 0.5) * 0.001,
-    }));
 
     resize();
     window.addEventListener("resize", resize);
@@ -65,31 +36,7 @@ const ParticleWave = ({ className = "" }: { className?: string }) => {
 
       time += 0.008;
 
-      // Draw floating brand names (behind particles)
-      floatingTexts.forEach((t) => {
-        // Update position
-        t.x += t.vx;
-        t.y += t.vy;
-        t.rotation += t.rotSpeed;
-
-        // Bounce off edges with padding
-        if (t.x < -100 || t.x > w + 100) t.vx *= -1;
-        if (t.y < -30 || t.y > h + 30) t.vy *= -1;
-
-        // Subtle opacity pulse
-        const pulse = Math.sin(time * 1.5 + t.fontSize) * 0.04;
-
-        ctx.save();
-        ctx.translate(t.x, t.y);
-        ctx.rotate(t.rotation);
-        ctx.font = `700 ${t.fontSize}px Inter, system-ui, sans-serif`;
-        ctx.fillStyle = `rgba(147, 180, 255, ${t.opacity + pulse})`;
-        ctx.letterSpacing = "4px";
-        ctx.fillText("VIBEADS DIGITAL", 0, 0);
-        ctx.restore();
-      });
-
-      // Draw text grid instead of dots
+      // Draw text grid
       ctx.font = "600 7px Inter, system-ui, sans-serif";
       ctx.textAlign = "center";
       ctx.textBaseline = "middle";
@@ -106,15 +53,15 @@ const ParticleWave = ({ className = "" }: { className?: string }) => {
 
           const y = baseY + wave;
 
-          const brightness = 0.08 + waveFactor * 0.55;
+          const brightness = (0.08 + waveFactor * 0.55) * 0.45;
           const ridgeDist = Math.abs(distFromCenter);
           const isRidge = ridgeDist < 0.15;
-          const glowAlpha = isRidge ? 0.6 + Math.sin(i * 0.15 + time * 3) * 0.3 : 0;
+          const glowAlpha = isRidge ? (0.6 + Math.sin(i * 0.15 + time * 3) * 0.3) * 0.45 : 0;
 
           ctx.fillStyle = `rgba(147, 180, 255, ${brightness})`;
           ctx.fillText("VIBEADS", x, y);
 
-          if (glowAlpha > 0.3) {
+          if (glowAlpha > 0.3 * 0.45) {
             ctx.fillStyle = `rgba(180, 210, 255, ${glowAlpha * 0.4})`;
             ctx.fillText("VIBEADS", x, y);
           }
@@ -131,14 +78,14 @@ const ParticleWave = ({ className = "" }: { className?: string }) => {
           Math.sin(i * 0.07 - time * 1.5) * 15;
         ctx.lineTo(x, centerY + wave);
       }
-      ctx.strokeStyle = "rgba(180, 215, 255, 0.15)";
+      ctx.strokeStyle = "rgba(180, 215, 255, 0.07)";
       ctx.lineWidth = 1.5;
       ctx.stroke();
 
       // Sweep glow
       const sweepX = ((Math.sin(time * 0.7) + 1) / 2) * w;
       const sweepGrad = ctx.createRadialGradient(sweepX, centerY, 0, sweepX, centerY, 200);
-      sweepGrad.addColorStop(0, "rgba(200, 220, 255, 0.12)");
+      sweepGrad.addColorStop(0, "rgba(200, 220, 255, 0.06)");
       sweepGrad.addColorStop(1, "rgba(200, 220, 255, 0)");
       ctx.fillStyle = sweepGrad;
       ctx.fillRect(sweepX - 200, centerY - 200, 400, 400);
