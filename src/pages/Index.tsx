@@ -205,6 +205,39 @@ const Index = () => {
               filter: "drop-shadow(0 0 80px hsl(24 100% 50% / 0.3)) drop-shadow(0 0 160px hsl(24 100% 50% / 0.1))",
             }}
           />
+
+          {/* Orbiting marketing logos */}
+          {[
+            { name: "Google Analytics", offset: 0, radius: 220, speed: 45, img: "https://cdn.worldvectorlogo.com/logos/google-analytics-4.svg" },
+            { name: "HubSpot", offset: 51, radius: 240, speed: 50, img: "https://cdn.worldvectorlogo.com/logos/hubspot-1.svg" },
+            { name: "SEMrush", offset: 102, radius: 260, speed: 55, img: "https://cdn.worldvectorlogo.com/logos/semrush.svg" },
+            { name: "Mailchimp", offset: 153, radius: 230, speed: 48, img: "https://cdn.worldvectorlogo.com/logos/mailchimp-freddie-icon.svg" },
+            { name: "Buffer", offset: 204, radius: 250, speed: 52, img: "https://cdn.worldvectorlogo.com/logos/buffer-1.svg" },
+            { name: "Hootsuite", offset: 255, radius: 235, speed: 46, img: "https://cdn.worldvectorlogo.com/logos/hootsuite-icon.svg" },
+            { name: "Moz", offset: 306, radius: 245, speed: 54, img: "https://cdn.worldvectorlogo.com/logos/moz-logo-1.svg" },
+          ].map((logo) => (
+            <motion.div
+              key={logo.name}
+              className="absolute"
+              style={{ width: 0, height: 0 }}
+              animate={{ rotate: [logo.offset, logo.offset + 360] }}
+              transition={{ duration: logo.speed, repeat: Infinity, ease: "linear" }}
+            >
+              <motion.img
+                src={logo.img}
+                alt={logo.name}
+                className="absolute w-6 h-6 md:w-8 md:h-8 object-contain"
+                style={{
+                  top: -logo.radius,
+                  left: -12,
+                  opacity: 0.1,
+                  filter: "grayscale(100%)",
+                }}
+                animate={{ rotate: [-(logo.offset), -(logo.offset + 360)] }}
+                transition={{ duration: logo.speed, repeat: Infinity, ease: "linear" }}
+              />
+            </motion.div>
+          ))}
         </motion.div>
 
         {/* ── CTA - Bottom Left ── */}
