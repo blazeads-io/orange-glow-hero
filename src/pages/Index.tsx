@@ -109,6 +109,21 @@ const Index = () => {
   const heroOpacity = useTransform(heroProgress, [0, 0.7], [1, 0]);
   const heroScale = useTransform(heroProgress, [0, 0.7], [1, 0.95]);
 
+  // Globe mouse tracking
+  const mouseX = useMotionValue(0);
+  const mouseY = useMotionValue(0);
+  const globeX = useSpring(mouseX, { stiffness: 50, damping: 20 });
+  const globeY = useSpring(mouseY, { stiffness: 50, damping: 20 });
+
+  const handleHeroMouseMove = (e: React.MouseEvent) => {
+    const rect = heroRef.current?.getBoundingClientRect();
+    if (!rect) return;
+    const x = ((e.clientX - rect.left) / rect.width - 0.5) * 40;
+    const y = ((e.clientY - rect.top) / rect.height - 0.5) * 40;
+    mouseX.set(x);
+    mouseY.set(y);
+  };
+
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
     toast({ title: "Message sent!", description: "We'll get back to you soon." });
