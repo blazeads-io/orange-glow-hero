@@ -14,6 +14,7 @@ import {
   FloatingOrb, FloatingParticles, GlowingDot, RotatingRings,
   NoiseOverlay, VerticalGradientLines,
 } from "@/components/AnimatedBackgrounds";
+import ParticleWave from "@/components/ParticleWave";
 import {
   Target, Smartphone, Palette, Tv, TrendingUp, Users,
   BarChart3, Megaphone, CheckCircle, Building2, Zap, Globe,
@@ -150,12 +151,10 @@ const Index = () => {
         <GlowingDot className="top-1/2 left-[8%]" size={3} delay={2} />
         <GlowingDot className="top-1/3 right-[8%]" size={5} delay={0.8} />
 
-        {/* Gradient glow base */}
+        {/* Particle wave canvas */}
         <div className="absolute inset-0">
+          <ParticleWave className="absolute inset-0 opacity-80" />
           <GradientBlur className="w-[800px] h-[600px] -bottom-60 left-1/2 -translate-x-1/2" />
-          <div className="absolute bottom-0 left-1/2 -translate-x-1/2 w-[1000px] h-[500px] md:w-[1400px] md:h-[700px]">
-            <div className="absolute inset-0 rounded-t-full border-t border-primary/15" />
-          </div>
         </div>
 
         {/* Animated accent line at top */}
