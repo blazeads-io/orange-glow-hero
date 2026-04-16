@@ -162,6 +162,24 @@ const Index = () => {
           />
         </div>
 
+        {/* ── Vertical Side Text ── */}
+        <div className="absolute left-6 md:left-10 top-1/2 -translate-y-1/2 pointer-events-none select-none z-[1]">
+          <p
+            className="text-[10px] md:text-xs tracking-[0.35em] uppercase text-muted-foreground/15 font-medium"
+            style={{ writingMode: "vertical-rl", textOrientation: "mixed" }}
+          >
+            Performance Marketing Agency
+          </p>
+        </div>
+        <div className="absolute right-6 md:right-10 top-1/2 -translate-y-1/2 pointer-events-none select-none z-[1]">
+          <p
+            className="text-[10px] md:text-xs tracking-[0.35em] uppercase text-muted-foreground/15 font-medium"
+            style={{ writingMode: "vertical-rl", textOrientation: "mixed", transform: "rotate(180deg)" }}
+          >
+            Performance Marketing Agency
+          </p>
+        </div>
+
         {/* ── Massive Background Text ── */}
         <div className="absolute inset-0 flex flex-col items-center justify-center pointer-events-none select-none">
           {/* VIBEADS - top text */}
