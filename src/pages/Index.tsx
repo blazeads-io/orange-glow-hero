@@ -168,7 +168,7 @@ const Index = () => {
           <div className="h-full flex items-center">
             <p
               className="text-[12vw] md:text-[10vw] lg:text-[8vw] font-black uppercase text-foreground/[0.04] leading-none tracking-tighter"
-              style={{ writingMode: "vertical-rl", textOrientation: "mixed", opacity: 0.4 }}
+              style={{ writingMode: "vertical-rl", textOrientation: "mixed", opacity: 0.6 }}
             >
               PERFORMANCE
             </p>
@@ -177,7 +177,7 @@ const Index = () => {
           <div className="h-full flex items-center">
             <p
               className="text-[12vw] md:text-[10vw] lg:text-[8vw] font-black uppercase text-foreground/[0.04] leading-none tracking-tighter"
-              style={{ writingMode: "vertical-rl", textOrientation: "mixed", transform: "rotate(180deg)", opacity: 0.4 }}
+              style={{ writingMode: "vertical-rl", textOrientation: "mixed", transform: "rotate(180deg)", opacity: 0.6 }}
             >
               MARKETING
             </p>
