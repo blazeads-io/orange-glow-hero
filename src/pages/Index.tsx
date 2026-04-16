@@ -136,7 +136,7 @@ const Index = () => {
       <Navbar />
 
       {/* ════════════ HERO ════════════ */}
-      <section ref={heroRef} id="home" className="relative min-h-screen flex items-center justify-center overflow-hidden">
+      <section ref={heroRef} id="home" className="relative min-h-screen flex items-center justify-center overflow-hidden" onMouseMove={handleHeroMouseMove}>
         {/* ── Background Layers ── */}
         <GridPattern />
         <NoiseOverlay opacity={0.04} />
