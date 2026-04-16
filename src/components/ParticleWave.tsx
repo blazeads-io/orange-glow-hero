@@ -37,7 +37,7 @@ const ParticleWave = ({ className = "" }: { className?: string }) => {
       time += 0.008;
 
       // Draw text grid
-      ctx.font = "700 9px Inter, system-ui, sans-serif";
+      ctx.font = "800 13px Inter, system-ui, sans-serif";
       ctx.textAlign = "center";
       ctx.textBaseline = "middle";
       for (let i = 0; i < cols; i++) {
