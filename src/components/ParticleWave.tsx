@@ -22,8 +22,8 @@ const ParticleWave = ({ className = "" }: { className?: string }) => {
     resize();
     window.addEventListener("resize", resize);
 
-    const cols = 60;
-    const rows = 30;
+    const cols = 45;
+    const rows = 20;
 
     const draw = () => {
       const w = canvas.offsetWidth;
