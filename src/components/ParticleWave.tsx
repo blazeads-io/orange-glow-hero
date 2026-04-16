@@ -22,8 +22,8 @@ const ParticleWave = ({ className = "" }: { className?: string }) => {
     resize();
     window.addEventListener("resize", resize);
 
-    const cols = 60;
-    const rows = 30;
+    const cols = 45;
+    const rows = 20;
 
     const draw = () => {
       const w = canvas.offsetWidth;
@@ -37,7 +37,7 @@ const ParticleWave = ({ className = "" }: { className?: string }) => {
       time += 0.008;
 
       // Draw text grid
-      ctx.font = "700 9px Inter, system-ui, sans-serif";
+      ctx.font = "800 13px Inter, system-ui, sans-serif";
       ctx.textAlign = "center";
       ctx.textBaseline = "middle";
       for (let i = 0; i < cols; i++) {
