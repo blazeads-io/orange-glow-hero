@@ -35,17 +35,17 @@ const ParticleWave = ({ className = "" }: { className?: string }) => {
       });
     };
 
-    // Create floating brand name instances
-    const textCount = 8;
+    // Create floating brand name instances (replacing dots)
+    const textCount = 20;
     const floatingTexts: FloatingText[] = Array.from({ length: textCount }, () => ({
       x: Math.random() * (canvas.offsetWidth || 800),
       y: Math.random() * (canvas.offsetHeight || 600),
-      vx: (Math.random() - 0.5) * 0.4,
-      vy: (Math.random() - 0.5) * 0.3,
-      opacity: Math.random() * 0.1 + 0.18,
-      fontSize: Math.random() * 18 + 18,
-      rotation: (Math.random() - 0.5) * 0.3,
-      rotSpeed: (Math.random() - 0.5) * 0.001,
+      vx: (Math.random() - 0.5) * 0.5,
+      vy: (Math.random() - 0.5) * 0.4,
+      opacity: Math.random() * 0.12 + 0.08,
+      fontSize: Math.random() * 14 + 12,
+      rotation: (Math.random() - 0.5) * 0.4,
+      rotSpeed: (Math.random() - 0.5) * 0.002,
     }));
 
     resize();
