@@ -253,17 +253,62 @@ const Index = () => {
             At Vibeads Digital, we combine brand storytelling with performance execution to deliver measurable results.
           </motion.p>
 
-          <StaggerContainer className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
-            {whatWeDoItems.map((item) => (
-              <motion.div key={item.title} variants={staggerChild} whileHover={{ y: -6 }} transition={{ duration: 0.3 }} className="bg-card border border-border rounded-2xl p-6 hover:border-primary/30 transition-colors duration-300 group">
-                <div className="h-11 w-11 rounded-xl bg-primary/10 flex items-center justify-center mb-5 group-hover:bg-primary/15 transition-colors duration-300">
-                  <item.icon className="h-5 w-5 text-primary" />
-                </div>
-                <h3 className="text-foreground font-semibold mb-2">{item.title}</h3>
-                <p className="text-sm text-muted-foreground leading-relaxed">{item.desc}</p>
-              </motion.div>
-            ))}
-          </StaggerContainer>
+          <div className="flex flex-col sm:flex-row items-center justify-center gap-5 perspective-[1200px]">
+            {whatWeDoItems.map((item, i) => {
+              const rotations = [-6, -2, 2, 6];
+              const scales = [0.92, 0.97, 0.97, 0.92];
+              return (
+                <motion.div
+                  key={item.title}
+                  initial={{ opacity: 0, y: 40, rotateY: rotations[i] * 2 }}
+                  whileInView={{ opacity: 1, y: 0, rotateY: rotations[i] }}
+                  viewport={{ once: true }}
+                  transition={{ duration: 0.6, delay: i * 0.12 }}
+                  whileHover={{
+                    y: -16,
+                    rotateY: 0,
+                    scale: 1.08,
+                    zIndex: 10,
+                    transition: { duration: 0.4, ease: "easeOut" },
+                  }}
+                  style={{ scale: scales[i] }}
+                  className="relative w-full sm:w-[260px] rounded-2xl border border-primary/20 bg-gradient-to-b from-card via-card to-primary/[0.04] p-7 flex flex-col items-center text-center cursor-pointer group backdrop-blur-sm overflow-hidden"
+                >
+                  {/* Glow overlay on hover */}
+                  <motion.div
+                    className="absolute inset-0 rounded-2xl opacity-0 group-hover:opacity-100 transition-opacity duration-500"
+                    style={{
+                      background: "radial-gradient(circle at 50% 0%, hsl(24 100% 50% / 0.15) 0%, transparent 70%)",
+                    }}
+                  />
+                  {/* Shine sweep */}
+                  <motion.div
+                    className="absolute inset-0 opacity-0 group-hover:opacity-100"
+                    initial={false}
+                    style={{
+                      background: "linear-gradient(105deg, transparent 40%, hsl(24 100% 50% / 0.08) 45%, hsl(24 100% 50% / 0.14) 50%, transparent 55%)",
+                    }}
+                    whileHover={{ x: ["-100%", "100%"] }}
+                    transition={{ duration: 0.8, ease: "easeInOut" }}
+                  />
+
+                  <div className="relative z-10 h-14 w-14 rounded-xl bg-primary/10 border border-primary/20 flex items-center justify-center mb-5 group-hover:bg-primary/20 group-hover:border-primary/40 group-hover:shadow-[0_0_20px_hsl(24_100%_50%/0.25)] transition-all duration-400">
+                    <item.icon className="h-6 w-6 text-primary group-hover:scale-110 transition-transform duration-300" />
+                  </div>
+                  <h3 className="relative z-10 text-foreground font-bold text-lg mb-2 group-hover:text-primary transition-colors duration-300">{item.title}</h3>
+                  <p className="relative z-10 text-sm text-muted-foreground leading-relaxed group-hover:text-foreground/70 transition-colors duration-300">{item.desc}</p>
+
+                  {/* Bottom accent bar */}
+                  <motion.div
+                    className="absolute bottom-0 left-1/2 -translate-x-1/2 h-[2px] bg-primary rounded-full"
+                    initial={{ width: 0 }}
+                    whileHover={{ width: "60%" }}
+                    transition={{ duration: 0.4 }}
+                  />
+                </motion.div>
+              );
+            })}
+          </div>
         </div>
       </section>
 
