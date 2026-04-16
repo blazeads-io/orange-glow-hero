@@ -1,5 +1,16 @@
 import { useEffect, useRef } from "react";
 
+interface FloatingText {
+  x: number;
+  y: number;
+  vx: number;
+  vy: number;
+  opacity: number;
+  fontSize: number;
+  rotation: number;
+  rotSpeed: number;
+}
+
 const ParticleWave = ({ className = "" }: { className?: string }) => {
   const canvasRef = useRef<HTMLCanvasElement>(null);
 
@@ -17,7 +28,26 @@ const ParticleWave = ({ className = "" }: { className?: string }) => {
       canvas.width = canvas.offsetWidth * dpr;
       canvas.height = canvas.offsetHeight * dpr;
       ctx.scale(dpr, dpr);
+      // Reposition floating texts on resize
+      floatingTexts.forEach((t) => {
+        t.x = Math.random() * canvas.offsetWidth;
+        t.y = Math.random() * canvas.offsetHeight;
+      });
     };
+
+    // Create floating brand name instances
+    const textCount = 8;
+    const floatingTexts: FloatingText[] = Array.from({ length: textCount }, () => ({
+      x: Math.random() * (canvas.offsetWidth || 800),
+      y: Math.random() * (canvas.offsetHeight || 600),
+      vx: (Math.random() - 0.5) * 0.4,
+      vy: (Math.random() - 0.5) * 0.3,
+      opacity: Math.random() * 0.06 + 0.03,
+      fontSize: Math.random() * 14 + 12,
+      rotation: (Math.random() - 0.5) * 0.4,
+      rotSpeed: (Math.random() - 0.5) * 0.001,
+    }));
+
     resize();
     window.addEventListener("resize", resize);
 
@@ -35,12 +65,36 @@ const ParticleWave = ({ className = "" }: { className?: string }) => {
 
       time += 0.008;
 
+      // Draw floating brand names (behind particles)
+      floatingTexts.forEach((t) => {
+        // Update position
+        t.x += t.vx;
+        t.y += t.vy;
+        t.rotation += t.rotSpeed;
+
+        // Bounce off edges with padding
+        if (t.x < -100 || t.x > w + 100) t.vx *= -1;
+        if (t.y < -30 || t.y > h + 30) t.vy *= -1;
+
+        // Subtle opacity pulse
+        const pulse = Math.sin(time * 1.5 + t.fontSize) * 0.015;
+
+        ctx.save();
+        ctx.translate(t.x, t.y);
+        ctx.rotate(t.rotation);
+        ctx.font = `300 ${t.fontSize}px Inter, system-ui, sans-serif`;
+        ctx.fillStyle = `rgba(147, 180, 255, ${t.opacity + pulse})`;
+        ctx.letterSpacing = "4px";
+        ctx.fillText("VIBEADS DIGITAL", 0, 0);
+        ctx.restore();
+      });
+
+      // Draw particle grid
       for (let i = 0; i < cols; i++) {
         for (let j = 0; j < rows; j++) {
           const x = i * spacingX;
           const baseY = j * spacingY;
 
-          // Wave displacement
           const distFromCenter = (baseY - centerY) / (h * 0.4);
           const waveFactor = Math.exp(-distFromCenter * distFromCenter * 2);
           const wave =
@@ -49,22 +103,17 @@ const ParticleWave = ({ className = "" }: { className?: string }) => {
 
           const y = baseY + wave;
 
-          // Brightness: brighter near the wave crest
           const brightness = 0.08 + waveFactor * 0.55;
-          
-          // Glow on the wave ridge
           const ridgeDist = Math.abs(distFromCenter);
           const isRidge = ridgeDist < 0.15;
           const glowAlpha = isRidge ? 0.6 + Math.sin(i * 0.15 + time * 3) * 0.3 : 0;
 
-          // Base dot
           const dotSize = 1 + waveFactor * 1.2;
           ctx.beginPath();
           ctx.arc(x, y, dotSize, 0, Math.PI * 2);
           ctx.fillStyle = `rgba(147, 180, 255, ${brightness})`;
           ctx.fill();
 
-          // Glow for ridge particles
           if (glowAlpha > 0.3) {
             ctx.beginPath();
             ctx.arc(x, y, dotSize * 3, 0, Math.PI * 2);
@@ -77,7 +126,7 @@ const ParticleWave = ({ className = "" }: { className?: string }) => {
         }
       }
 
-      // Bright wave line across the center
+      // Wave line
       ctx.beginPath();
       ctx.moveTo(0, centerY);
       for (let i = 0; i <= cols; i++) {
@@ -91,7 +140,7 @@ const ParticleWave = ({ className = "" }: { className?: string }) => {
       ctx.lineWidth = 1.5;
       ctx.stroke();
 
-      // Glowing sweep highlight
+      // Sweep glow
       const sweepX = ((Math.sin(time * 0.7) + 1) / 2) * w;
       const sweepGrad = ctx.createRadialGradient(sweepX, centerY, 0, sweepX, centerY, 200);
       sweepGrad.addColorStop(0, "rgba(200, 220, 255, 0.12)");
