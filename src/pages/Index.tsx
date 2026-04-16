@@ -1,4 +1,4 @@
-import { motion, useScroll, useTransform } from "framer-motion";
+import { motion, useScroll, useTransform, useMotionValue, useSpring } from "framer-motion";
 import { useState, useRef } from "react";
 import Navbar from "@/components/Navbar";
 import CustomCursor from "@/components/CustomCursor";
