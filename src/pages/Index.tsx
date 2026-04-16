@@ -21,7 +21,7 @@ import {
   Mail, MapPin, CreditCard, ArrowRight,
 } from "lucide-react";
 
-import heroCharacter from "@/assets/hero-character.png";
+import heroGlobe from "@/assets/hero-globe.png";
 import performance1 from "@/assets/services/performance-1.jpg";
 import performance2 from "@/assets/services/performance-2.jpg";
 import appMarketing1 from "@/assets/services/app-marketing-1.jpg";
@@ -184,24 +184,79 @@ const Index = () => {
           </motion.div>
         </div>
 
-        {/* ── Central Character ── */}
+        {/* ── Central Globe with Orbiting Tools ── */}
         <motion.div
-          className="relative z-[2] flex items-end justify-center pointer-events-none"
-          initial={{ opacity: 0, scale: 0.85, y: 60 }}
-          animate={{ opacity: 1, scale: 1, y: 0 }}
+          className="relative z-[2] flex items-center justify-center pointer-events-none"
+          initial={{ opacity: 0, scale: 0.85 }}
+          animate={{ opacity: 1, scale: 1 }}
           transition={{ duration: 1.2, delay: 0.6, ease: [0.16, 1, 0.3, 1] }}
         >
-          {/* Character glow */}
-          <div className="absolute bottom-0 left-1/2 -translate-x-1/2 w-[400px] h-[200px] bg-primary/20 blur-[100px] rounded-full" />
+          {/* Globe glow */}
+          <div className="absolute w-[350px] h-[350px] md:w-[500px] md:h-[500px] bg-primary/20 blur-[120px] rounded-full" />
+
+          {/* Globe image */}
           <motion.img
-            src={heroCharacter}
-            alt="Vibeads Digital"
-            className="h-[60vh] md:h-[70vh] lg:h-[80vh] w-auto object-contain drop-shadow-2xl"
-            animate={{ y: [0, -10, 0] }}
-            transition={{ duration: 4, repeat: Infinity, ease: "easeInOut" }}
+            src={heroGlobe}
+            alt="Digital Globe"
+            className="w-[300px] h-[300px] md:w-[420px] md:h-[420px] lg:w-[500px] lg:h-[500px] object-contain"
+            animate={{ rotate: [0, 360] }}
+            transition={{ duration: 60, repeat: Infinity, ease: "linear" }}
             style={{
-              filter: "drop-shadow(0 0 40px hsl(24 100% 50% / 0.3)) drop-shadow(0 0 80px hsl(24 100% 50% / 0.15))",
+              filter: "drop-shadow(0 0 60px hsl(24 100% 50% / 0.35)) drop-shadow(0 0 120px hsl(24 100% 50% / 0.15))",
             }}
+          />
+
+          {/* Orbiting Marketing Tools */}
+          {[
+            { label: "Meta Ads", icon: "📘", angle: 0, orbit: 220, duration: 12 },
+            { label: "Google Ads", icon: "🔍", angle: 60, orbit: 240, duration: 14 },
+            { label: "Analytics", icon: "📊", angle: 120, orbit: 200, duration: 16 },
+            { label: "TikTok Ads", icon: "🎵", angle: 180, orbit: 250, duration: 13 },
+            { label: "LinkedIn", icon: "💼", angle: 240, orbit: 210, duration: 15 },
+            { label: "Programmatic", icon: "⚡", angle: 300, orbit: 230, duration: 11 },
+          ].map((tool, i) => (
+            <motion.div
+              key={tool.label}
+              className="absolute pointer-events-auto"
+              style={{
+                width: 0,
+                height: 0,
+              }}
+              animate={{
+                rotate: [tool.angle, tool.angle + 360],
+              }}
+              transition={{
+                duration: tool.duration,
+                repeat: Infinity,
+                ease: "linear",
+              }}
+            >
+              <motion.div
+                className="absolute flex flex-col items-center gap-1"
+                style={{
+                  left: `${tool.orbit}px`,
+                  top: "-20px",
+                }}
+                animate={{ rotate: [-(tool.angle), -(tool.angle + 360)] }}
+                transition={{ duration: tool.duration, repeat: Infinity, ease: "linear" }}
+              >
+                <div className="w-10 h-10 md:w-12 md:h-12 rounded-xl bg-card/90 backdrop-blur-md border border-primary/30 flex items-center justify-center text-lg md:text-xl shadow-[0_0_20px_hsl(24_100%_50%/0.2)] hover:shadow-[0_0_30px_hsl(24_100%_50%/0.4)] hover:border-primary/60 transition-all duration-300 cursor-pointer">
+                  {tool.icon}
+                </div>
+                <span className="text-[9px] md:text-[10px] font-semibold text-foreground/80 whitespace-nowrap bg-background/60 backdrop-blur-sm px-2 py-0.5 rounded-full">
+                  {tool.label}
+                </span>
+              </motion.div>
+            </motion.div>
+          ))}
+
+          {/* Orbit ring visuals */}
+          <div className="absolute w-[440px] h-[440px] md:w-[500px] md:h-[500px] rounded-full border border-primary/10 pointer-events-none" />
+          <div className="absolute w-[480px] h-[480px] md:w-[560px] md:h-[560px] rounded-full border border-primary/5 pointer-events-none" />
+          <motion.div
+            className="absolute w-[460px] h-[460px] md:w-[530px] md:h-[530px] rounded-full border border-dashed border-primary/15 pointer-events-none"
+            animate={{ rotate: [0, 360] }}
+            transition={{ duration: 30, repeat: Infinity, ease: "linear" }}
           />
         </motion.div>
 
