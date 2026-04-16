@@ -274,26 +274,31 @@ const Index = () => {
 
         <div className="relative z-10 mx-auto max-w-7xl">
           <SectionAccent />
-          <RevealText text="Our Services" as="h2" className="text-3xl md:text-4xl font-bold text-foreground mb-4" />
-          <motion.p initial={{ opacity: 0 }} whileInView={{ opacity: 1 }} viewport={{ once: true }} transition={{ duration: 0.6, delay: 0.2 }} className="text-muted-foreground max-w-xl mx-auto text-center mb-16">
-            Growth-driven services for future-ready brands.
+          <motion.p initial={{ opacity: 0 }} whileInView={{ opacity: 1 }} viewport={{ once: true }} transition={{ duration: 0.5 }} className="text-primary font-medium text-sm tracking-wide text-center mb-3">
+            Our Services
           </motion.p>
+          <RevealText text="Growth-driven services for future-ready brands" as="h2" className="text-3xl md:text-4xl font-bold text-foreground mb-16" />
 
           <StaggerContainer className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6" stagger={0.1}>
             {services.map((service) => (
-              <motion.div key={service.title} variants={staggerChild} whileHover={{ y: -6 }} className="bg-card border border-border rounded-2xl p-6 flex flex-col group hover:border-primary/30 transition-colors duration-300">
-                <div className="h-11 w-11 rounded-xl bg-primary/10 border border-primary/20 flex items-center justify-center mb-5 group-hover:bg-primary/15 transition-colors duration-300">
-                  <service.icon className="h-5 w-5 text-primary" />
+              <motion.div
+                key={service.title}
+                variants={staggerChild}
+                whileHover={{ y: -6, borderColor: "hsl(24 100% 50% / 0.4)" }}
+                className="bg-card border border-border rounded-2xl p-7 flex flex-col group transition-all duration-300 cursor-pointer"
+              >
+                <div className="h-14 w-14 rounded-xl bg-primary/10 border border-primary/20 flex items-center justify-center mb-6 group-hover:bg-primary/20 transition-colors duration-300">
+                  <service.icon className="h-6 w-6 text-primary" />
                 </div>
-                <h3 className="text-lg font-semibold text-foreground">{service.title}</h3>
-                <p className="text-xs text-primary/70 font-medium mt-1">{service.subtitle}</p>
-                <p className="text-sm text-muted-foreground mt-3 leading-relaxed flex-1">{service.desc}</p>
-                <div className="grid grid-cols-3 gap-2 mt-5">
-                  {service.images.map((img, j) => (
-                    <div key={j} className="aspect-square rounded-lg overflow-hidden">
-                      <img src={img} alt={`${service.title} ${j + 1}`} loading="lazy" width={160} height={160} className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105" />
-                    </div>
-                  ))}
+                <h3 className="text-lg font-bold text-foreground mb-2">{service.title}</h3>
+                <p className="text-sm text-muted-foreground leading-relaxed flex-1">{service.desc}</p>
+                <div className="mt-6">
+                  <motion.div
+                    whileHover={{ x: 4 }}
+                    className="inline-flex items-center justify-center h-10 w-10 rounded-full border border-border group-hover:border-primary/40 group-hover:bg-primary/10 transition-all duration-300"
+                  >
+                    <ArrowRight className="h-4 w-4 text-muted-foreground group-hover:text-primary transition-colors duration-300" />
+                  </motion.div>
                 </div>
               </motion.div>
             ))}
