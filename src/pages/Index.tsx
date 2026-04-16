@@ -162,22 +162,26 @@ const Index = () => {
           />
         </div>
 
-        {/* ── Vertical Side Text ── */}
-        <div className="absolute left-6 md:left-10 top-1/2 -translate-y-1/2 pointer-events-none select-none z-[1]">
-          <p
-            className="text-[10px] md:text-xs tracking-[0.35em] uppercase text-muted-foreground/15 font-medium"
-            style={{ writingMode: "vertical-rl", textOrientation: "mixed" }}
-          >
-            Performance Marketing Agency
-          </p>
-        </div>
-        <div className="absolute right-6 md:right-10 top-1/2 -translate-y-1/2 pointer-events-none select-none z-[1]">
-          <p
-            className="text-[10px] md:text-xs tracking-[0.35em] uppercase text-muted-foreground/15 font-medium"
-            style={{ writingMode: "vertical-rl", textOrientation: "mixed", transform: "rotate(180deg)" }}
-          >
-            Performance Marketing Agency
-          </p>
+        {/* ── Large Vertical Background Text ── */}
+        <div className="absolute inset-0 flex items-center justify-between pointer-events-none select-none z-[0] overflow-hidden px-4 md:px-8">
+          {/* PERFORMANCE - Left side */}
+          <div className="h-full flex items-center">
+            <p
+              className="text-[12vw] md:text-[10vw] lg:text-[8vw] font-black uppercase text-foreground/[0.04] leading-none tracking-tighter"
+              style={{ writingMode: "vertical-rl", textOrientation: "mixed", opacity: 0.4 }}
+            >
+              PERFORMANCE
+            </p>
+          </div>
+          {/* MARKETING - Right side */}
+          <div className="h-full flex items-center">
+            <p
+              className="text-[12vw] md:text-[10vw] lg:text-[8vw] font-black uppercase text-foreground/[0.04] leading-none tracking-tighter"
+              style={{ writingMode: "vertical-rl", textOrientation: "mixed", transform: "rotate(180deg)", opacity: 0.4 }}
+            >
+              MARKETING
+            </p>
+          </div>
         </div>
 
         {/* ── Massive Background Text ── */}
