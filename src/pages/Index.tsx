@@ -294,6 +294,7 @@ const Index = () => {
 
                   <div className="relative z-10 h-20 w-20 rounded-xl overflow-hidden mb-5 border border-primary/20 group-hover:border-primary/40 group-hover:shadow-[0_0_20px_hsl(24_100%_50%/0.25)] transition-all duration-400">
                     <img src={item.image} alt={item.title} className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500" />
+                    <div className="absolute inset-0 bg-gradient-to-t from-background/60 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-400" />
                   </div>
                   <h3 className="relative z-10 text-foreground font-bold text-lg mb-2 group-hover:text-primary transition-colors duration-300">{item.title}</h3>
                   <p className="relative z-10 text-sm text-muted-foreground leading-relaxed group-hover:text-foreground/70 transition-colors duration-300">{item.desc}</p>
@@ -330,21 +331,37 @@ const Index = () => {
                 key={service.title}
                 variants={staggerChild}
                 whileHover={{ y: -6, borderColor: "hsl(24 100% 50% / 0.4)" }}
-                className="bg-card border border-border rounded-2xl p-7 flex flex-col group transition-all duration-300 cursor-pointer"
+                className="relative bg-card border border-border rounded-2xl flex flex-col group transition-all duration-300 cursor-pointer overflow-hidden"
               >
-                <div className="h-40 w-full rounded-xl overflow-hidden mb-6 border border-primary/10 group-hover:border-primary/30 transition-all duration-300">
-                  <img src={service.image} alt={service.title} className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" />
+                {/* Full card overlay glow */}
+                <div className="absolute inset-0 opacity-0 group-hover:opacity-100 transition-opacity duration-500 pointer-events-none" style={{ background: "radial-gradient(ellipse at 50% 0%, hsl(24 100% 50% / 0.08) 0%, transparent 60%)" }} />
+                
+                {/* Image with overlay */}
+                <div className="relative h-44 w-full overflow-hidden">
+                  <img src={service.image} alt={service.title} className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700" />
+                  <div className="absolute inset-0 bg-gradient-to-t from-card via-card/40 to-transparent" />
+                  <div className="absolute inset-0 bg-gradient-to-br from-primary/10 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
+                  {/* Subtitle badge overlay */}
+                  <div className="absolute top-3 left-3">
+                    <span className="text-[10px] uppercase tracking-widest font-semibold text-primary bg-background/80 backdrop-blur-sm px-2.5 py-1 rounded-full border border-primary/20">{service.subtitle}</span>
+                  </div>
                 </div>
-                <h3 className="text-lg font-bold text-foreground mb-2">{service.title}</h3>
-                <p className="text-sm text-muted-foreground leading-relaxed flex-1">{service.desc}</p>
-                <div className="mt-6">
-                  <motion.div
-                    whileHover={{ x: 4 }}
-                    className="inline-flex items-center justify-center h-10 w-10 rounded-full border border-border group-hover:border-primary/40 group-hover:bg-primary/10 transition-all duration-300"
-                  >
-                    <ArrowRight className="h-4 w-4 text-muted-foreground group-hover:text-primary transition-colors duration-300" />
-                  </motion.div>
+
+                <div className="relative p-6 flex flex-col flex-1">
+                  <h3 className="text-lg font-bold text-foreground mb-2 group-hover:text-primary transition-colors duration-300">{service.title}</h3>
+                  <p className="text-sm text-muted-foreground leading-relaxed flex-1">{service.desc}</p>
+                  <div className="mt-5 flex items-center justify-between">
+                    <motion.div
+                      whileHover={{ x: 4 }}
+                      className="inline-flex items-center justify-center h-10 w-10 rounded-full border border-border group-hover:border-primary/40 group-hover:bg-primary/10 transition-all duration-300"
+                    >
+                      <ArrowRight className="h-4 w-4 text-muted-foreground group-hover:text-primary transition-colors duration-300" />
+                    </motion.div>
+                  </div>
                 </div>
+
+                {/* Bottom glow line */}
+                <div className="absolute bottom-0 left-0 right-0 h-[2px] bg-gradient-to-r from-transparent via-primary/50 to-transparent scale-x-0 group-hover:scale-x-100 transition-transform duration-500" />
               </motion.div>
             ))}
           </StaggerContainer>
@@ -387,9 +404,11 @@ const Index = () => {
 
             <StaggerContainer className="grid grid-cols-2 gap-5" stagger={0.1}>
               {stats.map((stat) => (
-                <motion.div key={stat.label} variants={staggerChild} whileHover={{ y: -4 }} className="bg-card border border-border rounded-2xl p-7 text-center hover:border-primary/20 transition-colors duration-300">
-                  <div className="text-3xl font-bold text-primary mb-1">{stat.value}</div>
-                  <div className="text-sm text-muted-foreground">{stat.label}</div>
+                <motion.div key={stat.label} variants={staggerChild} whileHover={{ y: -4 }} className="relative bg-card border border-border rounded-2xl p-7 text-center hover:border-primary/20 transition-colors duration-300 overflow-hidden group">
+                  <div className="absolute inset-0 opacity-0 group-hover:opacity-100 transition-opacity duration-500 pointer-events-none" style={{ background: "radial-gradient(circle at 50% 50%, hsl(24 100% 50% / 0.06) 0%, transparent 70%)" }} />
+                  <div className="relative z-10 text-3xl font-bold text-primary mb-1">{stat.value}</div>
+                  <div className="relative z-10 text-sm text-muted-foreground">{stat.label}</div>
+                  <div className="absolute bottom-0 left-0 right-0 h-[2px] bg-gradient-to-r from-transparent via-primary/40 to-transparent scale-x-0 group-hover:scale-x-100 transition-transform duration-500" />
                 </motion.div>
               ))}
             </StaggerContainer>
@@ -408,9 +427,11 @@ const Index = () => {
 
           <StaggerContainer className="grid grid-cols-2 md:grid-cols-4 gap-6">
             {industries.map((item) => (
-              <motion.div key={item.title} variants={staggerChild} whileHover={{ y: -6 }} className="bg-card border border-border rounded-2xl p-8 flex flex-col items-center text-center hover:border-primary/30 transition-colors duration-300">
-                <item.icon className="h-9 w-9 text-primary mb-4" />
-                <h3 className="text-foreground font-medium text-sm">{item.title}</h3>
+              <motion.div key={item.title} variants={staggerChild} whileHover={{ y: -6 }} className="relative bg-card border border-border rounded-2xl p-8 flex flex-col items-center text-center hover:border-primary/30 transition-colors duration-300 overflow-hidden group">
+                <div className="absolute inset-0 opacity-0 group-hover:opacity-100 transition-opacity duration-500 pointer-events-none" style={{ background: "radial-gradient(circle at 50% 30%, hsl(24 100% 50% / 0.08) 0%, transparent 60%)" }} />
+                <item.icon className="relative z-10 h-9 w-9 text-primary mb-4 group-hover:scale-110 transition-transform duration-300" />
+                <h3 className="relative z-10 text-foreground font-medium text-sm group-hover:text-primary transition-colors duration-300">{item.title}</h3>
+                <div className="absolute bottom-0 left-0 right-0 h-[2px] bg-gradient-to-r from-transparent via-primary/40 to-transparent scale-x-0 group-hover:scale-x-100 transition-transform duration-500" />
               </motion.div>
             ))}
           </StaggerContainer>
@@ -470,12 +491,14 @@ const Index = () => {
           {/* Features */}
           <StaggerContainer className="mx-auto max-w-5xl grid grid-cols-1 md:grid-cols-3 gap-6 mt-8">
             {aboutFeatures.map((feature) => (
-              <motion.div key={feature.title} variants={staggerChild} whileHover={{ y: -4 }} className="bg-card border border-border rounded-2xl p-8 text-center hover:border-primary/30 transition-colors duration-300">
-                <div className="h-11 w-11 rounded-xl bg-primary/10 border border-primary/20 flex items-center justify-center mx-auto mb-4">
+              <motion.div key={feature.title} variants={staggerChild} whileHover={{ y: -4 }} className="relative bg-card border border-border rounded-2xl p-8 text-center hover:border-primary/30 transition-colors duration-300 overflow-hidden group">
+                <div className="absolute inset-0 opacity-0 group-hover:opacity-100 transition-opacity duration-500 pointer-events-none" style={{ background: "radial-gradient(circle at 50% 30%, hsl(24 100% 50% / 0.08) 0%, transparent 60%)" }} />
+                <div className="relative z-10 h-11 w-11 rounded-xl bg-primary/10 border border-primary/20 flex items-center justify-center mx-auto mb-4 group-hover:bg-primary/20 group-hover:shadow-[0_0_15px_hsl(24_100%_50%/0.2)] transition-all duration-300">
                   <feature.icon className="h-5 w-5 text-primary" />
                 </div>
-                <h3 className="text-foreground font-semibold mb-2">{feature.title}</h3>
-                <p className="text-sm text-muted-foreground">{feature.desc}</p>
+                <h3 className="relative z-10 text-foreground font-semibold mb-2 group-hover:text-primary transition-colors duration-300">{feature.title}</h3>
+                <p className="relative z-10 text-sm text-muted-foreground">{feature.desc}</p>
+                <div className="absolute bottom-0 left-0 right-0 h-[2px] bg-gradient-to-r from-transparent via-primary/40 to-transparent scale-x-0 group-hover:scale-x-100 transition-transform duration-500" />
               </motion.div>
             ))}
           </StaggerContainer>
