@@ -122,28 +122,14 @@ const Index = () => {
       {/* ════════════ HERO ════════════ */}
       <section ref={heroRef} id="home" className="relative min-h-screen flex flex-col items-center justify-center overflow-hidden px-6">
         {/* ── Background Layers ── */}
-        
-        {/* Grid pattern */}
         <GridPattern />
-        
-        {/* Noise texture */}
         <NoiseOverlay opacity={0.04} />
-        
-        {/* Floating orbs */}
         <FloatingOrb className="-top-20 -left-40" size={500} delay={0} duration={25} />
         <FloatingOrb className="-bottom-32 -right-32" size={400} delay={3} duration={20} />
         <FloatingOrb className="top-1/3 right-1/4" size={250} delay={5} duration={22} />
-        
-        {/* Floating particles */}
         <FloatingParticles count={25} />
-        
-        {/* Rotating rings */}
         <RotatingRings className="inset-0 flex items-center justify-center" />
-        
-        {/* Vertical gradient lines */}
         <VerticalGradientLines count={6} />
-        
-        {/* Glowing dots in corners */}
         <GlowingDot className="top-32 left-[15%]" size={5} delay={0} />
         <GlowingDot className="top-48 right-[12%]" size={4} delay={1} />
         <GlowingDot className="bottom-40 left-[20%]" size={6} delay={0.5} />
@@ -151,65 +137,96 @@ const Index = () => {
         <GlowingDot className="top-1/2 left-[8%]" size={3} delay={2} />
         <GlowingDot className="top-1/3 right-[8%]" size={5} delay={0.8} />
 
-        {/* Particle wave canvas */}
         <div className="absolute inset-0">
           <ParticleWave className="absolute inset-0 opacity-80" />
           <GradientBlur className="w-[800px] h-[600px] -bottom-60 left-1/2 -translate-x-1/2" />
         </div>
 
-        {/* Animated accent line at top */}
-        <motion.div
-          className="absolute top-24 left-1/2 -translate-x-1/2 h-1 rounded-full bg-primary/60"
-          initial={{ width: 0 }}
-          animate={{ width: 80 }}
-          transition={{ duration: 1.2, delay: 0.5, ease: "easeOut" }}
-        />
+        {/* Bottom glow arc */}
+        <div className="absolute bottom-0 left-1/2 -translate-x-1/2 w-[1000px] h-[400px] pointer-events-none">
+          <motion.div
+            className="absolute inset-0 rounded-t-full blur-[120px]"
+            style={{ background: "radial-gradient(ellipse at 50% 100%, hsl(24 100% 50% / 0.25), transparent 70%)" }}
+            animate={{ opacity: [0.4, 0.7, 0.4] }}
+            transition={{ duration: 4, repeat: Infinity, ease: "easeInOut" }}
+          />
+        </div>
 
         <motion.div style={{ y: heroY, opacity: heroOpacity, scale: heroScale }} className="relative z-10 flex flex-col items-center text-center max-w-5xl mx-auto">
-          {/* Eyebrow with spring */}
+          {/* Rating badge */}
           <motion.div
             initial={{ opacity: 0, y: 20, scale: 0.9 }}
             animate={{ opacity: 1, y: 0, scale: 1 }}
             transition={{ type: "spring", stiffness: 200, damping: 20, delay: 0.3 }}
-            className="mb-8"
+            className="mb-10"
           >
-            <span className="inline-flex items-center gap-2 text-xs tracking-widest uppercase text-muted-foreground border border-border rounded-full px-4 py-1.5 backdrop-blur-sm">
-              <motion.span
-                className="w-1.5 h-1.5 rounded-full bg-primary"
-                animate={{ scale: [1, 1.5, 1], opacity: [0.7, 1, 0.7] }}
-                transition={{ duration: 2, repeat: Infinity }}
-              />
-              Performance Marketing Agency
+            <span className="inline-flex items-center gap-3 text-xs tracking-wide text-muted-foreground border border-border/50 rounded-full px-5 py-2 backdrop-blur-md bg-card/30">
+              <span className="inline-flex items-center gap-1 bg-primary/15 text-primary font-semibold rounded-full px-3 py-0.5 text-[11px]">
+                <motion.span
+                  className="w-1.5 h-1.5 rounded-full bg-primary"
+                  animate={{ scale: [1, 1.5, 1], opacity: [0.7, 1, 0.7] }}
+                  transition={{ duration: 2, repeat: Infinity }}
+                />
+                Vibeads
+              </span>
+              <span className="text-primary font-bold">4.9</span>
+              <span className="text-yellow-400">★</span>
+              <span className="uppercase tracking-widest text-[10px] text-muted-foreground">Trusted Agency</span>
             </span>
           </motion.div>
 
-          {/* Main heading – word by word blur reveal */}
-          <RevealText
-            text="Performance Marketing Built for Scale"
-            className="text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-bold leading-[1.1] tracking-tight text-foreground gap-x-[0.25em]"
-            delay={0.4}
-          />
+          {/* Main heading – elegant serif + sans mix */}
+          <motion.h1
+            className="text-4xl sm:text-5xl md:text-6xl lg:text-7xl xl:text-8xl leading-[1.05] tracking-tight"
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            transition={{ duration: 0.5, delay: 0.4 }}
+          >
+            <motion.span
+              className="block font-bold text-foreground"
+              initial={{ opacity: 0, y: 30, filter: "blur(8px)" }}
+              animate={{ opacity: 1, y: 0, filter: "blur(0px)" }}
+              transition={{ duration: 0.7, delay: 0.5 }}
+            >
+              Build Brands That Win
+            </motion.span>
+            <motion.span
+              className="block mt-1 md:mt-2"
+              initial={{ opacity: 0, y: 30, filter: "blur(8px)" }}
+              animate={{ opacity: 1, y: 0, filter: "blur(0px)" }}
+              transition={{ duration: 0.7, delay: 0.7 }}
+            >
+              <span className="font-light italic" style={{ fontFamily: "'Playfair Display', serif" }}>
+                in{" "}
+              </span>
+              <span className="font-light italic" style={{ fontFamily: "'Playfair Display', serif" }}>
+                the{" "}
+              </span>
+              <span className="text-primary font-bold italic" style={{ fontFamily: "'Playfair Display', serif" }}>
+                Digital Era
+              </span>
+            </motion.span>
+          </motion.h1>
 
-          {/* Subheading with blur-in */}
+          {/* Subheading */}
           <motion.p
             initial={{ filter: "blur(10px)", opacity: 0, y: 20 }}
             animate={{ filter: "blur(0px)", opacity: 1, y: 0 }}
-            transition={{ duration: 0.8, delay: 1.2 }}
-            className="mt-8 text-base md:text-lg text-muted-foreground max-w-2xl leading-relaxed"
+            transition={{ duration: 0.8, delay: 1.0 }}
+            className="mt-8 text-sm md:text-base lg:text-lg text-muted-foreground max-w-xl leading-relaxed"
           >
-            Driving growth across apps, OTT & digital brands through
-            data-driven marketing strategies.
+            We design, develop, and grow digital experiences that make your business stand out online.
           </motion.p>
 
-          {/* CTA with spring */}
+          {/* CTA Buttons */}
           <motion.div
             initial={{ opacity: 0, y: 20, scale: 0.95 }}
             animate={{ opacity: 1, y: 0, scale: 1 }}
-            transition={{ type: "spring", stiffness: 150, damping: 20, delay: 1.5 }}
+            transition={{ type: "spring", stiffness: 150, damping: 20, delay: 1.3 }}
             className="flex flex-col sm:flex-row gap-4 mt-12"
           >
             <Button variant="hero" size="lg" className="rounded-full px-8 group" onClick={() => scrollTo("#contact")}>
-              Get in Touch
+              Book a Call
               <motion.span
                 className="ml-1 inline-block"
                 whileHover={{ x: 4 }}
@@ -219,7 +236,7 @@ const Index = () => {
               </motion.span>
             </Button>
             <Button variant="hero-outline" size="lg" className="rounded-full px-8" onClick={() => scrollTo("#services")}>
-              View Services
+              See Our Works
             </Button>
           </motion.div>
 
