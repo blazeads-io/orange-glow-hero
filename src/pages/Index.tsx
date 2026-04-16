@@ -37,19 +37,19 @@ import mobile1 from "@/assets/about/mobile-1.jpg";
 /* ─── Data ─── */
 
 const whatWeDoItems = [
-  { icon: BarChart3, title: "Performance Marketing", desc: "Data-driven campaigns optimized for measurable results." },
-  { icon: Megaphone, title: "Brand Campaigns", desc: "Creative strategies that build lasting brand recall." },
-  { icon: Smartphone, title: "Mobile App Growth", desc: "Scale user acquisition with high-performing campaigns." },
-  { icon: Tv, title: "OTT & Content Marketing", desc: "Drive subscriptions and engagement for content platforms." },
+  { image: performance1, title: "Performance Marketing", desc: "Data-driven campaigns optimized for measurable results." },
+  { image: brand1, title: "Brand Campaigns", desc: "Creative strategies that build lasting brand recall." },
+  { image: appMarketing1, title: "Mobile App Growth", desc: "Scale user acquisition with high-performing campaigns." },
+  { image: ott1, title: "OTT & Content Marketing", desc: "Drive subscriptions and engagement for content platforms." },
 ];
 
 const services = [
-  { icon: Target, title: "Performance Marketing", subtitle: "Data-Driven Campaigns", desc: "We design and execute campaigns focused on driving measurable outcomes — installs, conversions, and revenue.", images: [performance1, performance2, growth1] },
-  { icon: Smartphone, title: "Mobile App Marketing", subtitle: "User Acquisition at Scale", desc: "From launch to scale, we help apps acquire high-quality users through targeted and optimized strategies.", images: [appMarketing1, performance1, growth1] },
-  { icon: Palette, title: "Brand Campaigns", subtitle: "Creative Strategy", desc: "We create impactful brand campaigns that enhance visibility, improve recall, and support long-term growth.", images: [brand1, performance2, ott1] },
-  { icon: Tv, title: "OTT Growth Strategy", subtitle: "Content Platforms", desc: "We work with OTT platforms to drive subscriptions, improve engagement, and scale user base.", images: [ott1, brand1, appMarketing1] },
-  { icon: TrendingUp, title: "Revenue Optimization", subtitle: "Maximize ROI", desc: "Continuous optimization of campaigns and funnels to maximize revenue and reduce acquisition costs.", images: [growth1, performance1, performance2] },
-  { icon: Users, title: "Audience Growth", subtitle: "Expand Your Reach", desc: "Automate marketing, scale campaigns, and improve productivity with intelligent growth solutions.", images: [appMarketing1, brand1, ott1] },
+  { image: performance1, title: "Performance Marketing", subtitle: "Data-Driven Campaigns", desc: "We design and execute campaigns focused on driving measurable outcomes — installs, conversions, and revenue." },
+  { image: appMarketing1, title: "Mobile App Marketing", subtitle: "User Acquisition at Scale", desc: "From launch to scale, we help apps acquire high-quality users through targeted and optimized strategies." },
+  { image: brand1, title: "Brand Campaigns", subtitle: "Creative Strategy", desc: "We create impactful brand campaigns that enhance visibility, improve recall, and support long-term growth." },
+  { image: ott1, title: "OTT Growth Strategy", subtitle: "Content Platforms", desc: "We work with OTT platforms to drive subscriptions, improve engagement, and scale user base." },
+  { image: growth1, title: "Revenue Optimization", subtitle: "Maximize ROI", desc: "Continuous optimization of campaigns and funnels to maximize revenue and reduce acquisition costs." },
+  { image: performance2, title: "Audience Growth", subtitle: "Expand Your Reach", desc: "Automate marketing, scale campaigns, and improve productivity with intelligent growth solutions." },
 ];
 
 const tags = ["Performance Ads", "User Acquisition", "OTT Marketing", "Brand Strategy", "App Growth", "Revenue Optimization", "Data Analytics"];
@@ -292,8 +292,8 @@ const Index = () => {
                     transition={{ duration: 0.8, ease: "easeInOut" }}
                   />
 
-                  <div className="relative z-10 h-14 w-14 rounded-xl bg-primary/10 border border-primary/20 flex items-center justify-center mb-5 group-hover:bg-primary/20 group-hover:border-primary/40 group-hover:shadow-[0_0_20px_hsl(24_100%_50%/0.25)] transition-all duration-400">
-                    <item.icon className="h-6 w-6 text-primary group-hover:scale-110 transition-transform duration-300" />
+                  <div className="relative z-10 h-20 w-20 rounded-xl overflow-hidden mb-5 border border-primary/20 group-hover:border-primary/40 group-hover:shadow-[0_0_20px_hsl(24_100%_50%/0.25)] transition-all duration-400">
+                    <img src={item.image} alt={item.title} className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500" />
                   </div>
                   <h3 className="relative z-10 text-foreground font-bold text-lg mb-2 group-hover:text-primary transition-colors duration-300">{item.title}</h3>
                   <p className="relative z-10 text-sm text-muted-foreground leading-relaxed group-hover:text-foreground/70 transition-colors duration-300">{item.desc}</p>
@@ -332,8 +332,8 @@ const Index = () => {
                 whileHover={{ y: -6, borderColor: "hsl(24 100% 50% / 0.4)" }}
                 className="bg-card border border-border rounded-2xl p-7 flex flex-col group transition-all duration-300 cursor-pointer"
               >
-                <div className="h-14 w-14 rounded-xl bg-primary/10 border border-primary/20 flex items-center justify-center mb-6 group-hover:bg-primary/20 transition-colors duration-300">
-                  <service.icon className="h-6 w-6 text-primary" />
+                <div className="h-40 w-full rounded-xl overflow-hidden mb-6 border border-primary/10 group-hover:border-primary/30 transition-all duration-300">
+                  <img src={service.image} alt={service.title} className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" />
                 </div>
                 <h3 className="text-lg font-bold text-foreground mb-2">{service.title}</h3>
                 <p className="text-sm text-muted-foreground leading-relaxed flex-1">{service.desc}</p>
