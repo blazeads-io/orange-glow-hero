@@ -142,6 +142,80 @@ const Index = () => {
           <GradientBlur className="w-[800px] h-[600px] -bottom-60 left-1/2 -translate-x-1/2" />
         </div>
 
+        {/* ── Large background outlined text ── */}
+        <div className="absolute inset-0 flex items-center justify-center pointer-events-none overflow-hidden">
+          <motion.div
+            initial={{ opacity: 0, scale: 0.9 }}
+            animate={{ opacity: 1, scale: 1 }}
+            transition={{ duration: 1.5, delay: 0.2, ease: "easeOut" }}
+            className="flex flex-col items-center select-none"
+          >
+            <motion.span
+              className="text-[12vw] md:text-[10vw] lg:text-[9vw] font-black leading-none tracking-tighter"
+              style={{
+                WebkitTextStroke: "1.5px hsl(24 100% 50% / 0.15)",
+                color: "transparent",
+                fontFamily: "Inter, sans-serif",
+              }}
+              animate={{ opacity: [0.3, 0.5, 0.3] }}
+              transition={{ duration: 6, repeat: Infinity, ease: "easeInOut" }}
+            >
+              VIBEADS
+            </motion.span>
+            <motion.span
+              className="text-[10vw] md:text-[8vw] lg:text-[7vw] font-black leading-none tracking-tighter -mt-[2vw]"
+              style={{
+                WebkitTextStroke: "1.5px hsl(24 100% 50% / 0.12)",
+                color: "transparent",
+                fontFamily: "Inter, sans-serif",
+              }}
+              animate={{ opacity: [0.2, 0.4, 0.2] }}
+              transition={{ duration: 6, repeat: Infinity, ease: "easeInOut", delay: 0.5 }}
+            >
+              DIGITAL
+            </motion.span>
+          </motion.div>
+          {/* Neon glow behind text */}
+          <motion.div
+            className="absolute w-[60vw] h-[30vh] rounded-full blur-[150px]"
+            style={{ background: "radial-gradient(ellipse, hsl(24 100% 50% / 0.08), transparent 70%)" }}
+            animate={{ scale: [1, 1.1, 1], opacity: [0.5, 0.8, 0.5] }}
+            transition={{ duration: 5, repeat: Infinity, ease: "easeInOut" }}
+          />
+        </div>
+
+        {/* Horizontal glowing lines */}
+        <motion.div
+          className="absolute top-[30%] left-0 right-0 h-px pointer-events-none"
+          style={{ background: "linear-gradient(90deg, transparent, hsl(24 100% 50% / 0.1), transparent)" }}
+          animate={{ opacity: [0, 0.6, 0], x: ["-100%", "100%"] }}
+          transition={{ duration: 4, repeat: Infinity, ease: "easeInOut" }}
+        />
+        <motion.div
+          className="absolute top-[70%] left-0 right-0 h-px pointer-events-none"
+          style={{ background: "linear-gradient(90deg, transparent, hsl(24 100% 50% / 0.08), transparent)" }}
+          animate={{ opacity: [0, 0.5, 0], x: ["100%", "-100%"] }}
+          transition={{ duration: 5, repeat: Infinity, ease: "easeInOut", delay: 1 }}
+        />
+
+        {/* Corner accent brackets */}
+        <div className="absolute top-24 left-8 md:left-16 pointer-events-none">
+          <motion.div
+            initial={{ opacity: 0, x: -20 }}
+            animate={{ opacity: 0.3, x: 0 }}
+            transition={{ duration: 1, delay: 1.5 }}
+            className="w-12 h-12 border-l-2 border-t-2 border-primary/30 rounded-tl-sm"
+          />
+        </div>
+        <div className="absolute bottom-24 right-8 md:right-16 pointer-events-none">
+          <motion.div
+            initial={{ opacity: 0, x: 20 }}
+            animate={{ opacity: 0.3, x: 0 }}
+            transition={{ duration: 1, delay: 1.5 }}
+            className="w-12 h-12 border-r-2 border-b-2 border-primary/30 rounded-br-sm"
+          />
+        </div>
+
         {/* Bottom glow arc */}
         <div className="absolute bottom-0 left-1/2 -translate-x-1/2 w-[1000px] h-[400px] pointer-events-none">
           <motion.div
