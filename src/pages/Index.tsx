@@ -1,4 +1,4 @@
-import { motion, useScroll, useTransform } from "framer-motion";
+import { motion, useScroll, useTransform, useMotionValue, useSpring } from "framer-motion";
 import { useState, useRef } from "react";
 import Navbar from "@/components/Navbar";
 import CustomCursor from "@/components/CustomCursor";
@@ -109,6 +109,21 @@ const Index = () => {
   const heroOpacity = useTransform(heroProgress, [0, 0.7], [1, 0]);
   const heroScale = useTransform(heroProgress, [0, 0.7], [1, 0.95]);
 
+  // Globe mouse tracking
+  const mouseX = useMotionValue(0);
+  const mouseY = useMotionValue(0);
+  const globeX = useSpring(mouseX, { stiffness: 50, damping: 20 });
+  const globeY = useSpring(mouseY, { stiffness: 50, damping: 20 });
+
+  const handleHeroMouseMove = (e: React.MouseEvent) => {
+    const rect = heroRef.current?.getBoundingClientRect();
+    if (!rect) return;
+    const x = ((e.clientX - rect.left) / rect.width - 0.5) * 40;
+    const y = ((e.clientY - rect.top) / rect.height - 0.5) * 40;
+    mouseX.set(x);
+    mouseY.set(y);
+  };
+
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
     toast({ title: "Message sent!", description: "We'll get back to you soon." });
@@ -121,7 +136,7 @@ const Index = () => {
       <Navbar />
 
       {/* ════════════ HERO ════════════ */}
-      <section ref={heroRef} id="home" className="relative min-h-screen flex items-center justify-center overflow-hidden">
+      <section ref={heroRef} id="home" className="relative min-h-screen flex items-center justify-center overflow-hidden" onMouseMove={handleHeroMouseMove}>
         {/* ── Background Layers ── */}
         <GridPattern />
         <NoiseOverlay opacity={0.04} />
@@ -190,6 +205,7 @@ const Index = () => {
           initial={{ opacity: 0, scale: 0.85 }}
           animate={{ opacity: 1, scale: 1 }}
           transition={{ duration: 1.2, delay: 0.6, ease: [0.16, 1, 0.3, 1] }}
+          style={{ x: globeX, y: globeY }}
         >
           {/* Globe glow */}
           <div className="absolute w-[400px] h-[400px] md:w-[600px] md:h-[600px] bg-primary/20 blur-[150px] rounded-full" />
