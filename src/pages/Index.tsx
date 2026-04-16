@@ -10,6 +10,8 @@ import { useToast } from "@/hooks/use-toast";
 import {
   GridPattern, RevealText, ScrollLine, SectionAccent,
   StaggerContainer, staggerChild, GradientBlur, ParallaxSection,
+  FloatingOrb, FloatingParticles, GlowingDot, RotatingRings,
+  NoiseOverlay, VerticalGradientLines,
 } from "@/components/AnimatedBackgrounds";
 import {
   Target, Smartphone, Palette, Tv, TrendingUp, Users,
