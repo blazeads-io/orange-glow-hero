@@ -89,7 +89,10 @@ const ParticleWave = ({ className = "" }: { className?: string }) => {
         ctx.restore();
       });
 
-      // Draw particle grid
+      // Draw text grid instead of dots
+      ctx.font = "600 7px Inter, system-ui, sans-serif";
+      ctx.textAlign = "center";
+      ctx.textBaseline = "middle";
       for (let i = 0; i < cols; i++) {
         for (let j = 0; j < rows; j++) {
           const x = i * spacingX;
@@ -108,20 +111,12 @@ const ParticleWave = ({ className = "" }: { className?: string }) => {
           const isRidge = ridgeDist < 0.15;
           const glowAlpha = isRidge ? 0.6 + Math.sin(i * 0.15 + time * 3) * 0.3 : 0;
 
-          const dotSize = 1 + waveFactor * 1.2;
-          ctx.beginPath();
-          ctx.arc(x, y, dotSize, 0, Math.PI * 2);
           ctx.fillStyle = `rgba(147, 180, 255, ${brightness})`;
-          ctx.fill();
+          ctx.fillText("VIBEADS", x, y);
 
           if (glowAlpha > 0.3) {
-            ctx.beginPath();
-            ctx.arc(x, y, dotSize * 3, 0, Math.PI * 2);
-            const grad = ctx.createRadialGradient(x, y, 0, x, y, dotSize * 4);
-            grad.addColorStop(0, `rgba(180, 210, 255, ${glowAlpha * 0.5})`);
-            grad.addColorStop(1, "rgba(180, 210, 255, 0)");
-            ctx.fillStyle = grad;
-            ctx.fill();
+            ctx.fillStyle = `rgba(180, 210, 255, ${glowAlpha * 0.4})`;
+            ctx.fillText("VIBEADS", x, y);
           }
         }
       }
