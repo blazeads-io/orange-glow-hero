@@ -37,19 +37,19 @@ import mobile1 from "@/assets/about/mobile-1.jpg";
 /* ─── Data ─── */
 
 const whatWeDoItems = [
-  { icon: BarChart3, title: "Performance Marketing", desc: "Data-driven campaigns optimized for measurable results." },
-  { icon: Megaphone, title: "Brand Campaigns", desc: "Creative strategies that build lasting brand recall." },
-  { icon: Smartphone, title: "Mobile App Growth", desc: "Scale user acquisition with high-performing campaigns." },
-  { icon: Tv, title: "OTT & Content Marketing", desc: "Drive subscriptions and engagement for content platforms." },
+  { image: performance1, title: "Performance Marketing", desc: "Data-driven campaigns optimized for measurable results." },
+  { image: brand1, title: "Brand Campaigns", desc: "Creative strategies that build lasting brand recall." },
+  { image: appMarketing1, title: "Mobile App Growth", desc: "Scale user acquisition with high-performing campaigns." },
+  { image: ott1, title: "OTT & Content Marketing", desc: "Drive subscriptions and engagement for content platforms." },
 ];
 
 const services = [
-  { icon: Target, title: "Performance Marketing", subtitle: "Data-Driven Campaigns", desc: "We design and execute campaigns focused on driving measurable outcomes — installs, conversions, and revenue.", images: [performance1, performance2, growth1] },
-  { icon: Smartphone, title: "Mobile App Marketing", subtitle: "User Acquisition at Scale", desc: "From launch to scale, we help apps acquire high-quality users through targeted and optimized strategies.", images: [appMarketing1, performance1, growth1] },
-  { icon: Palette, title: "Brand Campaigns", subtitle: "Creative Strategy", desc: "We create impactful brand campaigns that enhance visibility, improve recall, and support long-term growth.", images: [brand1, performance2, ott1] },
-  { icon: Tv, title: "OTT Growth Strategy", subtitle: "Content Platforms", desc: "We work with OTT platforms to drive subscriptions, improve engagement, and scale user base.", images: [ott1, brand1, appMarketing1] },
-  { icon: TrendingUp, title: "Revenue Optimization", subtitle: "Maximize ROI", desc: "Continuous optimization of campaigns and funnels to maximize revenue and reduce acquisition costs.", images: [growth1, performance1, performance2] },
-  { icon: Users, title: "Audience Growth", subtitle: "Expand Your Reach", desc: "Automate marketing, scale campaigns, and improve productivity with intelligent growth solutions.", images: [appMarketing1, brand1, ott1] },
+  { image: performance1, title: "Performance Marketing", subtitle: "Data-Driven Campaigns", desc: "We design and execute campaigns focused on driving measurable outcomes — installs, conversions, and revenue." },
+  { image: appMarketing1, title: "Mobile App Marketing", subtitle: "User Acquisition at Scale", desc: "From launch to scale, we help apps acquire high-quality users through targeted and optimized strategies." },
+  { image: brand1, title: "Brand Campaigns", subtitle: "Creative Strategy", desc: "We create impactful brand campaigns that enhance visibility, improve recall, and support long-term growth." },
+  { image: ott1, title: "OTT Growth Strategy", subtitle: "Content Platforms", desc: "We work with OTT platforms to drive subscriptions, improve engagement, and scale user base." },
+  { image: growth1, title: "Revenue Optimization", subtitle: "Maximize ROI", desc: "Continuous optimization of campaigns and funnels to maximize revenue and reduce acquisition costs." },
+  { image: performance2, title: "Audience Growth", subtitle: "Expand Your Reach", desc: "Automate marketing, scale campaigns, and improve productivity with intelligent growth solutions." },
 ];
 
 const tags = ["Performance Ads", "User Acquisition", "OTT Marketing", "Brand Strategy", "App Growth", "Revenue Optimization", "Data Analytics"];
