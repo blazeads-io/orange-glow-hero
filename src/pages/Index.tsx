@@ -278,31 +278,36 @@ const Index = () => {
           ))}
         </motion.div>
 
-        {/* ── CTA - Bottom Left ── */}
+        {/* ── Hero Text Content ── */}
         <motion.div
-          className="absolute bottom-16 left-8 md:left-16 z-10"
-          initial={{ opacity: 0, x: -30 }}
-          animate={{ opacity: 1, x: 0 }}
-          transition={{ duration: 0.8, delay: 1.2 }}
+          className="absolute bottom-24 left-0 right-0 z-10 px-8 md:px-16"
+          initial={{ opacity: 0, y: 30 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.8, delay: 1 }}
         >
-          <Button variant="hero-outline" size="lg" className="rounded-full px-8 text-sm group" onClick={() => scrollTo("#contact")}>
-            Book a Call
-            <ArrowRight className="ml-2 h-4 w-4 transition-transform group-hover:translate-x-1" />
-          </Button>
-        </motion.div>
-
-        {/* ── Subtitle - Bottom Right ── */}
-        <motion.div
-          className="absolute bottom-16 right-8 md:right-16 z-10 text-right"
-          initial={{ opacity: 0, x: 30 }}
-          animate={{ opacity: 1, x: 0 }}
-          transition={{ duration: 0.8, delay: 1.2 }}
-        >
-          <p className="text-xs md:text-sm text-muted-foreground uppercase tracking-widest leading-relaxed">
-            Performance Marketing
-            <br />
-            Agency & Studio
-          </p>
+          <div className="max-w-3xl">
+            <div className="flex items-center gap-3 mb-4">
+              <div className="flex items-center gap-2">
+                <TrendingUp className="w-4 h-4 text-primary" />
+                <BarChart3 className="w-4 h-4 text-primary" />
+                <Megaphone className="w-4 h-4 text-primary" />
+                <Target className="w-4 h-4 text-primary" />
+                <Users className="w-4 h-4 text-primary" />
+              </div>
+            </div>
+            <h2 className="text-lg md:text-2xl font-bold text-foreground leading-snug mb-3">
+              Driving Growth Across Apps, OTT & Digital Brands
+            </h2>
+            <p className="text-xs md:text-sm text-muted-foreground max-w-xl leading-relaxed">
+              We help brands and digital platforms acquire users, scale revenue, and build sustainable growth through data-driven marketing strategies.
+            </p>
+            <div className="mt-6">
+              <Button variant="hero-outline" size="lg" className="rounded-full px-8 text-sm group" onClick={() => scrollTo("#contact")}>
+                Book a Call
+                <ArrowRight className="ml-2 h-4 w-4 transition-transform group-hover:translate-x-1" />
+              </Button>
+            </div>
+          </div>
         </motion.div>
 
         {/* ── Corner Brackets ── */}
