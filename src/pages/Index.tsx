@@ -1,6 +1,7 @@
 import { motion, useScroll, useTransform } from "framer-motion";
 import { useState, useRef } from "react";
 import Navbar from "@/components/Navbar";
+import CustomCursor from "@/components/CustomCursor";
 import Footer from "@/components/Footer";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
@@ -114,6 +115,7 @@ const Index = () => {
 
   return (
     <div className="min-h-screen bg-background overflow-x-hidden">
+      <CustomCursor />
       <Navbar />
 
       {/* ════════════ HERO ════════════ */}
