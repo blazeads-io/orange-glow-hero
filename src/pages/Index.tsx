@@ -185,7 +185,7 @@ const Index = () => {
         </div>
 
         {/* ── Massive Background Text ── */}
-        <div className="absolute inset-0 flex flex-col items-center justify-center pointer-events-none select-none">
+        <div className="absolute inset-0 flex flex-col items-center justify-center pointer-events-none select-none" style={{ marginTop: "-12vh" }}>
           {/* VIBEADS - top text */}
           <motion.div
             initial={{ opacity: 0, y: -40 }}
