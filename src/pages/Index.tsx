@@ -292,8 +292,8 @@ const Index = () => {
                     transition={{ duration: 0.8, ease: "easeInOut" }}
                   />
 
-                  <div className="relative z-10 h-14 w-14 rounded-xl bg-primary/10 border border-primary/20 flex items-center justify-center mb-5 group-hover:bg-primary/20 group-hover:border-primary/40 group-hover:shadow-[0_0_20px_hsl(24_100%_50%/0.25)] transition-all duration-400">
-                    <item.icon className="h-6 w-6 text-primary group-hover:scale-110 transition-transform duration-300" />
+                  <div className="relative z-10 h-20 w-20 rounded-xl overflow-hidden mb-5 border border-primary/20 group-hover:border-primary/40 group-hover:shadow-[0_0_20px_hsl(24_100%_50%/0.25)] transition-all duration-400">
+                    <img src={item.image} alt={item.title} className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500" />
                   </div>
                   <h3 className="relative z-10 text-foreground font-bold text-lg mb-2 group-hover:text-primary transition-colors duration-300">{item.title}</h3>
                   <p className="relative z-10 text-sm text-muted-foreground leading-relaxed group-hover:text-foreground/70 transition-colors duration-300">{item.desc}</p>
@@ -332,8 +332,8 @@ const Index = () => {
                 whileHover={{ y: -6, borderColor: "hsl(24 100% 50% / 0.4)" }}
                 className="bg-card border border-border rounded-2xl p-7 flex flex-col group transition-all duration-300 cursor-pointer"
               >
-                <div className="h-14 w-14 rounded-xl bg-primary/10 border border-primary/20 flex items-center justify-center mb-6 group-hover:bg-primary/20 transition-colors duration-300">
-                  <service.icon className="h-6 w-6 text-primary" />
+                <div className="h-40 w-full rounded-xl overflow-hidden mb-6 border border-primary/10 group-hover:border-primary/30 transition-all duration-300">
+                  <img src={service.image} alt={service.title} className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" />
                 </div>
                 <h3 className="text-lg font-bold text-foreground mb-2">{service.title}</h3>
                 <p className="text-sm text-muted-foreground leading-relaxed flex-1">{service.desc}</p>
