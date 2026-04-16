@@ -1,82 +1,160 @@
-import { motion } from "framer-motion";
+import { motion, useScroll, useTransform, MotionValue } from "framer-motion";
+import { useRef } from "react";
 
-interface FloatingOrbProps {
-  className?: string;
-  delay?: number;
-  duration?: number;
-  size?: string;
-}
-
-export const FloatingOrb = ({ className = "", delay = 0, duration = 20, size = "w-72 h-72" }: FloatingOrbProps) => (
-  <motion.div
-    className={`absolute rounded-full blur-3xl pointer-events-none ${size} ${className}`}
-    animate={{
-      x: [0, 30, -20, 10, 0],
-      y: [0, -40, 20, -10, 0],
-      scale: [1, 1.1, 0.95, 1.05, 1],
-      opacity: [0.3, 0.5, 0.3, 0.45, 0.3],
-    }}
-    transition={{ duration, delay, repeat: Infinity, ease: "easeInOut" }}
-  />
-);
-
+/* ── Subtle grid – only used sparingly ── */
 export const GridPattern = ({ className = "" }: { className?: string }) => (
-  <div className={`absolute inset-0 pointer-events-none ${className}`}>
-    <div className="absolute inset-0 opacity-[0.03]" style={{
+  <div className={`absolute inset-0 pointer-events-none overflow-hidden ${className}`}>
+    <div className="absolute inset-0 opacity-[0.025]" style={{
       backgroundImage: `linear-gradient(hsl(var(--foreground)) 1px, transparent 1px), linear-gradient(90deg, hsl(var(--foreground)) 1px, transparent 1px)`,
-      backgroundSize: "60px 60px",
+      backgroundSize: "80px 80px",
     }} />
+    {/* Fade edges */}
+    <div className="absolute inset-0 bg-gradient-to-b from-background via-transparent to-background" />
   </div>
 );
 
-export const FloatingParticles = ({ count = 20, color = "primary" }: { count?: number; color?: string }) => (
-  <>
-    {Array.from({ length: count }).map((_, i) => (
+/* ── Word-by-word blur reveal heading ── */
+export const RevealText = ({
+  text,
+  className = "",
+  delay = 0,
+  as: Tag = "h1",
+}: {
+  text: string;
+  className?: string;
+  delay?: number;
+  as?: "h1" | "h2" | "h3" | "p" | "span";
+}) => {
+  const words = text.split(" ");
+  return (
+    <Tag className={`flex flex-wrap justify-center ${className}`}>
+      {words.map((word, i) => (
+        <motion.span
+          key={i}
+          initial={{ filter: "blur(12px)", opacity: 0, y: 15 }}
+          whileInView={{ filter: "blur(0px)", opacity: 1, y: 0 }}
+          viewport={{ once: true, margin: "-80px" }}
+          transition={{ duration: 0.5, ease: "easeOut" as const, delay: delay + i * 0.06 }}
+          className="mr-[0.3em] inline-block"
+        >
+          {word}
+        </motion.span>
+      ))}
+    </Tag>
+  );
+};
+
+/* ── Scroll-linked parallax wrapper ── */
+export const ParallaxSection = ({
+  children,
+  speed = 0.15,
+  className = "",
+}: {
+  children: React.ReactNode;
+  speed?: number;
+  className?: string;
+}) => {
+  const ref = useRef<HTMLDivElement>(null);
+  const { scrollYProgress } = useScroll({
+    target: ref,
+    offset: ["start end", "end start"],
+  });
+  const y = useTransform(scrollYProgress, [0, 1], [speed * 100, speed * -100]);
+
+  return (
+    <div ref={ref} className={`relative ${className}`}>
+      <motion.div style={{ y }}>{children}</motion.div>
+    </div>
+  );
+};
+
+/* ── Horizontal scroll-linked line that grows as section enters ── */
+export const ScrollLine = ({ className = "" }: { className?: string }) => {
+  const ref = useRef<HTMLDivElement>(null);
+  const { scrollYProgress } = useScroll({
+    target: ref,
+    offset: ["start 0.9", "start 0.4"],
+  });
+
+  return (
+    <div ref={ref} className={`overflow-hidden ${className}`}>
       <motion.div
-        key={i}
-        className={`absolute w-1 h-1 rounded-full bg-${color} pointer-events-none`}
+        className="h-px w-full"
         style={{
-          left: `${Math.random() * 100}%`,
-          top: `${Math.random() * 100}%`,
-        }}
-        animate={{
-          y: [0, -30 - Math.random() * 40, 0],
-          x: [0, (Math.random() - 0.5) * 40, 0],
-          opacity: [0, 0.6, 0],
-          scale: [0, 1, 0],
-        }}
-        transition={{
-          duration: 4 + Math.random() * 4,
-          delay: Math.random() * 5,
-          repeat: Infinity,
-          ease: "easeInOut",
+          scaleX: scrollYProgress,
+          transformOrigin: "left",
+          background: "linear-gradient(90deg, transparent, hsl(var(--primary) / 0.4), transparent)",
         }}
       />
-    ))}
-  </>
-);
+    </div>
+  );
+};
 
-export const AnimatedLine = ({ className = "", delay = 0 }: { className?: string; delay?: number }) => (
-  <motion.div
-    className={`absolute pointer-events-none ${className}`}
-    initial={{ scaleX: 0, opacity: 0 }}
-    whileInView={{ scaleX: 1, opacity: 0.1 }}
-    viewport={{ once: true }}
-    transition={{ duration: 1.5, delay, ease: "easeOut" as const }}
-    style={{ height: "1px", background: "linear-gradient(90deg, transparent, hsl(var(--primary)), transparent)" }}
-  />
-);
+/* ── Scroll-linked progress accent bar ── */
+export const SectionAccent = () => {
+  const ref = useRef<HTMLDivElement>(null);
+  const { scrollYProgress } = useScroll({
+    target: ref,
+    offset: ["start 0.85", "start 0.5"],
+  });
 
-export const GlowingDot = ({ className = "", delay = 0 }: { className?: string; delay?: number }) => (
+  return (
+    <div ref={ref} className="flex justify-center mb-8">
+      <motion.div
+        className="h-1 rounded-full bg-primary"
+        style={{ width: useTransform(scrollYProgress, [0, 1], ["0rem", "4rem"]) }}
+      />
+    </div>
+  );
+};
+
+/* ── Stagger children on scroll ── */
+export const StaggerContainer = ({
+  children,
+  className = "",
+  stagger = 0.08,
+}: {
+  children: React.ReactNode;
+  className?: string;
+  stagger?: number;
+}) => (
   <motion.div
-    className={`absolute pointer-events-none ${className}`}
-    animate={{
-      scale: [1, 1.5, 1],
-      opacity: [0.3, 0.8, 0.3],
+    initial="hidden"
+    whileInView="visible"
+    viewport={{ once: true, margin: "-80px" }}
+    variants={{
+      hidden: {},
+      visible: { transition: { staggerChildren: stagger } },
     }}
-    transition={{ duration: 3, delay, repeat: Infinity, ease: "easeInOut" }}
+    className={className}
   >
-    <div className="w-2 h-2 rounded-full bg-primary" />
-    <div className="absolute inset-0 w-2 h-2 rounded-full bg-primary blur-md" />
+    {children}
   </motion.div>
 );
+
+export const staggerChild = {
+  hidden: { opacity: 0, y: 30 },
+  visible: {
+    opacity: 1,
+    y: 0,
+    transition: { duration: 0.5, ease: "easeOut" as const },
+  },
+};
+
+/* ── Minimal gradient accent – replaces floating orbs ── */
+export const GradientBlur = ({ className = "" }: { className?: string }) => (
+  <div className={`absolute pointer-events-none ${className}`}>
+    <div className="w-full h-full rounded-full bg-primary/10 blur-[120px]" />
+  </div>
+);
+
+/* ── Scroll-linked counter for stats ── */
+export const useScrollScale = (inputRange: [number, number] = [0, 1], outputRange: [number, number] = [0.95, 1]): [React.RefObject<HTMLDivElement | null>, MotionValue<number>] => {
+  const ref = useRef<HTMLDivElement>(null);
+  const { scrollYProgress } = useScroll({
+    target: ref,
+    offset: ["start end", "end start"],
+  });
+  const scale = useTransform(scrollYProgress, inputRange, outputRange);
+  return [ref, scale];
+};
