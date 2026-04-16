@@ -42,9 +42,9 @@ const ParticleWave = ({ className = "" }: { className?: string }) => {
       y: Math.random() * (canvas.offsetHeight || 600),
       vx: (Math.random() - 0.5) * 0.4,
       vy: (Math.random() - 0.5) * 0.3,
-      opacity: Math.random() * 0.06 + 0.03,
-      fontSize: Math.random() * 14 + 12,
-      rotation: (Math.random() - 0.5) * 0.4,
+      opacity: Math.random() * 0.08 + 0.1,
+      fontSize: Math.random() * 16 + 16,
+      rotation: (Math.random() - 0.5) * 0.3,
       rotSpeed: (Math.random() - 0.5) * 0.001,
     }));
 
@@ -77,7 +77,7 @@ const ParticleWave = ({ className = "" }: { className?: string }) => {
         if (t.y < -30 || t.y > h + 30) t.vy *= -1;
 
         // Subtle opacity pulse
-        const pulse = Math.sin(time * 1.5 + t.fontSize) * 0.015;
+        const pulse = Math.sin(time * 1.5 + t.fontSize) * 0.04;
 
         ctx.save();
         ctx.translate(t.x, t.y);
