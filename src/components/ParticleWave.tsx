@@ -53,10 +53,10 @@ const ParticleWave = ({ className = "" }: { className?: string }) => {
 
           const y = baseY + wave;
 
-          const brightness = (0.08 + waveFactor * 0.55) * 0.45;
+          const brightness = (0.08 + waveFactor * 0.55) * 0.25;
           const ridgeDist = Math.abs(distFromCenter);
           const isRidge = ridgeDist < 0.15;
-          const glowAlpha = isRidge ? (0.6 + Math.sin(i * 0.15 + time * 3) * 0.3) * 0.45 : 0;
+          const glowAlpha = isRidge ? (0.6 + Math.sin(i * 0.15 + time * 3) * 0.3) * 0.25 : 0;
 
           ctx.fillStyle = `rgba(147, 180, 255, ${brightness})`;
           ctx.fillText("VIBEADS", x, y);
