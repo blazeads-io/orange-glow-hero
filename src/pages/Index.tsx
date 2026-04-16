@@ -21,6 +21,7 @@ import {
   Mail, MapPin, CreditCard, ArrowRight,
 } from "lucide-react";
 
+import heroCharacter from "@/assets/hero-character.png";
 import performance1 from "@/assets/services/performance-1.jpg";
 import performance2 from "@/assets/services/performance-2.jpg";
 import appMarketing1 from "@/assets/services/app-marketing-1.jpg";
@@ -120,219 +121,150 @@ const Index = () => {
       <Navbar />
 
       {/* ════════════ HERO ════════════ */}
-      <section ref={heroRef} id="home" className="relative min-h-screen flex flex-col items-center justify-center overflow-hidden px-6">
+      <section ref={heroRef} id="home" className="relative min-h-screen flex items-center justify-center overflow-hidden">
         {/* ── Background Layers ── */}
         <GridPattern />
         <NoiseOverlay opacity={0.04} />
         <FloatingOrb className="-top-20 -left-40" size={500} delay={0} duration={25} />
         <FloatingOrb className="-bottom-32 -right-32" size={400} delay={3} duration={20} />
-        <FloatingOrb className="top-1/3 right-1/4" size={250} delay={5} duration={22} />
-        <FloatingParticles count={25} />
-        <RotatingRings className="inset-0 flex items-center justify-center" />
-        <VerticalGradientLines count={6} />
+        <FloatingParticles count={20} />
         <GlowingDot className="top-32 left-[15%]" size={5} delay={0} />
         <GlowingDot className="top-48 right-[12%]" size={4} delay={1} />
         <GlowingDot className="bottom-40 left-[20%]" size={6} delay={0.5} />
         <GlowingDot className="bottom-32 right-[18%]" size={4} delay={1.5} />
-        <GlowingDot className="top-1/2 left-[8%]" size={3} delay={2} />
-        <GlowingDot className="top-1/3 right-[8%]" size={5} delay={0.8} />
 
-        <div className="absolute inset-0">
-          <ParticleWave className="absolute inset-0 opacity-80" />
-          <GradientBlur className="w-[800px] h-[600px] -bottom-60 left-1/2 -translate-x-1/2" />
+        <div className="absolute inset-0 pointer-events-none">
+          <ParticleWave className="absolute inset-0 opacity-60" />
         </div>
 
-        {/* ── Large background outlined text ── */}
-        <div className="absolute inset-0 flex items-center justify-center pointer-events-none overflow-hidden">
+        {/* Bottom glow */}
+        <div className="absolute bottom-0 left-1/2 -translate-x-1/2 w-full h-[500px] pointer-events-none">
           <motion.div
-            initial={{ opacity: 0, scale: 0.9 }}
-            animate={{ opacity: 1, scale: 1 }}
-            transition={{ duration: 1.5, delay: 0.2, ease: "easeOut" }}
-            className="flex flex-col items-center select-none"
-          >
-            <motion.span
-              className="text-[12vw] md:text-[10vw] lg:text-[9vw] font-black leading-none tracking-tighter"
-              style={{
-                WebkitTextStroke: "1.5px hsl(24 100% 50% / 0.15)",
-                color: "transparent",
-                fontFamily: "Inter, sans-serif",
-              }}
-              animate={{ opacity: [0.3, 0.5, 0.3] }}
-              transition={{ duration: 6, repeat: Infinity, ease: "easeInOut" }}
-            >
-              VIBEADS
-            </motion.span>
-            <motion.span
-              className="text-[10vw] md:text-[8vw] lg:text-[7vw] font-black leading-none tracking-tighter -mt-[2vw]"
-              style={{
-                WebkitTextStroke: "1.5px hsl(24 100% 50% / 0.12)",
-                color: "transparent",
-                fontFamily: "Inter, sans-serif",
-              }}
-              animate={{ opacity: [0.2, 0.4, 0.2] }}
-              transition={{ duration: 6, repeat: Infinity, ease: "easeInOut", delay: 0.5 }}
-            >
-              DIGITAL
-            </motion.span>
-          </motion.div>
-          {/* Neon glow behind text */}
-          <motion.div
-            className="absolute w-[60vw] h-[30vh] rounded-full blur-[150px]"
-            style={{ background: "radial-gradient(ellipse, hsl(24 100% 50% / 0.08), transparent 70%)" }}
-            animate={{ scale: [1, 1.1, 1], opacity: [0.5, 0.8, 0.5] }}
-            transition={{ duration: 5, repeat: Infinity, ease: "easeInOut" }}
-          />
-        </div>
-
-        {/* Horizontal glowing lines */}
-        <motion.div
-          className="absolute top-[30%] left-0 right-0 h-px pointer-events-none"
-          style={{ background: "linear-gradient(90deg, transparent, hsl(24 100% 50% / 0.1), transparent)" }}
-          animate={{ opacity: [0, 0.6, 0], x: ["-100%", "100%"] }}
-          transition={{ duration: 4, repeat: Infinity, ease: "easeInOut" }}
-        />
-        <motion.div
-          className="absolute top-[70%] left-0 right-0 h-px pointer-events-none"
-          style={{ background: "linear-gradient(90deg, transparent, hsl(24 100% 50% / 0.08), transparent)" }}
-          animate={{ opacity: [0, 0.5, 0], x: ["100%", "-100%"] }}
-          transition={{ duration: 5, repeat: Infinity, ease: "easeInOut", delay: 1 }}
-        />
-
-        {/* Corner accent brackets */}
-        <div className="absolute top-24 left-8 md:left-16 pointer-events-none">
-          <motion.div
-            initial={{ opacity: 0, x: -20 }}
-            animate={{ opacity: 0.3, x: 0 }}
-            transition={{ duration: 1, delay: 1.5 }}
-            className="w-12 h-12 border-l-2 border-t-2 border-primary/30 rounded-tl-sm"
-          />
-        </div>
-        <div className="absolute bottom-24 right-8 md:right-16 pointer-events-none">
-          <motion.div
-            initial={{ opacity: 0, x: 20 }}
-            animate={{ opacity: 0.3, x: 0 }}
-            transition={{ duration: 1, delay: 1.5 }}
-            className="w-12 h-12 border-r-2 border-b-2 border-primary/30 rounded-br-sm"
-          />
-        </div>
-
-        {/* Bottom glow arc */}
-        <div className="absolute bottom-0 left-1/2 -translate-x-1/2 w-[1000px] h-[400px] pointer-events-none">
-          <motion.div
-            className="absolute inset-0 rounded-t-full blur-[120px]"
-            style={{ background: "radial-gradient(ellipse at 50% 100%, hsl(24 100% 50% / 0.25), transparent 70%)" }}
+            className="absolute inset-0 blur-[150px]"
+            style={{ background: "radial-gradient(ellipse at 50% 100%, hsl(24 100% 50% / 0.3), transparent 70%)" }}
             animate={{ opacity: [0.4, 0.7, 0.4] }}
             transition={{ duration: 4, repeat: Infinity, ease: "easeInOut" }}
           />
         </div>
 
-        <motion.div style={{ y: heroY, opacity: heroOpacity, scale: heroScale }} className="relative z-10 flex flex-col items-center text-center max-w-5xl mx-auto">
-          {/* Rating badge */}
+        {/* ── Massive Background Text ── */}
+        <div className="absolute inset-0 flex flex-col items-center justify-center pointer-events-none select-none">
+          {/* VIBEADS - top text */}
           <motion.div
-            initial={{ opacity: 0, y: 20, scale: 0.9 }}
-            animate={{ opacity: 1, y: 0, scale: 1 }}
-            transition={{ type: "spring", stiffness: 200, damping: 20, delay: 0.3 }}
-            className="mb-10"
+            initial={{ opacity: 0, y: -40 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 1, delay: 0.2 }}
+            className="relative z-[1]"
           >
-            <span className="inline-flex items-center gap-3 text-xs tracking-wide text-muted-foreground border border-border/50 rounded-full px-5 py-2 backdrop-blur-md bg-card/30">
-              <span className="inline-flex items-center gap-1 bg-primary/15 text-primary font-semibold rounded-full px-3 py-0.5 text-[11px]">
-                <motion.span
-                  className="w-1.5 h-1.5 rounded-full bg-primary"
-                  animate={{ scale: [1, 1.5, 1], opacity: [0.7, 1, 0.7] }}
-                  transition={{ duration: 2, repeat: Infinity }}
-                />
-                Vibeads
-              </span>
-              <span className="text-primary font-bold">4.9</span>
-              <span className="text-yellow-400">★</span>
-              <span className="uppercase tracking-widest text-[10px] text-muted-foreground">Trusted Agency</span>
-            </span>
+            <h1
+              className="text-[18vw] md:text-[16vw] lg:text-[14vw] font-black leading-[0.85] tracking-tighter text-foreground"
+              style={{ fontFamily: "Inter, sans-serif" }}
+            >
+              VIBEADS
+            </h1>
           </motion.div>
 
-          {/* Main heading – elegant serif + sans mix */}
-          <motion.h1
-            className="text-4xl sm:text-5xl md:text-6xl lg:text-7xl xl:text-8xl leading-[1.05] tracking-tight"
-            initial={{ opacity: 0 }}
-            animate={{ opacity: 1 }}
-            transition={{ duration: 0.5, delay: 0.4 }}
-          >
-            <motion.span
-              className="block font-bold text-foreground"
-              initial={{ opacity: 0, y: 30, filter: "blur(8px)" }}
-              animate={{ opacity: 1, y: 0, filter: "blur(0px)" }}
-              transition={{ duration: 0.7, delay: 0.5 }}
-            >
-              Build Brands That Win
-            </motion.span>
-            <motion.span
-              className="block mt-1 md:mt-2"
-              initial={{ opacity: 0, y: 30, filter: "blur(8px)" }}
-              animate={{ opacity: 1, y: 0, filter: "blur(0px)" }}
-              transition={{ duration: 0.7, delay: 0.7 }}
-            >
-              <span className="font-light italic" style={{ fontFamily: "'Playfair Display', serif" }}>
-                in{" "}
-              </span>
-              <span className="font-light italic" style={{ fontFamily: "'Playfair Display', serif" }}>
-                the{" "}
-              </span>
-              <span className="text-primary font-bold italic" style={{ fontFamily: "'Playfair Display', serif" }}>
-                Digital Era
-              </span>
-            </motion.span>
-          </motion.h1>
-
-          {/* Subheading */}
-          <motion.p
-            initial={{ filter: "blur(10px)", opacity: 0, y: 20 }}
-            animate={{ filter: "blur(0px)", opacity: 1, y: 0 }}
-            transition={{ duration: 0.8, delay: 1.0 }}
-            className="mt-8 text-sm md:text-base lg:text-lg text-muted-foreground max-w-xl leading-relaxed"
-          >
-            We design, develop, and grow digital experiences that make your business stand out online.
-          </motion.p>
-
-          {/* CTA Buttons */}
+          {/* DIGITAL - bottom text with outline */}
           <motion.div
-            initial={{ opacity: 0, y: 20, scale: 0.95 }}
-            animate={{ opacity: 1, y: 0, scale: 1 }}
-            transition={{ type: "spring", stiffness: 150, damping: 20, delay: 1.3 }}
-            className="flex flex-col sm:flex-row gap-4 mt-12"
+            initial={{ opacity: 0, y: 40 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 1, delay: 0.4 }}
+            className="relative z-[1] -mt-[2vw]"
           >
-            <Button variant="hero" size="lg" className="rounded-full px-8 group" onClick={() => scrollTo("#contact")}>
-              Book a Call
-              <motion.span
-                className="ml-1 inline-block"
-                whileHover={{ x: 4 }}
-                transition={{ type: "spring", stiffness: 300 }}
-              >
-                <ArrowRight className="h-4 w-4" />
-              </motion.span>
-            </Button>
-            <Button variant="hero-outline" size="lg" className="rounded-full px-8" onClick={() => scrollTo("#services")}>
-              See Our Works
-            </Button>
-          </motion.div>
-
-          {/* Scroll indicator */}
-          <motion.div
-            initial={{ opacity: 0 }}
-            animate={{ opacity: 1 }}
-            transition={{ delay: 2, duration: 1 }}
-            className="mt-20"
-          >
-            <motion.div
-              animate={{ y: [0, 8, 0] }}
-              transition={{ duration: 2, repeat: Infinity, ease: "easeInOut" }}
-              className="w-5 h-8 rounded-full border border-muted-foreground/30 flex justify-center pt-1.5"
+            <h2
+              className="text-[18vw] md:text-[16vw] lg:text-[14vw] font-black leading-[0.85] tracking-tighter"
+              style={{
+                fontFamily: "Inter, sans-serif",
+                WebkitTextStroke: "2px hsl(24 100% 50%)",
+                color: "transparent",
+              }}
             >
-              <motion.div className="w-1 h-2 rounded-full bg-muted-foreground/50" />
-            </motion.div>
+              DIGITAL
+            </h2>
           </motion.div>
+        </div>
+
+        {/* ── Central Character ── */}
+        <motion.div
+          className="relative z-[2] flex items-end justify-center pointer-events-none"
+          initial={{ opacity: 0, scale: 0.85, y: 60 }}
+          animate={{ opacity: 1, scale: 1, y: 0 }}
+          transition={{ duration: 1.2, delay: 0.6, ease: [0.16, 1, 0.3, 1] }}
+        >
+          {/* Character glow */}
+          <div className="absolute bottom-0 left-1/2 -translate-x-1/2 w-[400px] h-[200px] bg-primary/20 blur-[100px] rounded-full" />
+          <motion.img
+            src={heroCharacter}
+            alt="Vibeads Digital"
+            className="h-[60vh] md:h-[70vh] lg:h-[80vh] w-auto object-contain drop-shadow-2xl"
+            animate={{ y: [0, -10, 0] }}
+            transition={{ duration: 4, repeat: Infinity, ease: "easeInOut" }}
+            style={{
+              filter: "drop-shadow(0 0 40px hsl(24 100% 50% / 0.3)) drop-shadow(0 0 80px hsl(24 100% 50% / 0.15))",
+            }}
+          />
         </motion.div>
+
+        {/* ── CTA - Bottom Left ── */}
+        <motion.div
+          className="absolute bottom-16 left-8 md:left-16 z-10"
+          initial={{ opacity: 0, x: -30 }}
+          animate={{ opacity: 1, x: 0 }}
+          transition={{ duration: 0.8, delay: 1.2 }}
+        >
+          <Button variant="hero-outline" size="lg" className="rounded-full px-8 text-sm group" onClick={() => scrollTo("#contact")}>
+            Book a Call
+            <ArrowRight className="ml-2 h-4 w-4 transition-transform group-hover:translate-x-1" />
+          </Button>
+        </motion.div>
+
+        {/* ── Subtitle - Bottom Right ── */}
+        <motion.div
+          className="absolute bottom-16 right-8 md:right-16 z-10 text-right"
+          initial={{ opacity: 0, x: 30 }}
+          animate={{ opacity: 1, x: 0 }}
+          transition={{ duration: 0.8, delay: 1.2 }}
+        >
+          <p className="text-xs md:text-sm text-muted-foreground uppercase tracking-widest leading-relaxed">
+            Performance Marketing
+            <br />
+            Agency & Studio
+          </p>
+        </motion.div>
+
+        {/* ── Corner Brackets ── */}
+        <div className="absolute top-24 left-8 md:left-16 pointer-events-none">
+          <motion.div
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 0.4 }}
+            transition={{ duration: 1, delay: 1.5 }}
+            className="w-10 h-10 border-l-2 border-t-2 border-primary/40"
+          />
+        </div>
+        <div className="absolute bottom-24 right-8 md:right-16 pointer-events-none">
+          <motion.div
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 0.4 }}
+            transition={{ duration: 1, delay: 1.5 }}
+            className="w-10 h-10 border-r-2 border-b-2 border-primary/40"
+          />
+        </div>
+
+        {/* ── Scan lines ── */}
+        <motion.div
+          className="absolute top-[25%] left-0 right-0 h-px pointer-events-none"
+          style={{ background: "linear-gradient(90deg, transparent, hsl(24 100% 50% / 0.12), transparent)" }}
+          animate={{ opacity: [0, 0.6, 0] }}
+          transition={{ duration: 4, repeat: Infinity, ease: "easeInOut" }}
+        />
+        <motion.div
+          className="absolute top-[75%] left-0 right-0 h-px pointer-events-none"
+          style={{ background: "linear-gradient(90deg, transparent, hsl(24 100% 50% / 0.08), transparent)" }}
+          animate={{ opacity: [0, 0.5, 0] }}
+          transition={{ duration: 5, repeat: Infinity, ease: "easeInOut", delay: 1 }}
+        />
       </section>
 
-      {/* ════════════ WHAT WE DO ════════════ */}
       <section className="relative px-6 py-28 overflow-hidden">
         <ScrollLine className="absolute top-0 left-0 right-0" />
         <GridPattern />
