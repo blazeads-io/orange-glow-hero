@@ -118,7 +118,37 @@ const Index = () => {
 
       {/* ════════════ HERO ════════════ */}
       <section ref={heroRef} id="home" className="relative min-h-screen flex flex-col items-center justify-center overflow-hidden px-6">
-        {/* Background – single clean gradient glow */}
+        {/* ── Background Layers ── */}
+        
+        {/* Grid pattern */}
+        <GridPattern />
+        
+        {/* Noise texture */}
+        <NoiseOverlay opacity={0.04} />
+        
+        {/* Floating orbs */}
+        <FloatingOrb className="-top-20 -left-40" size={500} delay={0} duration={25} />
+        <FloatingOrb className="-bottom-32 -right-32" size={400} delay={3} duration={20} />
+        <FloatingOrb className="top-1/3 right-1/4" size={250} delay={5} duration={22} />
+        
+        {/* Floating particles */}
+        <FloatingParticles count={25} />
+        
+        {/* Rotating rings */}
+        <RotatingRings className="inset-0 flex items-center justify-center" />
+        
+        {/* Vertical gradient lines */}
+        <VerticalGradientLines count={6} />
+        
+        {/* Glowing dots in corners */}
+        <GlowingDot className="top-32 left-[15%]" size={5} delay={0} />
+        <GlowingDot className="top-48 right-[12%]" size={4} delay={1} />
+        <GlowingDot className="bottom-40 left-[20%]" size={6} delay={0.5} />
+        <GlowingDot className="bottom-32 right-[18%]" size={4} delay={1.5} />
+        <GlowingDot className="top-1/2 left-[8%]" size={3} delay={2} />
+        <GlowingDot className="top-1/3 right-[8%]" size={5} delay={0.8} />
+
+        {/* Gradient glow base */}
         <div className="absolute inset-0">
           <GradientBlur className="w-[800px] h-[600px] -bottom-60 left-1/2 -translate-x-1/2" />
           <div className="absolute bottom-0 left-1/2 -translate-x-1/2 w-[1000px] h-[500px] md:w-[1400px] md:h-[700px]">
@@ -126,48 +156,66 @@ const Index = () => {
           </div>
         </div>
 
+        {/* Animated accent line at top */}
+        <motion.div
+          className="absolute top-24 left-1/2 -translate-x-1/2 h-1 rounded-full bg-primary/60"
+          initial={{ width: 0 }}
+          animate={{ width: 80 }}
+          transition={{ duration: 1.2, delay: 0.5, ease: "easeOut" }}
+        />
+
         <motion.div style={{ y: heroY, opacity: heroOpacity, scale: heroScale }} className="relative z-10 flex flex-col items-center text-center max-w-5xl mx-auto">
-          {/* Eyebrow */}
+          {/* Eyebrow with spring */}
           <motion.div
-            initial={{ opacity: 0, y: 10 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.6, delay: 0.3 }}
+            initial={{ opacity: 0, y: 20, scale: 0.9 }}
+            animate={{ opacity: 1, y: 0, scale: 1 }}
+            transition={{ type: "spring", stiffness: 200, damping: 20, delay: 0.3 }}
             className="mb-8"
           >
-            <span className="inline-flex items-center gap-2 text-xs tracking-widest uppercase text-muted-foreground border border-border rounded-full px-4 py-1.5">
-              <span className="w-1.5 h-1.5 rounded-full bg-primary" />
+            <span className="inline-flex items-center gap-2 text-xs tracking-widest uppercase text-muted-foreground border border-border rounded-full px-4 py-1.5 backdrop-blur-sm">
+              <motion.span
+                className="w-1.5 h-1.5 rounded-full bg-primary"
+                animate={{ scale: [1, 1.5, 1], opacity: [0.7, 1, 0.7] }}
+                transition={{ duration: 2, repeat: Infinity }}
+              />
               Performance Marketing Agency
             </span>
           </motion.div>
 
-          {/* Main heading – word by word reveal */}
+          {/* Main heading – word by word blur reveal */}
           <RevealText
             text="Performance Marketing Built for Scale"
             className="text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-bold leading-[1.1] tracking-tight text-foreground gap-x-[0.25em]"
             delay={0.4}
           />
 
-          {/* Subheading */}
+          {/* Subheading with blur-in */}
           <motion.p
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.7, delay: 1.2 }}
+            initial={{ filter: "blur(10px)", opacity: 0, y: 20 }}
+            animate={{ filter: "blur(0px)", opacity: 1, y: 0 }}
+            transition={{ duration: 0.8, delay: 1.2 }}
             className="mt-8 text-base md:text-lg text-muted-foreground max-w-2xl leading-relaxed"
           >
             Driving growth across apps, OTT & digital brands through
             data-driven marketing strategies.
           </motion.p>
 
-          {/* CTA */}
+          {/* CTA with spring */}
           <motion.div
-            initial={{ opacity: 0, y: 15 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.6, delay: 1.5 }}
+            initial={{ opacity: 0, y: 20, scale: 0.95 }}
+            animate={{ opacity: 1, y: 0, scale: 1 }}
+            transition={{ type: "spring", stiffness: 150, damping: 20, delay: 1.5 }}
             className="flex flex-col sm:flex-row gap-4 mt-12"
           >
             <Button variant="hero" size="lg" className="rounded-full px-8 group" onClick={() => scrollTo("#contact")}>
               Get in Touch
-              <ArrowRight className="ml-1 h-4 w-4 transition-transform group-hover:translate-x-1" />
+              <motion.span
+                className="ml-1 inline-block"
+                whileHover={{ x: 4 }}
+                transition={{ type: "spring", stiffness: 300 }}
+              >
+                <ArrowRight className="h-4 w-4" />
+              </motion.span>
             </Button>
             <Button variant="hero-outline" size="lg" className="rounded-full px-8" onClick={() => scrollTo("#services")}>
               View Services
