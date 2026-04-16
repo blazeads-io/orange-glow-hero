@@ -1,7 +1,6 @@
 import { motion } from "framer-motion";
 import { Button } from "@/components/ui/button";
-
-const logos = ["BOGO", "IPSUM", "ACME", "CRUX", "FLUX"];
+import { Link } from "react-router-dom";
 
 const HeroSection = () => {
   return (
@@ -12,9 +11,7 @@ const HeroSection = () => {
         <div className="absolute inset-4 rounded-t-full border-t-2 border-l border-r border-primary/30" />
       </div>
 
-      {/* Content */}
       <div className="relative z-10 flex flex-col items-center text-center max-w-4xl mx-auto">
-        {/* Badge */}
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
@@ -22,65 +19,47 @@ const HeroSection = () => {
           className="flex items-center gap-3 mb-10"
         >
           <span className="bg-primary text-primary-foreground text-xs font-bold px-3 py-1 rounded-full">
-            2025
+            2026
           </span>
-          <span className="text-sm text-muted-foreground">Next-Gen AI Studio</span>
+          <span className="text-sm text-muted-foreground">Performance Marketing Agency</span>
         </motion.div>
 
-        {/* Heading */}
         <motion.h1
           initial={{ opacity: 0, y: 30 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.7, delay: 0.3 }}
           className="text-4xl sm:text-5xl md:text-7xl font-bold leading-tight tracking-tight text-foreground"
         >
-          AI-Driven Success{" "}
+          Performance Marketing{" "}
           <br />
-          Redefining the Future.
+          <span className="text-primary">Built for Scale</span>
         </motion.h1>
 
-        {/* Subtitle */}
         <motion.p
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.6, delay: 0.5 }}
-          className="mt-6 text-sm md:text-base text-muted-foreground max-w-lg leading-relaxed"
+          className="mt-6 text-sm md:text-base text-muted-foreground max-w-xl leading-relaxed"
         >
-          Creating latest solutions that redefine innovation.
-          <br />
-          Stay ahead with AI-powered technology for the future.
+          We help brands and digital platforms acquire users, scale revenue, and build sustainable growth through data-driven marketing strategies.
         </motion.p>
 
-        {/* Buttons */}
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.6, delay: 0.7 }}
           className="flex flex-col sm:flex-row gap-4 mt-10"
         >
-          <Button variant="hero" size="lg" className="rounded-full px-8">
-            Connect With Us
-          </Button>
-          <Button variant="hero-outline" size="lg" className="rounded-full px-8">
-            What is Nubien?
-          </Button>
-        </motion.div>
-
-        {/* Logo strip */}
-        <motion.div
-          initial={{ opacity: 0 }}
-          animate={{ opacity: 1 }}
-          transition={{ duration: 0.8, delay: 1 }}
-          className="mt-20 flex items-center gap-8 md:gap-12"
-        >
-          {logos.map((logo) => (
-            <span
-              key={logo}
-              className="text-sm md:text-base font-bold tracking-widest text-muted-foreground/50"
-            >
-              {logo}
-            </span>
-          ))}
+          <Link to="/contact">
+            <Button variant="hero" size="lg" className="rounded-full px-8">
+              Get in Touch
+            </Button>
+          </Link>
+          <Link to="/services">
+            <Button variant="hero-outline" size="lg" className="rounded-full px-8">
+              View Services
+            </Button>
+          </Link>
         </motion.div>
       </div>
     </section>
