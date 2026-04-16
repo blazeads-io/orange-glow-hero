@@ -280,7 +280,7 @@ const Index = () => {
 
         {/* ── Hero Text Content ── */}
         <motion.div
-          className="absolute bottom-24 left-0 right-0 z-10 px-8 md:px-16"
+          className="absolute bottom-8 left-0 right-0 z-10 px-8 md:px-16"
           initial={{ opacity: 0, y: 30 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.8, delay: 1 }}
