@@ -42,8 +42,8 @@ const ParticleWave = ({ className = "" }: { className?: string }) => {
       y: Math.random() * (canvas.offsetHeight || 600),
       vx: (Math.random() - 0.5) * 0.4,
       vy: (Math.random() - 0.5) * 0.3,
-      opacity: Math.random() * 0.08 + 0.1,
-      fontSize: Math.random() * 16 + 16,
+      opacity: Math.random() * 0.1 + 0.18,
+      fontSize: Math.random() * 18 + 18,
       rotation: (Math.random() - 0.5) * 0.3,
       rotSpeed: (Math.random() - 0.5) * 0.001,
     }));
@@ -82,7 +82,7 @@ const ParticleWave = ({ className = "" }: { className?: string }) => {
         ctx.save();
         ctx.translate(t.x, t.y);
         ctx.rotate(t.rotation);
-        ctx.font = `300 ${t.fontSize}px Inter, system-ui, sans-serif`;
+        ctx.font = `700 ${t.fontSize}px Inter, system-ui, sans-serif`;
         ctx.fillStyle = `rgba(147, 180, 255, ${t.opacity + pulse})`;
         ctx.letterSpacing = "4px";
         ctx.fillText("VIBEADS DIGITAL", 0, 0);
