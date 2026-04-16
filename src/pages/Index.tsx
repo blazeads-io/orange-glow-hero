@@ -21,7 +21,7 @@ import {
   Mail, MapPin, CreditCard, ArrowRight,
 } from "lucide-react";
 
-import heroCharacter from "@/assets/hero-character.png";
+import heroGlobe from "@/assets/hero-globe.png";
 import performance1 from "@/assets/services/performance-1.jpg";
 import performance2 from "@/assets/services/performance-2.jpg";
 import appMarketing1 from "@/assets/services/app-marketing-1.jpg";
