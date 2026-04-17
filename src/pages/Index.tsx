@@ -743,7 +743,7 @@ const Index = () => {
               >
                 {/* Animated number badge */}
                 <div className="absolute top-4 right-4 text-[10px] font-mono text-muted-foreground/50 group-hover:text-primary/70 transition-colors">
-                  0{idx + 1} / 05
+                  0{idx + 1} / 04
                 </div>
 
                 {/* Hover radial glow */}
