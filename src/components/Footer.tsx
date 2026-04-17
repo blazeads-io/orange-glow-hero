@@ -145,7 +145,7 @@ const Footer = () => {
             <p className="text-xs text-muted-foreground leading-relaxed mb-4">
               Officially certified across leading ad platforms.
             </p>
-            <div className="grid grid-cols-2 gap-2.5">
+            <div className="flex flex-col gap-2">
               {[
                 { name: "Meta", letter: "M", sub: "Instagram · Facebook" },
                 { name: "Google", letter: "G", sub: "Search · YouTube" },
@@ -154,14 +154,14 @@ const Footer = () => {
               ].map((p) => (
                 <div
                   key={p.name}
-                  className="group flex items-center gap-2 rounded-lg border border-border/70 bg-background/40 px-2.5 py-2 hover:border-primary/40 hover:bg-primary/5 transition-all duration-300"
+                  className="group flex items-center gap-2.5 rounded-lg border border-border/70 bg-background/40 px-3 py-2 hover:border-primary/40 hover:bg-primary/5 transition-all duration-300"
                 >
-                  <div className="h-7 w-7 rounded-md bg-gradient-to-br from-primary/20 to-primary/5 border border-primary/20 flex items-center justify-center shrink-0">
-                    <span className="text-[11px] font-bold text-primary">{p.letter}</span>
+                  <div className="h-8 w-8 rounded-md bg-gradient-to-br from-primary/20 to-primary/5 border border-primary/20 flex items-center justify-center shrink-0">
+                    <span className="text-xs font-bold text-primary">{p.letter}</span>
                   </div>
-                  <div className="leading-tight min-w-0">
-                    <span className="block text-xs text-foreground font-medium truncate">{p.name}</span>
-                    <span className="block text-[9px] uppercase tracking-wider text-muted-foreground/70 truncate">{p.sub}</span>
+                  <div className="leading-tight min-w-0 flex-1">
+                    <span className="block text-xs text-foreground font-semibold">{p.name}</span>
+                    <span className="block text-[10px] text-muted-foreground/80 mt-0.5">{p.sub}</span>
                   </div>
                 </div>
               ))}
