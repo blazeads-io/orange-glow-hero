@@ -1,5 +1,7 @@
 import { Link } from "react-router-dom";
 import { Mail, MapPin, ArrowUpRight, Linkedin, Instagram, Twitter, Facebook } from "lucide-react";
+import MetaLogo from "@/components/icons/MetaLogo";
+import GoogleLogo from "@/components/icons/GoogleLogo";
 
 const Footer = () => {
   const scrollTo = (id: string) => {
