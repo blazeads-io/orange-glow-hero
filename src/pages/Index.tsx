@@ -720,18 +720,92 @@ const Index = () => {
 
         <div className="relative z-10 mx-auto max-w-7xl">
           <SectionAccent />
-          <RevealText text="Industries We Work With" as="h2" className="text-3xl md:text-4xl font-bold text-foreground mb-16" />
+          <div className="text-center mb-16">
+            <RevealText text="Industries We Work With" as="h2" className="text-3xl md:text-5xl font-bold text-foreground mb-5" />
+            <motion.p
+              initial={{ opacity: 0, y: 15 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              transition={{ duration: 0.6, delay: 0.2 }}
+              className="text-muted-foreground max-w-2xl mx-auto text-base md:text-lg"
+            >
+              From streaming giants to bootstrapped startups — we craft growth playbooks tailored to every industry's DNA.
+            </motion.p>
+          </div>
 
-          <StaggerContainer className="grid grid-cols-2 md:grid-cols-4 gap-6">
-            {industries.map((item) => (
-              <motion.div key={item.title} variants={staggerChild} whileHover={{ y: -6 }} className="relative bg-card border border-border rounded-2xl p-8 flex flex-col items-center text-center hover:border-primary/30 transition-colors duration-300 overflow-hidden group">
-                <div className="absolute inset-0 opacity-0 group-hover:opacity-100 transition-opacity duration-500 pointer-events-none" style={{ background: "radial-gradient(circle at 50% 30%, hsl(24 100% 50% / 0.08) 0%, transparent 60%)" }} />
-                <item.icon className="relative z-10 h-9 w-9 text-primary mb-4 group-hover:scale-110 transition-transform duration-300" />
-                <h3 className="relative z-10 text-foreground font-medium text-sm group-hover:text-primary transition-colors duration-300">{item.title}</h3>
-                <div className="absolute bottom-0 left-0 right-0 h-[2px] bg-gradient-to-r from-transparent via-primary/40 to-transparent scale-x-0 group-hover:scale-x-100 transition-transform duration-500" />
+          <StaggerContainer className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
+            {industries.map((item, idx) => (
+              <motion.div
+                key={item.title}
+                variants={staggerChild}
+                whileHover={{ y: -8 }}
+                className="relative bg-card border border-border rounded-2xl p-6 flex flex-col hover:border-primary/40 transition-all duration-500 overflow-hidden group min-h-[320px]"
+              >
+                {/* Animated number badge */}
+                <div className="absolute top-4 right-4 text-[10px] font-mono text-muted-foreground/50 group-hover:text-primary/70 transition-colors">
+                  0{idx + 1} / 04
+                </div>
+
+                {/* Hover radial glow */}
+                <div className="absolute inset-0 opacity-0 group-hover:opacity-100 transition-opacity duration-500 pointer-events-none" style={{ background: "radial-gradient(circle at 50% 0%, hsl(24 100% 50% / 0.12) 0%, transparent 70%)" }} />
+
+                {/* Decorative corner pattern */}
+                <div className="absolute -bottom-10 -right-10 w-32 h-32 opacity-[0.04] group-hover:opacity-[0.12] transition-opacity duration-700">
+                  <item.icon className="w-full h-full text-primary" strokeWidth={1} />
+                </div>
+
+                {/* Icon block with gradient bg */}
+                <motion.div
+                  className="relative z-10 inline-flex items-center justify-center w-14 h-14 rounded-xl bg-gradient-to-br from-primary/20 to-primary/5 border border-primary/30 mb-5 group-hover:from-primary/30 group-hover:to-primary/10 transition-colors duration-500"
+                  whileHover={{ rotate: [0, -8, 8, 0] }}
+                  transition={{ duration: 0.6 }}
+                >
+                  <item.icon className="h-7 w-7 text-primary" />
+                </motion.div>
+
+                <h3 className="relative z-10 text-foreground font-bold text-lg mb-2 group-hover:text-primary transition-colors duration-300">{item.title}</h3>
+                <p className="relative z-10 text-sm text-muted-foreground leading-relaxed mb-5 flex-1">{item.desc}</p>
+
+                {/* Stat */}
+                <div className="relative z-10 mb-4 pb-4 border-b border-border/50">
+                  <div className="text-2xl font-black text-primary leading-none">{item.stat}</div>
+                  <div className="text-[10px] uppercase tracking-widest text-muted-foreground mt-1">{item.statLabel}</div>
+                </div>
+
+                {/* Tags */}
+                <div className="relative z-10 flex flex-wrap gap-1.5">
+                  {item.tags.map((tag) => (
+                    <span key={tag} className="text-[10px] px-2 py-0.5 rounded-full bg-primary/10 text-primary/90 border border-primary/20">
+                      {tag}
+                    </span>
+                  ))}
+                </div>
+
+                {/* Bottom glow line */}
+                <div className="absolute bottom-0 left-0 right-0 h-[2px] bg-gradient-to-r from-transparent via-primary to-transparent scale-x-0 group-hover:scale-x-100 transition-transform duration-700" />
               </motion.div>
             ))}
           </StaggerContainer>
+
+          {/* Bottom marquee strip */}
+          <motion.div
+            initial={{ opacity: 0 }}
+            whileInView={{ opacity: 1 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.8, delay: 0.4 }}
+            className="mt-12 flex flex-wrap items-center justify-center gap-x-8 gap-y-3 text-xs uppercase tracking-[0.25em] text-muted-foreground/70"
+          >
+            <span className="flex items-center gap-2"><span className="h-1 w-1 rounded-full bg-primary animate-pulse" /> Trusted across</span>
+            <span>India</span>
+            <span className="text-primary/40">•</span>
+            <span>UAE</span>
+            <span className="text-primary/40">•</span>
+            <span>Singapore</span>
+            <span className="text-primary/40">•</span>
+            <span>Southeast Asia</span>
+            <span className="text-primary/40">•</span>
+            <span>Global</span>
+          </motion.div>
         </div>
       </section>
 
