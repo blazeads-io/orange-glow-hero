@@ -321,23 +321,46 @@ const Index = () => {
 
         {/* ── Hero Text Content ── */}
         <motion.div
-          className="absolute bottom-8 left-0 right-0 z-10 px-8 md:px-16"
+          className="absolute bottom-10 left-0 right-0 z-10 px-6 md:px-16"
           initial={{ opacity: 0, y: 30 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.8, delay: 1 }}
         >
-          <div className="max-w-3xl">
-            <h2 className="text-lg md:text-2xl font-bold text-foreground leading-snug mb-3">
-              Driving Growth Across Apps, OTT & Digital Brands
-            </h2>
-            <p className="text-xs md:text-sm text-muted-foreground max-w-xl leading-relaxed">
-              We help brands and digital platforms acquire users, scale revenue, and build sustainable growth through data-driven marketing strategies.
-            </p>
-            <div className="mt-6">
-              <Button variant="hero-outline" size="lg" className="rounded-full px-8 text-sm group" onClick={() => scrollTo("#contact")}>
-                Book a Call
-                <ArrowRight className="ml-2 h-4 w-4 transition-transform group-hover:translate-x-1" />
-              </Button>
+          <div className="max-w-2xl">
+            <div className="relative rounded-2xl bg-background/40 backdrop-blur-xl border border-border/60 p-6 md:p-7 shadow-[0_20px_60px_-20px_rgba(0,0,0,0.6)] overflow-hidden">
+              {/* Accent line */}
+              <div className="absolute top-0 left-0 h-full w-1 bg-gradient-to-b from-primary via-primary/60 to-transparent" />
+              {/* Soft inner glow */}
+              <div className="absolute -top-20 -right-20 w-48 h-48 bg-primary/15 blur-3xl rounded-full pointer-events-none" />
+
+              <div className="relative">
+                <div className="flex items-center gap-2 mb-3">
+                  <span className="inline-flex items-center gap-1.5 text-[10px] md:text-xs font-semibold uppercase tracking-[0.2em] text-primary">
+                    <Sparkles className="w-3.5 h-3.5" />
+                    What we do
+                  </span>
+                  <span className="h-px flex-1 bg-gradient-to-r from-primary/40 to-transparent" />
+                </div>
+
+                <h2 className="text-xl md:text-3xl font-bold text-foreground leading-tight mb-3 tracking-tight">
+                  Driving Growth Across{" "}
+                  <span className="text-primary">Apps, OTT</span> &{" "}
+                  <span className="text-primary">Digital Brands</span>
+                </h2>
+                <p className="text-sm md:text-base text-muted-foreground leading-relaxed">
+                  We help brands and digital platforms acquire users, scale revenue, and build sustainable growth through data-driven marketing strategies.
+                </p>
+
+                <div className="mt-5 flex flex-wrap items-center gap-3">
+                  <Button variant="hero" size="lg" className="rounded-full px-7 text-sm group" onClick={() => scrollTo("#contact")}>
+                    Book a Call
+                    <ArrowRight className="ml-2 h-4 w-4 transition-transform group-hover:translate-x-1" />
+                  </Button>
+                  <Button variant="hero-outline" size="lg" className="rounded-full px-7 text-sm" onClick={() => scrollTo("#services")}>
+                    Explore Services
+                  </Button>
+                </div>
+              </div>
             </div>
           </div>
         </motion.div>
