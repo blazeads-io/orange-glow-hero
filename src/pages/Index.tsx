@@ -327,7 +327,7 @@ const Index = () => {
           transition={{ duration: 0.8, delay: 1 }}
         >
           <div className="max-w-2xl">
-            <div className="relative rounded-2xl bg-background/40 backdrop-blur-xl border border-border/60 p-6 md:p-7 shadow-[0_20px_60px_-20px_rgba(0,0,0,0.6)] overflow-hidden">
+            <div className="relative rounded-2xl bg-transparent p-6 md:p-7 overflow-hidden">
               {/* Accent line */}
               <div className="absolute top-0 left-0 h-full w-1 bg-gradient-to-b from-primary via-primary/60 to-transparent" />
               {/* Soft inner glow */}
