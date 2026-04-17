@@ -52,7 +52,10 @@ const Footer = () => {
               <div className="h-9 w-9 rounded-xl bg-gradient-to-br from-primary to-primary/70 flex items-center justify-center shadow-[0_0_20px_hsl(24_100%_50%/0.4)]">
                 <span className="text-primary-foreground font-bold">V</span>
               </div>
-              <span className="text-foreground font-semibold text-lg tracking-tight">Vibeads Digital</span>
+              <div className="leading-tight">
+                <span className="block text-foreground font-semibold text-lg tracking-tight">Vibeads Digital</span>
+                <span className="block text-[10px] uppercase tracking-[0.22em] text-muted-foreground/70 mt-0.5">Private Limited</span>
+              </div>
             </div>
             <p className="text-sm text-muted-foreground leading-relaxed max-w-xs">
               Driving growth across apps, OTT, and digital brands worldwide through data-led campaigns.
