@@ -10,13 +10,9 @@ const Footer = () => {
   const scrollTop = () => window.scrollTo({ top: 0, behavior: "smooth" });
 
   return (
-    <footer className="relative border-t border-border bg-card/40 overflow-visible">
-      {/* Ambient glow */}
-      <div className="absolute inset-x-0 top-0 h-[2px] bg-gradient-to-r from-transparent via-primary to-transparent opacity-60" />
-      <div className="absolute -top-40 left-1/2 -translate-x-1/2 w-[800px] h-[400px] rounded-full bg-primary/10 blur-3xl pointer-events-none" />
-
+    <footer className="relative">
       {/* Centered logo badge sitting on top border */}
-      <div className="absolute top-0 left-1/2 -translate-x-1/2 -translate-y-1/2 z-20">
+      <div className="absolute top-0 left-1/2 -translate-x-1/2 -translate-y-1/2 z-30">
         <div className="h-14 w-14 rounded-full bg-background border border-primary/40 flex items-center justify-center shadow-[0_0_30px_hsl(24_100%_50%/0.35)]">
           <div className="h-10 w-10 rounded-full bg-gradient-to-br from-primary to-primary/70 flex items-center justify-center shadow-[0_0_20px_hsl(24_100%_50%/0.5)]">
             <span className="text-primary-foreground font-bold text-lg">V</span>
@@ -24,14 +20,19 @@ const Footer = () => {
         </div>
       </div>
 
-      {/* Giant brand watermark */}
-      <div
-        aria-hidden="true"
-        className="absolute -bottom-10 md:-bottom-16 left-1/2 -translate-x-1/2 text-foreground/[0.03] font-black tracking-tighter pointer-events-none select-none whitespace-nowrap"
-        style={{ fontSize: "clamp(6rem, 18vw, 18rem)", lineHeight: 1 }}
-      >
-        VIBEADS
-      </div>
+      <div className="relative border-t border-border bg-card/40 overflow-hidden">
+        {/* Ambient glow */}
+        <div className="absolute inset-x-0 top-0 h-[2px] bg-gradient-to-r from-transparent via-primary to-transparent opacity-60" />
+        <div className="absolute -top-40 left-1/2 -translate-x-1/2 w-[800px] h-[400px] rounded-full bg-primary/10 blur-3xl pointer-events-none" />
+
+        {/* Giant brand watermark */}
+        <div
+          aria-hidden="true"
+          className="absolute -bottom-10 md:-bottom-16 left-1/2 -translate-x-1/2 text-foreground/[0.03] font-black tracking-tighter pointer-events-none select-none whitespace-nowrap"
+          style={{ fontSize: "clamp(6rem, 18vw, 18rem)", lineHeight: 1 }}
+        >
+          VIBEADS
+        </div>
 
       <div className="relative z-10 mx-auto max-w-7xl px-6 pt-20 pb-10">
         {/* Top: brand statement + back to top */}
