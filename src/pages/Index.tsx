@@ -897,14 +897,86 @@ const Index = () => {
               ))}
             </StaggerContainer>
 
-            <motion.div initial={{ opacity: 0, y: 25 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} transition={{ duration: 0.6 }} className="mt-14 bg-card border border-border rounded-2xl p-8">
-              <h3 className="text-lg font-semibold text-foreground mb-5">Company Information</h3>
-              <div className="text-muted-foreground text-sm leading-relaxed space-y-2">
-                <p className="font-medium text-foreground">Vibeads Digital Private Limited</p>
-                <p>CIN: U73100OD2026PTC053422</p>
-                <div className="pt-4">
-                  <p className="font-medium text-foreground mb-1">Registered Address</p>
-                  <p>Managobindpur, Near Govt Hospital<br />Daleiput, Khurda, Odisha – 752056, India</p>
+            <motion.div
+              initial={{ opacity: 0, y: 25 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              transition={{ duration: 0.6 }}
+              className="mt-14 relative overflow-hidden rounded-[2rem] border border-primary/20 bg-card/80 shadow-[0_30px_90px_-35px_hsl(var(--primary)/0.55)]"
+            >
+              <div className="absolute inset-0 bg-[radial-gradient(circle_at_top_right,hsl(var(--primary)/0.18),transparent_35%)]" />
+              <div className="absolute inset-0 bg-[radial-gradient(circle_at_bottom_left,hsl(var(--primary)/0.12),transparent_30%)]" />
+              <div
+                className="absolute inset-0 opacity-[0.08]"
+                style={{
+                  backgroundImage:
+                    "linear-gradient(hsl(var(--primary)) 1px, transparent 1px), linear-gradient(90deg, hsl(var(--primary)) 1px, transparent 1px)",
+                  backgroundSize: "28px 28px",
+                }}
+              />
+              <div className="absolute inset-x-0 top-0 h-px bg-gradient-to-r from-transparent via-primary to-transparent" />
+
+              <div className="relative z-10 p-8 md:p-10">
+                <div className="flex flex-col gap-6 md:flex-row md:items-start md:justify-between">
+                  <div className="max-w-2xl">
+                    <div className="inline-flex items-center gap-2 rounded-full border border-primary/20 bg-background/60 px-3 py-1 text-[11px] font-medium uppercase tracking-[0.24em] text-primary backdrop-blur-sm">
+                      <span className="h-2 w-2 rounded-full bg-primary" />
+                      Company Information
+                    </div>
+
+                    <h3 className="mt-5 text-2xl font-bold leading-tight text-foreground md:text-3xl">
+                      Vibeads Digital
+                      <span className="block text-primary">Private Limited</span>
+                    </h3>
+
+                    <p className="mt-4 max-w-xl text-sm leading-relaxed text-muted-foreground md:text-base">
+                      Performance-driven company delivering scalable growth solutions for brands across global markets.
+                    </p>
+                  </div>
+
+                  <div className="min-w-0 rounded-2xl border border-primary/20 bg-background/50 p-5 backdrop-blur-sm md:w-[320px]">
+                    <p className="text-[11px] font-medium uppercase tracking-[0.24em] text-primary/80">Corporate Identification</p>
+                    <p className="mt-3 break-all font-mono text-sm text-foreground md:text-base">U73100OD2026PTC053422</p>
+                    <div className="mt-5 flex items-center gap-2 text-[11px] font-medium uppercase tracking-[0.24em] text-muted-foreground">
+                      <span className="relative flex h-2 w-2">
+                        <span className="absolute inline-flex h-full w-full animate-ping rounded-full bg-primary opacity-75" />
+                        <span className="relative inline-flex h-2 w-2 rounded-full bg-primary" />
+                      </span>
+                      India · Active
+                    </div>
+                  </div>
+                </div>
+
+                <div className="mt-8 grid gap-4 md:grid-cols-[1.1fr_0.9fr]">
+                  <div className="rounded-2xl border border-border/70 bg-background/45 p-5">
+                    <p className="text-[11px] font-medium uppercase tracking-[0.24em] text-primary/80">Registered Address</p>
+                    <p className="mt-4 text-sm leading-relaxed text-foreground md:text-base">
+                      Managobindpur, Near Govt Hospital
+                      <br />
+                      Daleiput, Khurda, Odisha – 752056, India
+                    </p>
+                  </div>
+
+                  <div className="rounded-2xl border border-border/70 bg-background/35 p-5">
+                    <p className="text-[11px] font-medium uppercase tracking-[0.24em] text-primary/80">Core Focus</p>
+                    <div className="mt-4 flex flex-wrap gap-2">
+                      {[
+                        "Data-Driven",
+                        "Scalable Growth",
+                        "Performance First",
+                      ].map((item) => (
+                        <span
+                          key={item}
+                          className="rounded-full border border-primary/15 bg-primary/10 px-3 py-1 text-xs font-medium text-foreground"
+                        >
+                          {item}
+                        </span>
+                      ))}
+                    </div>
+                    <p className="mt-4 text-sm leading-relaxed text-muted-foreground">
+                      Built for brand campaigns, performance advertising, and measurable growth across global markets.
+                    </p>
+                  </div>
                 </div>
               </div>
             </motion.div>
