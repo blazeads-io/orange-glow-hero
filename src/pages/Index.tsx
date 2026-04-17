@@ -744,7 +744,7 @@ const Index = () => {
             </motion.p>
           </div>
 
-          <StaggerContainer className="grid grid-cols-1 sm:grid-cols-2 xl:grid-cols-4 gap-5 xl:gap-4">
+          <StaggerContainer className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-5 lg:gap-4">
             {industries.map((item, idx) => (
               <motion.div
                 key={item.title}
