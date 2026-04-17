@@ -95,7 +95,7 @@ const Contact = () => {
               </div>
 
               {/* Premium Company Information Card */}
-              <div className="relative rounded-2xl overflow-hidden group border border-border hover:border-primary/40 transition-all duration-500 shadow-[0_20px_60px_-20px_hsl(24_100%_50%/0.15)] hover:shadow-[0_25px_70px_-15px_hsl(24_100%_50%/0.35)]">
+              <div className="relative rounded-2xl overflow-hidden group border border-primary/20 hover:border-primary/60 transition-all duration-500 shadow-[0_25px_70px_-20px_hsl(24_100%_50%/0.25)] hover:shadow-[0_35px_90px_-15px_hsl(24_100%_50%/0.5)]">
                 {/* Background image */}
                 <img
                   src={companyCardBg}
@@ -104,60 +104,87 @@ const Contact = () => {
                   loading="lazy"
                   width={1280}
                   height={1024}
-                  className="absolute inset-0 w-full h-full object-cover opacity-60 group-hover:opacity-80 transition-opacity duration-700"
+                  className="absolute inset-0 w-full h-full object-cover opacity-40 group-hover:opacity-60 group-hover:scale-105 transition-all duration-700"
                 />
-                {/* Layered overlays for depth */}
-                <div className="absolute inset-0 bg-gradient-to-br from-card/95 via-card/85 to-card/95" />
-                <div className="absolute inset-0 bg-[radial-gradient(circle_at_100%_0%,hsl(24_100%_50%/0.18),transparent_55%)]" />
-                <div className="absolute inset-0 bg-[radial-gradient(circle_at_0%_100%,hsl(24_100%_50%/0.08),transparent_50%)]" />
 
-                {/* Top accent line */}
-                <div className="absolute top-0 left-0 right-0 h-[1px] bg-gradient-to-r from-transparent via-primary/70 to-transparent" />
+                {/* Dark base overlay */}
+                <div className="absolute inset-0 bg-gradient-to-br from-card/90 via-background/80 to-card/95" />
 
-                {/* Corner brackets */}
-                <div className="absolute top-3 left-3 w-5 h-5 border-t border-l border-primary/40 rounded-tl" />
-                <div className="absolute top-3 right-3 w-5 h-5 border-t border-r border-primary/40 rounded-tr" />
-                <div className="absolute bottom-3 left-3 w-5 h-5 border-b border-l border-primary/40 rounded-bl" />
-                <div className="absolute bottom-3 right-3 w-5 h-5 border-b border-r border-primary/40 rounded-br" />
+                {/* Animated grid pattern */}
+                <div
+                  className="absolute inset-0 opacity-[0.07] group-hover:opacity-[0.12] transition-opacity duration-700"
+                  style={{
+                    backgroundImage: `linear-gradient(hsl(var(--primary)) 1px, transparent 1px), linear-gradient(90deg, hsl(var(--primary)) 1px, transparent 1px)`,
+                    backgroundSize: '32px 32px',
+                  }}
+                />
+
+                {/* Glow orbs */}
+                <div className="absolute -top-20 -right-20 w-64 h-64 rounded-full bg-primary/20 blur-3xl group-hover:bg-primary/30 transition-all duration-700" />
+                <div className="absolute -bottom-24 -left-16 w-56 h-56 rounded-full bg-primary/10 blur-3xl" />
+
+                {/* Top gradient line */}
+                <div className="absolute top-0 left-0 right-0 h-px bg-gradient-to-r from-transparent via-primary to-transparent" />
+                <div className="absolute bottom-0 left-0 right-0 h-px bg-gradient-to-r from-transparent via-primary/40 to-transparent" />
+
+                {/* Giant watermark */}
+                <Building2
+                  className="absolute -right-8 -bottom-8 h-56 w-56 text-primary/[0.04] group-hover:text-primary/[0.08] transition-colors duration-700 rotate-12"
+                  strokeWidth={1}
+                />
 
                 <div className="relative z-10 p-8">
                   {/* Header */}
                   <div className="flex items-start justify-between mb-7">
                     <div className="flex items-center gap-3">
-                      <div className="relative h-11 w-11 rounded-xl bg-gradient-to-br from-primary/25 to-primary/5 border border-primary/30 flex items-center justify-center shadow-[0_0_20px_-5px_hsl(24_100%_50%/0.5)]">
+                      <div className="relative h-12 w-12 rounded-xl bg-gradient-to-br from-primary/30 to-primary/5 border border-primary/40 flex items-center justify-center shadow-[0_0_25px_-5px_hsl(24_100%_50%/0.6)]">
                         <Building2 className="h-5 w-5 text-primary" strokeWidth={1.75} />
-                        <span className="absolute -top-1 -right-1 h-2.5 w-2.5 rounded-full bg-primary animate-pulse shadow-[0_0_8px_hsl(24_100%_50%)]" />
+                        <span className="absolute -top-1 -right-1 h-2.5 w-2.5 rounded-full bg-primary animate-pulse shadow-[0_0_10px_hsl(24_100%_50%)]" />
                       </div>
                       <div>
-                        <h3 className="text-foreground font-semibold leading-tight">Company Information</h3>
-                        <span className="text-[10px] uppercase tracking-[0.2em] text-muted-foreground/70 flex items-center gap-1 mt-0.5">
+                        <h3 className="text-foreground font-bold text-base leading-tight">Company Information</h3>
+                        <span className="text-[10px] uppercase tracking-[0.2em] text-primary/80 flex items-center gap-1 mt-1 font-medium">
                           <Shield className="h-2.5 w-2.5" /> Verified Legal Entity
                         </span>
                       </div>
                     </div>
-                    <span className="text-[9px] font-mono text-primary/70 uppercase tracking-widest px-2 py-1 rounded border border-primary/20 bg-primary/5">
-                      IN · 2026
-                    </span>
+                    <div className="flex flex-col items-end gap-1.5">
+                      <span className="text-[9px] font-mono text-primary uppercase tracking-widest px-2.5 py-1 rounded-md border border-primary/30 bg-primary/10 backdrop-blur-sm">
+                        IN · 2026
+                      </span>
+                      <div className="flex items-center gap-1.5">
+                        <span className="relative flex h-1.5 w-1.5">
+                          <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-primary opacity-75" />
+                          <span className="relative inline-flex rounded-full h-1.5 w-1.5 bg-primary" />
+                        </span>
+                        <span className="text-[9px] uppercase tracking-widest text-foreground/70 font-medium">Active</span>
+                      </div>
+                    </div>
                   </div>
 
-                  {/* Entity Name */}
-                  <div className="mb-5">
-                    <span className="text-[10px] uppercase tracking-[0.25em] text-muted-foreground/60 font-medium">Registered Entity</span>
-                    <p className="mt-2 text-foreground font-bold text-lg leading-tight">
-                      Vibeads Digital <span className="text-primary">Private Limited</span>
+                  {/* Entity Name - Hero treatment */}
+                  <div className="mb-6 p-5 rounded-xl bg-gradient-to-br from-primary/[0.08] via-primary/[0.03] to-transparent border border-primary/15 backdrop-blur-sm">
+                    <span className="text-[10px] uppercase tracking-[0.25em] text-primary/70 font-semibold">Registered Entity</span>
+                    <p className="mt-2 text-foreground font-bold text-xl leading-tight tracking-tight">
+                      Vibeads Digital
+                    </p>
+                    <p className="text-primary font-bold text-xl leading-tight tracking-tight">
+                      Private Limited
                     </p>
                   </div>
 
                   {/* CIN with copy */}
                   <button
                     onClick={handleCopyCIN}
-                    className="w-full group/cin flex items-center justify-between gap-3 px-4 py-3 rounded-xl bg-primary/[0.06] border border-primary/20 hover:border-primary/50 hover:bg-primary/[0.10] transition-all"
+                    className="w-full group/cin flex items-center justify-between gap-3 px-4 py-3.5 rounded-xl bg-background/40 backdrop-blur-sm border border-primary/20 hover:border-primary/60 hover:bg-primary/[0.08] transition-all mb-6"
                   >
-                    <div className="flex items-center gap-2.5 min-w-0">
-                      <Hash className="h-3.5 w-3.5 text-primary shrink-0" />
+                    <div className="flex items-center gap-3 min-w-0">
+                      <div className="h-8 w-8 rounded-lg bg-primary/15 border border-primary/25 flex items-center justify-center shrink-0">
+                        <Hash className="h-3.5 w-3.5 text-primary" />
+                      </div>
                       <div className="text-left min-w-0">
-                        <span className="block text-[9px] uppercase tracking-[0.2em] text-muted-foreground/70">Corporate Identification</span>
-                        <span className="block text-[12px] font-mono text-foreground truncate">U73100OD2026PTC053422</span>
+                        <span className="block text-[9px] uppercase tracking-[0.2em] text-muted-foreground font-medium">Corporate Identification</span>
+                        <span className="block text-[13px] font-mono text-foreground truncate font-semibold">U73100OD2026PTC053422</span>
                       </div>
                     </div>
                     {copied ? (
@@ -167,22 +194,17 @@ const Contact = () => {
                     )}
                   </button>
 
-                  {/* Divider */}
-                  <div className="relative my-6">
-                    <div className="h-px bg-gradient-to-r from-transparent via-border to-transparent" />
-                    <span className="absolute left-1/2 -translate-x-1/2 -top-1.5 h-3 w-3 rounded-full bg-card border border-border flex items-center justify-center">
-                      <span className="h-1 w-1 rounded-full bg-primary/60" />
-                    </span>
-                  </div>
-
                   {/* Address */}
                   <div className="mb-6">
-                    <span className="text-[10px] uppercase tracking-[0.25em] text-muted-foreground/60 font-medium flex items-center gap-1.5">
-                      <MapPin className="h-3 w-3 text-primary" /> Registered Address
-                    </span>
-                    <div className="mt-3 pl-3 border-l-2 border-primary/30 space-y-0.5">
-                      <p className="text-sm text-foreground/90 font-medium">Managobindpur, Near Govt Hospital</p>
-                      <p className="text-sm text-muted-foreground">Daleiput, Khurda, Odisha — 752056</p>
+                    <div className="flex items-center gap-2 mb-3">
+                      <div className="h-7 w-7 rounded-lg bg-primary/15 border border-primary/25 flex items-center justify-center">
+                        <MapPin className="h-3.5 w-3.5 text-primary" />
+                      </div>
+                      <span className="text-[10px] uppercase tracking-[0.25em] text-primary/80 font-semibold">Registered Address</span>
+                    </div>
+                    <div className="pl-9 space-y-1">
+                      <p className="text-sm text-foreground font-semibold leading-relaxed">Managobindpur, Near Govt Hospital</p>
+                      <p className="text-sm text-muted-foreground leading-relaxed">Daleiput, Khurda, Odisha — 752056</p>
                       <p className="text-sm text-foreground/80 inline-flex items-center gap-1.5 pt-1">
                         <Globe2 className="h-3 w-3 text-primary" /> India
                       </p>
@@ -190,17 +212,14 @@ const Contact = () => {
                   </div>
 
                   {/* Footer status bar */}
-                  <div className="flex items-center justify-between pt-4 border-t border-border/60">
-                    <div className="flex items-center gap-2">
-                      <span className="relative flex h-2 w-2">
-                        <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-primary opacity-60" />
-                        <span className="relative inline-flex rounded-full h-2 w-2 bg-primary" />
-                      </span>
-                      <span className="text-[10px] uppercase tracking-widest text-foreground/80 font-medium">Active</span>
+                  <div className="flex items-center justify-between pt-4 border-t border-primary/15">
+                    <div className="flex items-center gap-2 text-[10px] font-mono text-muted-foreground">
+                      <Calendar className="h-3 w-3 text-primary" />
+                      <span className="uppercase tracking-widest">EST · 2026</span>
                     </div>
-                    <div className="flex items-center gap-1.5 text-[10px] font-mono text-muted-foreground/70">
-                      <Calendar className="h-3 w-3" />
-                      <span>EST · 2026</span>
+                    <div className="flex items-center gap-1.5 text-[10px] uppercase tracking-widest text-foreground/60 font-medium">
+                      <Shield className="h-3 w-3 text-primary" />
+                      <span>MCA Registered</span>
                     </div>
                   </div>
                 </div>
