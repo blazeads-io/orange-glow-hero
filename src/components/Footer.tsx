@@ -139,30 +139,30 @@ const Footer = () => {
             </div>
           </div>
 
-          {/* Newsletter */}
+          {/* Working Hours / Quick Response */}
           <div className="md:col-span-3">
-            <h4 className="text-xs font-semibold text-foreground/80 mb-5 uppercase tracking-[0.2em]">Stay updated</h4>
-            <p className="text-sm text-muted-foreground mb-4 leading-relaxed">
-              Insights on growth, performance & app marketing — straight to your inbox.
-            </p>
-            <form
-              onSubmit={(e) => e.preventDefault()}
-              className="flex items-center gap-1 p-1 rounded-full border border-border bg-background/50 focus-within:border-primary/50 transition-colors"
-            >
-              <input
-                type="email"
-                required
-                placeholder="you@email.com"
-                className="flex-1 bg-transparent outline-none px-4 py-2 text-sm text-foreground placeholder:text-muted-foreground/60"
-              />
-              <button
-                type="submit"
-                aria-label="Subscribe"
-                className="h-9 w-9 rounded-full bg-primary hover:bg-primary/90 flex items-center justify-center text-primary-foreground transition-colors"
-              >
-                <ArrowUpRight className="h-4 w-4" />
-              </button>
-            </form>
+            <h4 className="text-xs font-semibold text-foreground/80 mb-5 uppercase tracking-[0.2em]">Working hours</h4>
+            <ul className="space-y-3 text-sm">
+              <li className="flex items-center justify-between gap-3 text-muted-foreground">
+                <span>Mon – Fri</span>
+                <span className="text-foreground font-medium">10:00 – 19:00 IST</span>
+              </li>
+              <li className="flex items-center justify-between gap-3 text-muted-foreground">
+                <span>Saturday</span>
+                <span className="text-foreground font-medium">11:00 – 16:00 IST</span>
+              </li>
+              <li className="flex items-center justify-between gap-3 text-muted-foreground">
+                <span>Sunday</span>
+                <span className="text-muted-foreground/60">Closed</span>
+              </li>
+            </ul>
+            <div className="mt-5 inline-flex items-center gap-2 rounded-full border border-primary/25 bg-primary/10 px-3 py-1.5">
+              <span className="relative flex h-2 w-2">
+                <span className="absolute inline-flex h-full w-full animate-ping rounded-full bg-primary opacity-75" />
+                <span className="relative inline-flex h-2 w-2 rounded-full bg-primary" />
+              </span>
+              <span className="text-xs text-foreground font-medium">Replies within 24 hours</span>
+            </div>
           </div>
         </div>
 
