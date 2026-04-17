@@ -40,10 +40,10 @@ import mobile1 from "@/assets/about/mobile-1.jpg";
 /* ─── Data ─── */
 
 const whatWeDoItems = [
-  { image: performance1, title: "Performance Marketing", desc: "Data-driven campaigns optimized for measurable results." },
-  { image: brand1, title: "Brand Campaigns", desc: "Creative strategies that build lasting brand recall." },
-  { image: appMarketing1, title: "Mobile App Growth", desc: "Scale user acquisition with high-performing campaigns." },
-  { image: ott1, title: "OTT & Content Marketing", desc: "Drive subscriptions and engagement for content platforms." },
+  { image: performance1, title: "Performance Marketing", desc: "Data-driven campaigns optimized for measurable results.", tag: "ROI Focused" },
+  { image: brand1, title: "Brand Campaigns", desc: "Creative strategies that build lasting brand recall.", tag: "Creative" },
+  { image: appMarketing1, title: "Mobile App Growth", desc: "Scale user acquisition with high-performing campaigns.", tag: "Scalable" },
+  { image: ott1, title: "OTT & Content Marketing", desc: "Drive subscriptions and engagement for content platforms.", tag: "Engagement" },
 ];
 
 const services = [
@@ -454,7 +454,7 @@ const Index = () => {
                       animate={{ y: [0, -5, 0], rotate: [0, 2, 0] }}
                       transition={{ duration: 3.5, repeat: Infinity, ease: "easeInOut", delay: i * 0.5 + 1 }}
                     >
-                      <span className="text-[10px] uppercase tracking-widest font-bold text-primary">Live</span>
+                      <span className="text-[10px] uppercase tracking-widest font-bold text-primary">{item.tag}</span>
                     </motion.div>
                   </div>
 
