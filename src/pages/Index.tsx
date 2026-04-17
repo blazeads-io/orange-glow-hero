@@ -197,8 +197,13 @@ const Index = () => {
           {/* PERFORMANCE - Left side */}
           <div className="h-full flex items-center pl-2 md:pl-4">
             <p
-              className="text-[11vw] md:text-[9vw] lg:text-[7.5vw] font-black uppercase text-foreground leading-none tracking-tighter"
-              style={{ writingMode: "vertical-rl", textOrientation: "mixed", opacity: 0.08 }}
+              className="font-black uppercase text-foreground leading-none tracking-tighter"
+              style={{
+                writingMode: "vertical-rl",
+                textOrientation: "mixed",
+                opacity: 0.08,
+                fontSize: "clamp(3rem, 8vh, 9rem)",
+              }}
             >
               PERFORMANCE
             </p>
@@ -206,8 +211,14 @@ const Index = () => {
           {/* MARKETING - Right side */}
           <div className="h-full flex items-center pr-2 md:pr-4">
             <p
-              className="text-[11vw] md:text-[9vw] lg:text-[7.5vw] font-black uppercase text-foreground leading-none tracking-tighter"
-              style={{ writingMode: "vertical-rl", textOrientation: "mixed", transform: "rotate(180deg)", opacity: 0.08 }}
+              className="font-black uppercase text-foreground leading-none tracking-tighter"
+              style={{
+                writingMode: "vertical-rl",
+                textOrientation: "mixed",
+                transform: "rotate(180deg)",
+                opacity: 0.08,
+                fontSize: "clamp(3rem, 8vh, 9rem)",
+              }}
             >
               MARKETING
             </p>
