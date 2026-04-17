@@ -246,36 +246,39 @@ const Index = () => {
             }}
           />
 
-          {/* Orbiting marketing logos */}
+          {/* Orbiting social media & campaign icons around the globe */}
           {[
-            { name: "Google Analytics", offset: 0, radius: 220, speed: 45, img: "https://cdn.worldvectorlogo.com/logos/google-analytics-4.svg" },
-            { name: "HubSpot", offset: 51, radius: 240, speed: 50, img: "https://cdn.worldvectorlogo.com/logos/hubspot-1.svg" },
-            { name: "SEMrush", offset: 102, radius: 260, speed: 55, img: "https://cdn.worldvectorlogo.com/logos/semrush.svg" },
-            { name: "Mailchimp", offset: 153, radius: 230, speed: 48, img: "https://cdn.worldvectorlogo.com/logos/mailchimp-freddie-icon.svg" },
-            { name: "Buffer", offset: 204, radius: 250, speed: 52, img: "https://cdn.worldvectorlogo.com/logos/buffer-1.svg" },
-            { name: "Hootsuite", offset: 255, radius: 235, speed: 46, img: "https://cdn.worldvectorlogo.com/logos/hootsuite-icon.svg" },
-            { name: "Moz", offset: 306, radius: 245, speed: 54, img: "https://cdn.worldvectorlogo.com/logos/moz-logo-1.svg" },
-          ].map((logo) => (
+            { Icon: Instagram, offset: 0, radius: 230, speed: 30 },
+            { Icon: Facebook, offset: 40, radius: 260, speed: 35 },
+            { Icon: Youtube, offset: 80, radius: 240, speed: 32 },
+            { Icon: Twitter, offset: 120, radius: 270, speed: 38 },
+            { Icon: Linkedin, offset: 160, radius: 235, speed: 34 },
+            { Icon: Megaphone, offset: 200, radius: 265, speed: 36 },
+            { Icon: Target, offset: 240, radius: 245, speed: 33 },
+            { Icon: Heart, offset: 280, radius: 255, speed: 31 },
+            { Icon: Share2, offset: 320, radius: 250, speed: 37 },
+            { Icon: MessageCircle, offset: 20, radius: 280, speed: 40 },
+            { Icon: ThumbsUp, offset: 180, radius: 285, speed: 42 },
+            { Icon: Send, offset: 300, radius: 225, speed: 29 },
+          ].map((logo, idx) => (
             <motion.div
-              key={logo.name}
+              key={idx}
               className="absolute"
               style={{ width: 0, height: 0 }}
               animate={{ rotate: [logo.offset, logo.offset + 360] }}
               transition={{ duration: logo.speed, repeat: Infinity, ease: "linear" }}
             >
-              <motion.img
-                src={logo.img}
-                alt={logo.name}
-                className="absolute w-6 h-6 md:w-8 md:h-8 object-contain"
+              <motion.div
+                className="absolute flex items-center justify-center w-9 h-9 md:w-11 md:h-11 rounded-full bg-background/40 backdrop-blur-sm border border-primary/40 shadow-[0_0_20px_hsl(24_100%_50%/0.35)]"
                 style={{
-                  top: -logo.radius,
-                  left: -12,
-                  opacity: 0.1,
-                  filter: "grayscale(100%)",
+                  top: -logo.radius - 18,
+                  left: -18,
                 }}
                 animate={{ rotate: [-(logo.offset), -(logo.offset + 360)] }}
                 transition={{ duration: logo.speed, repeat: Infinity, ease: "linear" }}
-              />
+              >
+                <logo.Icon className="w-4 h-4 md:w-5 md:h-5 text-primary" />
+              </motion.div>
             </motion.div>
           ))}
         </motion.div>
