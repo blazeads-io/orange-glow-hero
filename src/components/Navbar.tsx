@@ -2,6 +2,7 @@ import { motion } from "framer-motion";
 import { Button } from "@/components/ui/button";
 import { useEffect, useState } from "react";
 import { Menu, X } from "lucide-react";
+import vibeadsLogo from "@/assets/vibeads-logo.jpeg";
 
 const navLinks = [
   { label: "Home", href: "#home" },
@@ -39,11 +40,16 @@ const Navbar = () => {
       }`}
     >
       <div className="mx-auto max-w-7xl flex items-center justify-between px-6">
-        <button onClick={() => scrollTo("#home")} className="flex items-center gap-2">
-          <div className="h-9 w-9 rounded-lg bg-primary flex items-center justify-center shadow-[0_0_20px_hsl(24_100%_50%/0.4)]">
-            <span className="text-primary-foreground font-bold text-base">V</span>
+        <button onClick={() => scrollTo("#home")} className="flex items-center gap-3 group">
+          <div className="h-10 w-10 rounded-full overflow-hidden ring-2 ring-primary/60 shadow-[0_0_25px_hsl(24_100%_50%/0.5)] transition-transform group-hover:scale-105">
+            <img src={vibeadsLogo} alt="Vibeads Digital logo" className="h-full w-full object-cover" />
           </div>
-          <span className="text-foreground font-semibold text-lg tracking-tight">Vibeads Digital</span>
+          <span
+            className="text-xl md:text-2xl font-extrabold tracking-wide bg-gradient-to-r from-primary via-orange-400 to-primary bg-clip-text text-transparent drop-shadow-[0_0_12px_hsl(24_100%_50%/0.45)]"
+            style={{ fontFamily: "'Audiowide', 'Orbitron', sans-serif", letterSpacing: "0.05em" }}
+          >
+            VIBEADS DIGITAL
+          </span>
         </button>
 
         <div className="hidden md:flex items-center gap-8 absolute left-1/2 -translate-x-1/2">
