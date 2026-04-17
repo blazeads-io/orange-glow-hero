@@ -98,14 +98,6 @@ const industries = [
     statLabel: "Avg. ROI",
     tags: ["Retention", "LTV", "Billing"],
   },
-  {
-    icon: Megaphone,
-    title: "D2C & E-Commerce",
-    desc: "Drive sales, lower CAC and scale direct-to-consumer brands profitably.",
-    stat: "8x",
-    statLabel: "ROAS Achieved",
-    tags: ["Shopify", "Ads", "Funnels"],
-  },
 ];
 
 const fanImages = [
@@ -741,7 +733,7 @@ const Index = () => {
             </motion.p>
           </div>
 
-          <StaggerContainer className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-5 gap-6">
+          <StaggerContainer className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
             {industries.map((item, idx) => (
               <motion.div
                 key={item.title}
