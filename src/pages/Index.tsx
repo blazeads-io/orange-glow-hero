@@ -519,13 +519,18 @@ const Index = () => {
                 <div className="relative p-6 flex flex-col flex-1">
                   <h3 className="text-lg font-bold text-foreground mb-2 group-hover:text-primary transition-colors duration-300">{service.title}</h3>
                   <p className="text-sm text-muted-foreground leading-relaxed flex-1">{service.desc}</p>
-                  <div className="mt-5 flex items-center justify-between">
-                    <motion.div
-                      whileHover={{ x: 4 }}
-                      className="inline-flex items-center justify-center h-10 w-10 rounded-full border border-border group-hover:border-primary/40 group-hover:bg-primary/10 transition-all duration-300"
+                  <div className="mt-5 flex items-center justify-between pt-4 border-t border-border/40">
+                    <div className="flex items-center gap-1.5 text-[11px] text-muted-foreground">
+                      <CheckCircle className="h-3.5 w-3.5 text-primary" />
+                      <span>Proven Results</span>
+                    </div>
+                    <button
+                      onClick={() => scrollTo("#contact")}
+                      className="inline-flex items-center gap-1.5 text-xs font-semibold text-primary hover:gap-2.5 transition-all duration-300"
                     >
-                      <ArrowRight className="h-4 w-4 text-muted-foreground group-hover:text-primary transition-colors duration-300" />
-                    </motion.div>
+                      Learn more
+                      <ArrowRight className="h-3.5 w-3.5" />
+                    </button>
                   </div>
                 </div>
 
