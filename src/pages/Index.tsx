@@ -98,6 +98,14 @@ const industries = [
     statLabel: "Avg. ROI",
     tags: ["Retention", "LTV", "Billing"],
   },
+  {
+    icon: Megaphone,
+    title: "D2C & E-Commerce",
+    desc: "Drive sales, lower CAC and scale direct-to-consumer brands profitably.",
+    stat: "8x",
+    statLabel: "ROAS Achieved",
+    tags: ["Shopify", "Ads", "Funnels"],
+  },
 ];
 
 const fanImages = [
