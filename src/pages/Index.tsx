@@ -597,7 +597,7 @@ const Index = () => {
               {/* Bottom-right — stat badge */}
               <motion.div
                 whileHover={{ scale: 1.03 }}
-                className="relative rounded-2xl overflow-hidden border border-primary/30 bg-gradient-to-br from-primary via-primary/90 to-primary/70 flex flex-col items-center justify-center aspect-[4/3] group"
+                className="relative rounded-2xl overflow-hidden border border-primary/30 bg-gradient-to-br from-primary/70 via-primary/50 to-primary/30 flex flex-col items-center justify-center aspect-[4/3] group"
               >
                 {/* Subtle background image */}
                 <img
