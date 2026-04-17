@@ -733,13 +733,13 @@ const Index = () => {
             </motion.p>
           </div>
 
-          <StaggerContainer className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
+          <StaggerContainer className="grid grid-cols-1 sm:grid-cols-2 xl:grid-cols-4 gap-5 xl:gap-4">
             {industries.map((item, idx) => (
               <motion.div
                 key={item.title}
                 variants={staggerChild}
                 whileHover={{ y: -8 }}
-                className="relative bg-card border border-border rounded-2xl p-6 flex flex-col hover:border-primary/40 transition-all duration-500 overflow-hidden group min-h-[320px]"
+                className="relative bg-card border border-border rounded-2xl p-5 flex flex-col hover:border-primary/40 transition-all duration-500 overflow-hidden group min-h-[300px]"
               >
                 {/* Animated number badge */}
                 <div className="absolute top-4 right-4 text-[10px] font-mono text-muted-foreground/50 group-hover:text-primary/70 transition-colors">
