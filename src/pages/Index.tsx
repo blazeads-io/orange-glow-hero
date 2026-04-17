@@ -843,12 +843,12 @@ const Index = () => {
 
           {/* Fan Image Spread */}
           <ParallaxSection speed={0.08} className="py-12">
-            <div className="relative">
-              <motion.div initial={{ opacity: 0 }} whileInView={{ opacity: 1 }} viewport={{ once: true }} transition={{ delay: 0.8 }} className="absolute left-[8%] top-[15%] z-20 hidden md:block">
-                <motion.span animate={{ y: [0, -6, 0] }} transition={{ duration: 4, repeat: Infinity, ease: "easeInOut" }} className="bg-primary text-primary-foreground text-xs font-medium px-3 py-1.5 rounded-full">Data-Driven</motion.span>
+            <div className="relative mx-auto max-w-[820px]">
+              <motion.div initial={{ opacity: 0 }} whileInView={{ opacity: 1 }} viewport={{ once: true }} transition={{ delay: 0.8 }} className="absolute left-[2%] md:left-[5%] top-[8%] z-20 hidden md:block">
+                <motion.span animate={{ y: [0, -6, 0] }} transition={{ duration: 4, repeat: Infinity, ease: "easeInOut" }} className="bg-primary text-primary-foreground text-xs font-medium px-3 py-1.5 rounded-full shadow-lg">Data-Driven</motion.span>
               </motion.div>
-              <motion.div initial={{ opacity: 0 }} whileInView={{ opacity: 1 }} viewport={{ once: true }} transition={{ delay: 1 }} className="absolute right-[8%] top-[10%] z-20 hidden md:block">
-                <motion.span animate={{ y: [0, -6, 0] }} transition={{ duration: 4, delay: 2, repeat: Infinity, ease: "easeInOut" }} className="bg-primary text-primary-foreground text-xs font-medium px-3 py-1.5 rounded-full">Scalable Growth</motion.span>
+              <motion.div initial={{ opacity: 0 }} whileInView={{ opacity: 1 }} viewport={{ once: true }} transition={{ delay: 1 }} className="absolute right-[2%] md:right-[5%] top-[4%] z-20 hidden md:block">
+                <motion.span animate={{ y: [0, -6, 0] }} transition={{ duration: 4, delay: 2, repeat: Infinity, ease: "easeInOut" }} className="bg-primary text-primary-foreground text-xs font-medium px-3 py-1.5 rounded-full shadow-lg">Scalable Growth</motion.span>
               </motion.div>
 
               <div className="flex items-end justify-center gap-2 md:gap-4 h-[280px] md:h-[380px]">
