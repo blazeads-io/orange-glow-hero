@@ -147,10 +147,10 @@ const Footer = () => {
             </p>
             <div className="grid grid-cols-2 gap-2.5">
               {[
-                { name: "Meta", letter: "M" },
-                { name: "Google", letter: "G" },
-                { name: "TikTok", letter: "T" },
-                { name: "LinkedIn", letter: "in" },
+                { name: "Meta", letter: "M", sub: "Instagram · Facebook" },
+                { name: "Google", letter: "G", sub: "Search · YouTube" },
+                { name: "X", letter: "𝕏", sub: "Twitter Ads" },
+                { name: "LinkedIn", letter: "in", sub: "B2B Ads" },
               ].map((p) => (
                 <div
                   key={p.name}
@@ -161,7 +161,7 @@ const Footer = () => {
                   </div>
                   <div className="leading-tight min-w-0">
                     <span className="block text-xs text-foreground font-medium truncate">{p.name}</span>
-                    <span className="block text-[9px] uppercase tracking-wider text-muted-foreground/70">Partner</span>
+                    <span className="block text-[9px] uppercase tracking-wider text-muted-foreground/70 truncate">{p.sub}</span>
                   </div>
                 </div>
               ))}
