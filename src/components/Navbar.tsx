@@ -45,7 +45,7 @@ const Navbar = () => {
             <img src={vibeadsLogo} alt="Vibeads Digital logo" className="h-full w-full object-cover" />
           </div>
           <span
-            className="text-xl md:text-2xl font-extrabold tracking-wide bg-gradient-to-r from-primary via-orange-400 to-primary bg-clip-text text-transparent drop-shadow-[0_0_12px_hsl(24_100%_50%/0.45)]"
+            className="text-xl md:text-2xl font-extrabold tracking-wide bg-gradient-to-r from-primary via-primary-glow to-primary bg-clip-text text-transparent drop-shadow-[0_0_12px_hsl(24_100%_50%/0.45)]"
             style={{ fontFamily: "'Audiowide', 'Orbitron', sans-serif", letterSpacing: "0.05em" }}
           >
             VIBEADS DIGITAL
