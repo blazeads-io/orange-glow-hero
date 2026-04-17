@@ -139,29 +139,32 @@ const Footer = () => {
             </div>
           </div>
 
-          {/* Working Hours / Quick Response */}
+          {/* Certified Partners */}
           <div className="md:col-span-3">
-            <h4 className="text-xs font-semibold text-foreground/80 mb-5 uppercase tracking-[0.2em]">Working hours</h4>
-            <ul className="space-y-3 text-sm">
-              <li className="flex items-center justify-between gap-3 text-muted-foreground">
-                <span>Mon – Fri</span>
-                <span className="text-foreground font-medium">10:00 – 19:00 IST</span>
-              </li>
-              <li className="flex items-center justify-between gap-3 text-muted-foreground">
-                <span>Saturday</span>
-                <span className="text-foreground font-medium">11:00 – 16:00 IST</span>
-              </li>
-              <li className="flex items-center justify-between gap-3 text-muted-foreground">
-                <span>Sunday</span>
-                <span className="text-muted-foreground/60">Closed</span>
-              </li>
-            </ul>
-            <div className="mt-5 inline-flex items-center gap-2 rounded-full border border-primary/25 bg-primary/10 px-3 py-1.5">
-              <span className="relative flex h-2 w-2">
-                <span className="absolute inline-flex h-full w-full animate-ping rounded-full bg-primary opacity-75" />
-                <span className="relative inline-flex h-2 w-2 rounded-full bg-primary" />
-              </span>
-              <span className="text-xs text-foreground font-medium">Replies within 24 hours</span>
+            <h4 className="text-xs font-semibold text-foreground/80 mb-5 uppercase tracking-[0.2em]">Certified partners</h4>
+            <p className="text-xs text-muted-foreground leading-relaxed mb-4">
+              Officially certified across leading ad platforms.
+            </p>
+            <div className="grid grid-cols-2 gap-2.5">
+              {[
+                { name: "Meta", letter: "M" },
+                { name: "Google", letter: "G" },
+                { name: "TikTok", letter: "T" },
+                { name: "LinkedIn", letter: "in" },
+              ].map((p) => (
+                <div
+                  key={p.name}
+                  className="group flex items-center gap-2 rounded-lg border border-border/70 bg-background/40 px-2.5 py-2 hover:border-primary/40 hover:bg-primary/5 transition-all duration-300"
+                >
+                  <div className="h-7 w-7 rounded-md bg-gradient-to-br from-primary/20 to-primary/5 border border-primary/20 flex items-center justify-center shrink-0">
+                    <span className="text-[11px] font-bold text-primary">{p.letter}</span>
+                  </div>
+                  <div className="leading-tight min-w-0">
+                    <span className="block text-xs text-foreground font-medium truncate">{p.name}</span>
+                    <span className="block text-[9px] uppercase tracking-wider text-muted-foreground/70">Partner</span>
+                  </div>
+                </div>
+              ))}
             </div>
           </div>
         </div>
