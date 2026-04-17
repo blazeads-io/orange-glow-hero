@@ -165,20 +165,20 @@ const Index = () => {
         </div>
 
         {/* ── Large Vertical Background Text ── */}
-        <div className="absolute inset-0 flex items-center justify-between pointer-events-none select-none z-[0] overflow-hidden px-4 md:px-8">
+        <div className="absolute inset-0 flex items-center justify-between pointer-events-none select-none z-[0] overflow-hidden pl-6 pr-6 md:pl-12 md:pr-12">
           {/* PERFORMANCE - Left side */}
-          <div className="h-full flex items-center">
+          <div className="h-full flex items-center pl-2 md:pl-4">
             <p
-              className="text-[12vw] md:text-[10vw] lg:text-[8vw] font-black uppercase text-foreground leading-none tracking-tighter"
+              className="text-[11vw] md:text-[9vw] lg:text-[7.5vw] font-black uppercase text-foreground leading-none tracking-tighter"
               style={{ writingMode: "vertical-rl", textOrientation: "mixed", opacity: 0.08 }}
             >
               PERFORMANCE
             </p>
           </div>
           {/* MARKETING - Right side */}
-          <div className="h-full flex items-center">
+          <div className="h-full flex items-center pr-2 md:pr-4">
             <p
-              className="text-[12vw] md:text-[10vw] lg:text-[8vw] font-black uppercase text-foreground leading-none tracking-tighter"
+              className="text-[11vw] md:text-[9vw] lg:text-[7.5vw] font-black uppercase text-foreground leading-none tracking-tighter"
               style={{ writingMode: "vertical-rl", textOrientation: "mixed", transform: "rotate(180deg)", opacity: 0.08 }}
             >
               MARKETING
