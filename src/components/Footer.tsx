@@ -1,56 +1,171 @@
+import { Link } from "react-router-dom";
+import { Mail, MapPin, ArrowUpRight, Linkedin, Instagram, Twitter, Facebook } from "lucide-react";
+
 const Footer = () => {
   const scrollTo = (id: string) => {
     const el = document.querySelector(id);
     if (el) el.scrollIntoView({ behavior: "smooth" });
   };
 
+  const scrollTop = () => window.scrollTo({ top: 0, behavior: "smooth" });
+
   return (
-    <footer className="border-t border-border bg-card/50 px-6 py-16">
-      <div className="mx-auto max-w-7xl">
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-12">
-          <div>
-            <div className="flex items-center gap-2 mb-4">
-              <div className="h-8 w-8 rounded-lg bg-primary flex items-center justify-center">
-                <span className="text-primary-foreground font-bold text-sm">V</span>
+    <footer className="relative border-t border-border bg-card/40 overflow-hidden">
+      {/* Ambient glow */}
+      <div className="absolute inset-x-0 top-0 h-[2px] bg-gradient-to-r from-transparent via-primary to-transparent opacity-60" />
+      <div className="absolute -top-40 left-1/2 -translate-x-1/2 w-[800px] h-[400px] rounded-full bg-primary/10 blur-3xl pointer-events-none" />
+
+      {/* Giant brand watermark */}
+      <div
+        aria-hidden="true"
+        className="absolute -bottom-10 md:-bottom-16 left-1/2 -translate-x-1/2 text-foreground/[0.03] font-black tracking-tighter pointer-events-none select-none whitespace-nowrap"
+        style={{ fontSize: "clamp(6rem, 18vw, 18rem)", lineHeight: 1 }}
+      >
+        VIBEADS
+      </div>
+
+      <div className="relative z-10 mx-auto max-w-7xl px-6 pt-20 pb-10">
+        {/* Top: brand statement + back to top */}
+        <div className="flex flex-col md:flex-row md:items-end md:justify-between gap-8 mb-16 pb-12 border-b border-border/60">
+          <div className="max-w-2xl">
+            <span className="text-xs uppercase tracking-[0.3em] text-primary/80 font-medium">Vibeads Digital</span>
+            <h3 className="mt-4 text-3xl md:text-5xl font-bold text-foreground leading-tight">
+              Performance marketing,
+              <br />
+              <span className="text-primary">built for scale.</span>
+            </h3>
+          </div>
+          <button
+            onClick={scrollTop}
+            className="group inline-flex items-center gap-2 self-start md:self-auto px-5 py-3 rounded-full border border-border hover:border-primary/50 hover:bg-primary/5 transition-all duration-300"
+          >
+            <span className="text-sm text-foreground">Back to top</span>
+            <ArrowUpRight className="h-4 w-4 text-primary group-hover:-translate-y-0.5 group-hover:translate-x-0.5 transition-transform" />
+          </button>
+        </div>
+
+        {/* Main grid */}
+        <div className="grid grid-cols-1 md:grid-cols-12 gap-10 md:gap-8">
+          {/* Brand block */}
+          <div className="md:col-span-4">
+            <div className="flex items-center gap-2.5 mb-5">
+              <div className="h-9 w-9 rounded-xl bg-gradient-to-br from-primary to-primary/70 flex items-center justify-center shadow-[0_0_20px_hsl(24_100%_50%/0.4)]">
+                <span className="text-primary-foreground font-bold">V</span>
               </div>
-              <span className="text-foreground font-semibold text-lg">Vibeads Digital</span>
+              <span className="text-foreground font-semibold text-lg tracking-tight">Vibeads Digital</span>
             </div>
-            <p className="text-sm text-muted-foreground leading-relaxed">Performance Marketing Built for Scale</p>
-            <p className="text-xs text-muted-foreground/60 mt-4">CIN: U73100OD2026PTC053422</p>
+            <p className="text-sm text-muted-foreground leading-relaxed max-w-xs">
+              Driving growth across apps, OTT, and digital brands worldwide through data-led campaigns.
+            </p>
+
+            {/* Socials */}
+            <div className="mt-6 flex items-center gap-2">
+              {[
+                { Icon: Linkedin, label: "LinkedIn", href: "#" },
+                { Icon: Instagram, label: "Instagram", href: "#" },
+                { Icon: Twitter, label: "Twitter", href: "#" },
+                { Icon: Facebook, label: "Facebook", href: "#" },
+              ].map(({ Icon, label, href }) => (
+                <a
+                  key={label}
+                  href={href}
+                  aria-label={label}
+                  className="h-9 w-9 rounded-full border border-border flex items-center justify-center text-muted-foreground hover:text-primary hover:border-primary/50 hover:bg-primary/5 transition-all duration-300"
+                >
+                  <Icon className="h-4 w-4" />
+                </a>
+              ))}
+            </div>
           </div>
 
-          <div>
-            <h4 className="text-sm font-semibold text-foreground mb-4">Quick Links</h4>
+          {/* Quick Links */}
+          <div className="md:col-span-2">
+            <h4 className="text-xs font-semibold text-foreground/80 mb-5 uppercase tracking-[0.2em]">Explore</h4>
             <div className="flex flex-col gap-3">
               {[
                 { label: "Home", href: "#home" },
                 { label: "Services", href: "#services" },
                 { label: "About", href: "#about" },
-                { label: "Contact", href: "#contact" },
               ].map((link) => (
                 <button
                   key={link.label}
                   onClick={() => scrollTo(link.href)}
-                  className="text-sm text-muted-foreground hover:text-foreground transition-colors text-left"
+                  className="group inline-flex items-center gap-1.5 text-sm text-muted-foreground hover:text-primary transition-colors text-left w-fit"
                 >
+                  <span className="h-px w-3 bg-muted-foreground/40 group-hover:w-5 group-hover:bg-primary transition-all duration-300" />
                   {link.label}
                 </button>
               ))}
+              <Link
+                to="/contact"
+                className="group inline-flex items-center gap-1.5 text-sm text-muted-foreground hover:text-primary transition-colors text-left w-fit"
+              >
+                <span className="h-px w-3 bg-muted-foreground/40 group-hover:w-5 group-hover:bg-primary transition-all duration-300" />
+                Contact
+              </Link>
             </div>
           </div>
 
-          <div>
-            <h4 className="text-sm font-semibold text-foreground mb-4">Registered Office</h4>
-            <p className="text-sm text-muted-foreground leading-relaxed">
-              Vibeads Digital Private Limited<br />
-              Managobindpur, Daleiput,<br />
-              Khurda, Odisha – 752056, India
+          {/* Contact */}
+          <div className="md:col-span-3">
+            <h4 className="text-xs font-semibold text-foreground/80 mb-5 uppercase tracking-[0.2em]">Get in touch</h4>
+            <a
+              href="mailto:support@vibeads.com"
+              className="group flex items-start gap-3 mb-4 text-muted-foreground hover:text-primary transition-colors"
+            >
+              <Mail className="h-4 w-4 mt-0.5 text-primary shrink-0" />
+              <span className="text-sm">support@vibeads.com</span>
+            </a>
+            <div className="flex items-start gap-3 text-muted-foreground">
+              <MapPin className="h-4 w-4 mt-0.5 text-primary shrink-0" />
+              <p className="text-sm leading-relaxed">
+                Managobindpur, Daleiput,
+                <br />
+                Khurda, Odisha — 752056, India
+              </p>
+            </div>
+          </div>
+
+          {/* Newsletter */}
+          <div className="md:col-span-3">
+            <h4 className="text-xs font-semibold text-foreground/80 mb-5 uppercase tracking-[0.2em]">Stay updated</h4>
+            <p className="text-sm text-muted-foreground mb-4 leading-relaxed">
+              Insights on growth, performance & app marketing — straight to your inbox.
             </p>
+            <form
+              onSubmit={(e) => e.preventDefault()}
+              className="flex items-center gap-1 p-1 rounded-full border border-border bg-background/50 focus-within:border-primary/50 transition-colors"
+            >
+              <input
+                type="email"
+                required
+                placeholder="you@email.com"
+                className="flex-1 bg-transparent outline-none px-4 py-2 text-sm text-foreground placeholder:text-muted-foreground/60"
+              />
+              <button
+                type="submit"
+                aria-label="Subscribe"
+                className="h-9 w-9 rounded-full bg-primary hover:bg-primary/90 flex items-center justify-center text-primary-foreground transition-colors"
+              >
+                <ArrowUpRight className="h-4 w-4" />
+              </button>
+            </form>
           </div>
         </div>
 
-        <div className="mt-12 pt-8 border-t border-border text-center">
-          <p className="text-xs text-muted-foreground/60">© 2026 Vibeads Digital Private Limited. All rights reserved.</p>
+        {/* Bottom strip */}
+        <div className="mt-16 pt-6 border-t border-border/60 flex flex-col md:flex-row items-center justify-between gap-4">
+          <p className="text-xs text-muted-foreground/70">
+            © {new Date().getFullYear()} Vibeads Digital Private Limited. All rights reserved.
+          </p>
+          <div className="flex items-center gap-5 text-xs text-muted-foreground/70">
+            <span className="font-mono">CIN: U73100OD2026PTC053422</span>
+            <span className="hidden md:inline text-primary/40">•</span>
+            <span className="hidden md:flex items-center gap-2">
+              <span className="h-1.5 w-1.5 rounded-full bg-primary animate-pulse" />
+              India · UAE · Singapore
+            </span>
+          </div>
         </div>
       </div>
     </footer>
