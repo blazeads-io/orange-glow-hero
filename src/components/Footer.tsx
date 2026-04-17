@@ -145,22 +145,20 @@ const Footer = () => {
             <p className="text-xs text-muted-foreground leading-relaxed mb-4">
               Officially certified across leading ad platforms.
             </p>
-            <div className="flex flex-col gap-2">
+            <div className="flex flex-col gap-2.5">
               {[
-                { name: "Meta", letter: "M", sub: "Instagram · Facebook" },
-                { name: "Google", letter: "G", sub: "Search · YouTube" },
-                { name: "X", letter: "𝕏", sub: "Twitter Ads" },
-                { name: "LinkedIn", letter: "in", sub: "B2B Ads" },
+                { name: "Meta", Logo: MetaLogo, sub: "Instagram · Facebook" },
+                { name: "Google", Logo: GoogleLogo, sub: "Search · YouTube" },
               ].map((p) => (
                 <div
                   key={p.name}
-                  className="group flex items-center gap-2.5 rounded-lg border border-border/70 bg-background/40 px-3 py-2 hover:border-primary/40 hover:bg-primary/5 transition-all duration-300"
+                  className="group flex items-center gap-3 rounded-lg border border-border/70 bg-background/40 px-3 py-2.5 hover:border-primary/40 hover:bg-primary/5 transition-all duration-300"
                 >
-                  <div className="h-8 w-8 rounded-md bg-gradient-to-br from-primary/20 to-primary/5 border border-primary/20 flex items-center justify-center shrink-0">
-                    <span className="text-xs font-bold text-primary">{p.letter}</span>
+                  <div className="h-9 w-9 rounded-md bg-background border border-border/60 flex items-center justify-center shrink-0">
+                    <p.Logo className="h-5 w-5" />
                   </div>
                   <div className="leading-tight min-w-0 flex-1">
-                    <span className="block text-xs text-foreground font-semibold">{p.name}</span>
+                    <span className="block text-sm text-foreground font-semibold">{p.name}</span>
                     <span className="block text-[10px] text-muted-foreground/80 mt-0.5">{p.sub}</span>
                   </div>
                 </div>
