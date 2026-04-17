@@ -1,11 +1,17 @@
 import { motion, useMotionValue, useSpring } from "framer-motion";
 import { useEffect, useState } from "react";
 
-const CustomCursor = () => {
+interface CustomCursorProps {
+  /** CSS selector for the area where the custom cursor should be active. Defaults to "#home". */
+  scopeSelector?: string;
+}
+
+const CustomCursor = ({ scopeSelector = "#home" }: CustomCursorProps) => {
   const [visible, setVisible] = useState(false);
   const [clicking, setClicking] = useState(false);
   const [hovering, setHovering] = useState(false);
   const [isMobile, setIsMobile] = useState(true);
+  const [insideScope, setInsideScope] = useState(false);
 
   const mouseX = useMotionValue(0);
   const mouseY = useMotionValue(0);
@@ -26,18 +32,31 @@ const CustomCursor = () => {
   useEffect(() => {
     if (isMobile) return;
 
+    const isInsideScope = (target: EventTarget | null) => {
+      if (!(target instanceof Element)) return false;
+      const scope = document.querySelector(scopeSelector);
+      return !!scope && scope.contains(target);
+    };
+
     const onMove = (e: MouseEvent) => {
       mouseX.set(e.clientX);
       mouseY.set(e.clientY);
-      if (!visible) setVisible(true);
+
+      const inside = isInsideScope(e.target);
+      setInsideScope(inside);
+      if (inside && !visible) setVisible(true);
+      if (!inside && visible) setVisible(false);
     };
 
     const onDown = () => setClicking(true);
     const onUp = () => setClicking(false);
-    const onLeave = () => setVisible(false);
-    const onEnter = () => setVisible(true);
+    const onLeave = () => {
+      setVisible(false);
+      setInsideScope(false);
+    };
 
     const onOverInteractive = (e: MouseEvent) => {
+      if (!isInsideScope(e.target)) return;
       const target = e.target as HTMLElement;
       if (target.closest("a, button, [role='button'], input, textarea, select, [data-cursor-hover]")) {
         setHovering(true);
@@ -55,7 +74,6 @@ const CustomCursor = () => {
     window.addEventListener("mousedown", onDown);
     window.addEventListener("mouseup", onUp);
     document.addEventListener("mouseleave", onLeave);
-    document.addEventListener("mouseenter", onEnter);
     document.addEventListener("mouseover", onOverInteractive);
     document.addEventListener("mouseout", onOutInteractive);
 
@@ -64,18 +82,17 @@ const CustomCursor = () => {
       window.removeEventListener("mousedown", onDown);
       window.removeEventListener("mouseup", onUp);
       document.removeEventListener("mouseleave", onLeave);
-      document.removeEventListener("mouseenter", onEnter);
       document.removeEventListener("mouseover", onOverInteractive);
       document.removeEventListener("mouseout", onOutInteractive);
     };
-  }, [isMobile, mouseX, mouseY, visible]);
+  }, [isMobile, mouseX, mouseY, visible, scopeSelector]);
 
   if (isMobile) return null;
 
   return (
     <>
-      {/* Hide default cursor */}
-      <style>{`* { cursor: none !important; }`}</style>
+      {/* Hide default cursor only inside the scoped section */}
+      <style>{`${scopeSelector}, ${scopeSelector} * { cursor: none !important; }`}</style>
 
       {/* Outer trail ring */}
       <motion.div
@@ -90,7 +107,7 @@ const CustomCursor = () => {
             borderColor: hovering
               ? "hsl(var(--primary) / 0.7)"
               : "hsl(var(--primary) / 0.3)",
-            opacity: visible ? 1 : 0,
+            opacity: visible && insideScope ? 1 : 0,
           }}
           transition={{ type: "spring", stiffness: 250, damping: 22 }}
         />
@@ -106,7 +123,7 @@ const CustomCursor = () => {
           animate={{
             width: hovering ? 6 : clicking ? 10 : 6,
             height: hovering ? 6 : clicking ? 10 : 6,
-            opacity: visible ? 1 : 0,
+            opacity: visible && insideScope ? 1 : 0,
           }}
           transition={{ type: "spring", stiffness: 350, damping: 20 }}
         />
@@ -122,7 +139,7 @@ const CustomCursor = () => {
           animate={{
             width: hovering ? 80 : 50,
             height: hovering ? 80 : 50,
-            opacity: visible ? 0.6 : 0,
+            opacity: visible && insideScope ? 0.6 : 0,
           }}
           transition={{ type: "spring", stiffness: 150, damping: 25 }}
         />
