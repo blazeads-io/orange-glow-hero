@@ -18,7 +18,9 @@ import ParticleWave from "@/components/ParticleWave";
 import {
   Target, Smartphone, Palette, Tv, TrendingUp, Users,
   BarChart3, Megaphone, CheckCircle, Building2, Zap, Globe,
-  Mail, MapPin, CreditCard, ArrowRight,
+  Mail, MapPin, CreditCard, ArrowRight, Sparkles,
+  Instagram, Facebook, Twitter, Youtube, Linkedin, Send,
+  MousePointerClick, Heart, ThumbsUp, Share2, MessageCircle,
 } from "lucide-react";
 
 import heroGlobe from "@/assets/hero-globe.png";
@@ -163,20 +165,20 @@ const Index = () => {
         </div>
 
         {/* ── Large Vertical Background Text ── */}
-        <div className="absolute inset-0 flex items-center justify-between pointer-events-none select-none z-[0] overflow-hidden px-4 md:px-8">
+        <div className="absolute inset-0 flex items-center justify-between pointer-events-none select-none z-[0] overflow-hidden pl-6 pr-6 md:pl-12 md:pr-12">
           {/* PERFORMANCE - Left side */}
-          <div className="h-full flex items-center">
+          <div className="h-full flex items-center pl-2 md:pl-4">
             <p
-              className="text-[12vw] md:text-[10vw] lg:text-[8vw] font-black uppercase text-foreground leading-none tracking-tighter"
+              className="text-[11vw] md:text-[9vw] lg:text-[7.5vw] font-black uppercase text-foreground leading-none tracking-tighter"
               style={{ writingMode: "vertical-rl", textOrientation: "mixed", opacity: 0.08 }}
             >
               PERFORMANCE
             </p>
           </div>
           {/* MARKETING - Right side */}
-          <div className="h-full flex items-center">
+          <div className="h-full flex items-center pr-2 md:pr-4">
             <p
-              className="text-[12vw] md:text-[10vw] lg:text-[8vw] font-black uppercase text-foreground leading-none tracking-tighter"
+              className="text-[11vw] md:text-[9vw] lg:text-[7.5vw] font-black uppercase text-foreground leading-none tracking-tighter"
               style={{ writingMode: "vertical-rl", textOrientation: "mixed", transform: "rotate(180deg)", opacity: 0.08 }}
             >
               MARKETING
@@ -244,36 +246,39 @@ const Index = () => {
             }}
           />
 
-          {/* Orbiting marketing logos */}
+          {/* Orbiting social media & campaign icons around the globe */}
           {[
-            { name: "Google Analytics", offset: 0, radius: 220, speed: 45, img: "https://cdn.worldvectorlogo.com/logos/google-analytics-4.svg" },
-            { name: "HubSpot", offset: 51, radius: 240, speed: 50, img: "https://cdn.worldvectorlogo.com/logos/hubspot-1.svg" },
-            { name: "SEMrush", offset: 102, radius: 260, speed: 55, img: "https://cdn.worldvectorlogo.com/logos/semrush.svg" },
-            { name: "Mailchimp", offset: 153, radius: 230, speed: 48, img: "https://cdn.worldvectorlogo.com/logos/mailchimp-freddie-icon.svg" },
-            { name: "Buffer", offset: 204, radius: 250, speed: 52, img: "https://cdn.worldvectorlogo.com/logos/buffer-1.svg" },
-            { name: "Hootsuite", offset: 255, radius: 235, speed: 46, img: "https://cdn.worldvectorlogo.com/logos/hootsuite-icon.svg" },
-            { name: "Moz", offset: 306, radius: 245, speed: 54, img: "https://cdn.worldvectorlogo.com/logos/moz-logo-1.svg" },
-          ].map((logo) => (
+            { Icon: Instagram, offset: 0, radius: 230, speed: 30 },
+            { Icon: Facebook, offset: 40, radius: 260, speed: 35 },
+            { Icon: Youtube, offset: 80, radius: 240, speed: 32 },
+            { Icon: Twitter, offset: 120, radius: 270, speed: 38 },
+            { Icon: Linkedin, offset: 160, radius: 235, speed: 34 },
+            { Icon: Megaphone, offset: 200, radius: 265, speed: 36 },
+            { Icon: Target, offset: 240, radius: 245, speed: 33 },
+            { Icon: Heart, offset: 280, radius: 255, speed: 31 },
+            { Icon: Share2, offset: 320, radius: 250, speed: 37 },
+            { Icon: MessageCircle, offset: 20, radius: 280, speed: 40 },
+            { Icon: ThumbsUp, offset: 180, radius: 285, speed: 42 },
+            { Icon: Send, offset: 300, radius: 225, speed: 29 },
+          ].map((logo, idx) => (
             <motion.div
-              key={logo.name}
+              key={idx}
               className="absolute"
               style={{ width: 0, height: 0 }}
               animate={{ rotate: [logo.offset, logo.offset + 360] }}
               transition={{ duration: logo.speed, repeat: Infinity, ease: "linear" }}
             >
-              <motion.img
-                src={logo.img}
-                alt={logo.name}
-                className="absolute w-6 h-6 md:w-8 md:h-8 object-contain"
+              <motion.div
+                className="absolute flex items-center justify-center w-9 h-9 md:w-11 md:h-11 rounded-full bg-background/40 backdrop-blur-sm border border-primary/40 shadow-[0_0_20px_hsl(24_100%_50%/0.35)]"
                 style={{
-                  top: -logo.radius,
-                  left: -12,
-                  opacity: 0.1,
-                  filter: "grayscale(100%)",
+                  top: -logo.radius - 18,
+                  left: -18,
                 }}
                 animate={{ rotate: [-(logo.offset), -(logo.offset + 360)] }}
                 transition={{ duration: logo.speed, repeat: Infinity, ease: "linear" }}
-              />
+              >
+                <logo.Icon className="w-4 h-4 md:w-5 md:h-5 text-primary" />
+              </motion.div>
             </motion.div>
           ))}
         </motion.div>
@@ -316,23 +321,46 @@ const Index = () => {
 
         {/* ── Hero Text Content ── */}
         <motion.div
-          className="absolute bottom-8 left-0 right-0 z-10 px-8 md:px-16"
+          className="absolute bottom-10 left-0 right-0 z-10 px-6 md:px-16"
           initial={{ opacity: 0, y: 30 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.8, delay: 1 }}
         >
-          <div className="max-w-3xl">
-            <h2 className="text-lg md:text-2xl font-bold text-foreground leading-snug mb-3">
-              Driving Growth Across Apps, OTT & Digital Brands
-            </h2>
-            <p className="text-xs md:text-sm text-muted-foreground max-w-xl leading-relaxed">
-              We help brands and digital platforms acquire users, scale revenue, and build sustainable growth through data-driven marketing strategies.
-            </p>
-            <div className="mt-6">
-              <Button variant="hero-outline" size="lg" className="rounded-full px-8 text-sm group" onClick={() => scrollTo("#contact")}>
-                Book a Call
-                <ArrowRight className="ml-2 h-4 w-4 transition-transform group-hover:translate-x-1" />
-              </Button>
+          <div className="max-w-2xl">
+            <div className="relative rounded-2xl bg-background/40 backdrop-blur-xl border border-border/60 p-6 md:p-7 shadow-[0_20px_60px_-20px_rgba(0,0,0,0.6)] overflow-hidden">
+              {/* Accent line */}
+              <div className="absolute top-0 left-0 h-full w-1 bg-gradient-to-b from-primary via-primary/60 to-transparent" />
+              {/* Soft inner glow */}
+              <div className="absolute -top-20 -right-20 w-48 h-48 bg-primary/15 blur-3xl rounded-full pointer-events-none" />
+
+              <div className="relative">
+                <div className="flex items-center gap-2 mb-3">
+                  <span className="inline-flex items-center gap-1.5 text-[10px] md:text-xs font-semibold uppercase tracking-[0.2em] text-primary">
+                    <Sparkles className="w-3.5 h-3.5" />
+                    What we do
+                  </span>
+                  <span className="h-px flex-1 bg-gradient-to-r from-primary/40 to-transparent" />
+                </div>
+
+                <h2 className="text-xl md:text-3xl font-bold text-foreground leading-tight mb-3 tracking-tight">
+                  Driving Growth Across{" "}
+                  <span className="text-primary">Apps, OTT</span> &{" "}
+                  <span className="text-primary">Digital Brands</span>
+                </h2>
+                <p className="text-sm md:text-base text-muted-foreground leading-relaxed">
+                  We help brands and digital platforms acquire users, scale revenue, and build sustainable growth through data-driven marketing strategies.
+                </p>
+
+                <div className="mt-5 flex flex-wrap items-center gap-3">
+                  <Button variant="hero" size="lg" className="rounded-full px-7 text-sm group" onClick={() => scrollTo("#contact")}>
+                    Book a Call
+                    <ArrowRight className="ml-2 h-4 w-4 transition-transform group-hover:translate-x-1" />
+                  </Button>
+                  <Button variant="hero-outline" size="lg" className="rounded-full px-7 text-sm" onClick={() => scrollTo("#services")}>
+                    Explore Services
+                  </Button>
+                </div>
+              </div>
             </div>
           </div>
         </motion.div>
