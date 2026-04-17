@@ -41,7 +41,7 @@ const Navbar = () => {
     >
       <div className="mx-auto max-w-7xl flex items-center justify-between px-6">
         <button onClick={() => scrollTo("#home")} className="flex items-center gap-3 group">
-          <div className="h-10 w-10 rounded-full overflow-hidden ring-2 ring-primary/60 shadow-[0_0_25px_hsl(24_100%_50%/0.5)] transition-transform group-hover:scale-105">
+          <div className="h-14 w-14 md:h-16 md:w-16 rounded-full overflow-hidden ring-2 ring-primary/60 shadow-[0_0_30px_hsl(24_100%_50%/0.55)] transition-transform group-hover:scale-105">
             <img src={vibeadsLogo} alt="Vibeads Digital logo" className="h-full w-full object-cover" />
           </div>
           <span
