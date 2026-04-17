@@ -66,10 +66,38 @@ const reasons = [
 ];
 
 const industries = [
-  { icon: Tv, title: "OTT Platforms" },
-  { icon: Smartphone, title: "Mobile Applications" },
-  { icon: Globe, title: "Digital Products" },
-  { icon: CreditCard, title: "Subscription-Based Businesses" },
+  {
+    icon: Tv,
+    title: "OTT Platforms",
+    desc: "Drive subscriptions, retention & engagement for streaming services.",
+    stat: "10M+",
+    statLabel: "Viewers Reached",
+    tags: ["Streaming", "Subscribers", "Content"],
+  },
+  {
+    icon: Smartphone,
+    title: "Mobile Applications",
+    desc: "Acquire high-quality users and scale app revenue across markets.",
+    stat: "5M+",
+    statLabel: "App Installs",
+    tags: ["iOS", "Android", "UA"],
+  },
+  {
+    icon: Globe,
+    title: "Digital Products",
+    desc: "Grow SaaS, marketplaces and digital-first brands at global scale.",
+    stat: "200+",
+    statLabel: "Campaigns",
+    tags: ["SaaS", "Web", "D2C"],
+  },
+  {
+    icon: CreditCard,
+    title: "Subscription Businesses",
+    desc: "Maximize LTV and reduce churn for recurring-revenue models.",
+    stat: "3x",
+    statLabel: "Avg. ROI",
+    tags: ["Retention", "LTV", "Billing"],
+  },
 ];
 
 const fanImages = [
