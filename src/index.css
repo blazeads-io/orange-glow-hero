@@ -54,6 +54,32 @@
   html {
     scroll-behavior: smooth;
   }
+
+  /* ── Custom Scrollbar (theme-matched, slim) ── */
+  /* Firefox */
+  html {
+    scrollbar-width: thin;
+    scrollbar-color: hsl(var(--primary) / 0.5) hsl(var(--background));
+  }
+
+  /* WebKit (Chrome, Safari, Edge) */
+  ::-webkit-scrollbar {
+    width: 6px;
+    height: 6px;
+  }
+  ::-webkit-scrollbar-track {
+    background: hsl(var(--background));
+  }
+  ::-webkit-scrollbar-thumb {
+    background: linear-gradient(180deg, hsl(var(--primary) / 0.6), hsl(var(--primary) / 0.4));
+    border-radius: 999px;
+  }
+  ::-webkit-scrollbar-thumb:hover {
+    background: linear-gradient(180deg, hsl(var(--primary) / 0.9), hsl(var(--primary) / 0.7));
+  }
+  ::-webkit-scrollbar-corner {
+    background: hsl(var(--background));
+  }
 }
 
 @layer utilities {
