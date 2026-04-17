@@ -179,6 +179,7 @@ const Footer = () => {
               India · UAE · Singapore
             </span>
           </div>
+          </div>
         </div>
       </div>
     </footer>
