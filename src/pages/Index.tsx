@@ -47,12 +47,12 @@ const whatWeDoItems = [
 ];
 
 const services = [
-  { image: performance1, title: "Performance Marketing", subtitle: "Data-Driven Campaigns", desc: "We design and execute campaigns focused on driving measurable outcomes — installs, conversions, and revenue." },
-  { image: appMarketing1, title: "Mobile App Marketing", subtitle: "User Acquisition at Scale", desc: "From launch to scale, we help apps acquire high-quality users through targeted and optimized strategies." },
-  { image: brand1, title: "Brand Campaigns", subtitle: "Creative Strategy", desc: "We create impactful brand campaigns that enhance visibility, improve recall, and support long-term growth." },
-  { image: ott1, title: "OTT Growth Strategy", subtitle: "Content Platforms", desc: "We work with OTT platforms to drive subscriptions, improve engagement, and scale user base." },
-  { image: growth1, title: "Revenue Optimization", subtitle: "Maximize ROI", desc: "Continuous optimization of campaigns and funnels to maximize revenue and reduce acquisition costs." },
-  { image: performance2, title: "Audience Growth", subtitle: "Expand Your Reach", desc: "Automate marketing, scale campaigns, and improve productivity with intelligent growth solutions." },
+  { image: performance1, title: "Performance Marketing", subtitle: "Data-Driven Campaigns", desc: "We design and execute campaigns focused on driving measurable outcomes — installs, conversions, and revenue.", cta: "Get Started" },
+  { image: appMarketing1, title: "Mobile App Marketing", subtitle: "User Acquisition at Scale", desc: "From launch to scale, we help apps acquire high-quality users through targeted and optimized strategies.", cta: "Scale My App" },
+  { image: brand1, title: "Brand Campaigns", subtitle: "Creative Strategy", desc: "We create impactful brand campaigns that enhance visibility, improve recall, and support long-term growth.", cta: "Build My Brand" },
+  { image: ott1, title: "OTT Growth Strategy", subtitle: "Content Platforms", desc: "We work with OTT platforms to drive subscriptions, improve engagement, and scale user base.", cta: "Grow Subscribers" },
+  { image: growth1, title: "Revenue Optimization", subtitle: "Maximize ROI", desc: "Continuous optimization of campaigns and funnels to maximize revenue and reduce acquisition costs.", cta: "Boost Revenue" },
+  { image: performance2, title: "Audience Growth", subtitle: "Expand Your Reach", desc: "Automate marketing, scale campaigns, and improve productivity with intelligent growth solutions.", cta: "Expand Reach" },
 ];
 
 const tags = ["Performance Ads", "User Acquisition", "OTT Marketing", "Brand Strategy", "App Growth", "Revenue Optimization", "Data Analytics"];
@@ -528,7 +528,7 @@ const Index = () => {
                       onClick={() => scrollTo("#contact")}
                       className="inline-flex items-center gap-1.5 text-xs font-semibold text-primary hover:gap-2.5 transition-all duration-300"
                     >
-                      Learn more
+                      {service.cta}
                       <ArrowRight className="h-3.5 w-3.5" />
                     </button>
                   </div>
