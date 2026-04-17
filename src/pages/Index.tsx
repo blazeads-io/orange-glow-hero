@@ -18,7 +18,9 @@ import ParticleWave from "@/components/ParticleWave";
 import {
   Target, Smartphone, Palette, Tv, TrendingUp, Users,
   BarChart3, Megaphone, CheckCircle, Building2, Zap, Globe,
-  Mail, MapPin, CreditCard, ArrowRight,
+  Mail, MapPin, CreditCard, ArrowRight, Sparkles,
+  Instagram, Facebook, Twitter, Youtube, Linkedin, Send,
+  MousePointerClick, Heart, ThumbsUp, Share2, MessageCircle,
 } from "lucide-react";
 
 import heroGlobe from "@/assets/hero-globe.png";
