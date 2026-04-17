@@ -599,14 +599,23 @@ const Index = () => {
                 whileHover={{ scale: 1.03 }}
                 className="relative rounded-2xl overflow-hidden border border-primary/30 bg-gradient-to-br from-primary via-primary/90 to-primary/70 flex flex-col items-center justify-center aspect-[4/3] group"
               >
-                <div className="absolute inset-0 opacity-0 group-hover:opacity-100 transition-opacity duration-500" style={{ background: "radial-gradient(circle, hsl(0 0% 100% / 0.1), transparent 70%)" }} />
+                {/* Subtle background image */}
+                <img
+                  src={global1}
+                  alt=""
+                  aria-hidden="true"
+                  className="absolute inset-0 w-full h-full object-cover opacity-20 mix-blend-overlay group-hover:opacity-30 group-hover:scale-110 transition-all duration-700"
+                />
+                {/* Dark vignette for text contrast */}
+                <div className="absolute inset-0 bg-gradient-to-t from-primary/40 via-transparent to-transparent" />
+                <div className="absolute inset-0 opacity-0 group-hover:opacity-100 transition-opacity duration-500" style={{ background: "radial-gradient(circle, hsl(0 0% 100% / 0.15), transparent 70%)" }} />
                 <motion.div
                   animate={{ scale: [1, 1.05, 1] }}
                   transition={{ duration: 3, repeat: Infinity, ease: "easeInOut" }}
                   className="relative z-10 text-center"
                 >
-                  <div className="text-5xl font-black text-primary-foreground mb-1">50+</div>
-                  <div className="text-xs font-semibold text-primary-foreground/80 uppercase tracking-widest">Clients Served<br />Globally</div>
+                  <div className="text-5xl font-black text-primary-foreground mb-1 drop-shadow-lg">50+</div>
+                  <div className="text-xs font-semibold text-primary-foreground/90 uppercase tracking-widest drop-shadow">Clients Served<br />Globally</div>
                 </motion.div>
               </motion.div>
             </motion.div>
